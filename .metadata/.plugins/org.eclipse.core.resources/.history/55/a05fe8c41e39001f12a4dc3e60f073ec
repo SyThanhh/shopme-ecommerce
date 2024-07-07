@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - Shope Admin</title>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+
+
+<style type="text/css">
+	.divider:after,
+	.divider:before {
+			content: "";
+			flex: 1;
+			height: 1px;
+			background: #eee;
+		}
+		.h-custom {
+			height: calc(100% - 73px);
+		}
+		@media (max-width: 450px) {
+		.h-custom {
+			height: 100%;
+		}
+		
+	}
+	
+	
+</style>
+</head>
+<body>
+
+	<div class="container-fluid">
+		<div>
+		
+		</div>
+
+		<form th:action="@{/login}" method="post" style="max-width:1000px; margin:0 auto;">
+			<p class="text-center mt-5">Access to Shopme Control Panel</p>
+			<div th:if="${param.error}">
+				<div class="alert alert-danger" role="alert">
+				  [[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]
+				</div>
+			</div>
+			
+			<p>
+				<input type="email" name="email" class="form-control" placeholder="E-mail" required/>
+			</p>
+			<p>
+				<input type="password" name="password" class="form-control" placeholder="Password" required/>
+			</p>
+				<p>
+				<input type="submit" value="Login" class="form-control" placeholder="Password" required/>
+			</p>
+		</form>
+
+		<!-- Footer -->
+
+		<div class="text-center">
+			<p>Shopme Control Panel - Copyright &copy; Shopme</p>
+		</div>
+	</div>
+
+</body>
+</html>

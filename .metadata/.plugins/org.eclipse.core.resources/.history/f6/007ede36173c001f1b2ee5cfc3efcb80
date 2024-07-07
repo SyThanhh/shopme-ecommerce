@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: page_head(${pageTitle})">
+
+</head>
+<body>
+
+	<div class="container-fluid">
+		<div th:replace="comm/navigation :: menu"></div>
+		
+		
+		<div class="text-center">
+			<h2>[[${pageTitle}]]</h2>
+			
+		</div>
+		<div th:if="${message != null}" th:class="'alert alert-' + ${typeAlert} + ' text-center'" role="alert">
+		    [[${message}]]
+		</div>
+		<form th:action="@{/account/update}" method="post" style="max-width:700px; margin:0 auto;"
+		th:object="${user}"  id="userForm" enctype="multipart/form-data">  
+		
+		<input type="hidden" th:field="*{id}"/>
+		
+		 <div class="border border-secondary rounded p-3">
+				<div class="form-group row">
+					<label class="col-sm-4">E-mail :</label>
+					<div class="col-sm-8">
+						<input type="email" class="form-control" th:field="*{email}" id="email" name="email" value="" readonly="readonly"/>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-sm-4">First Name :</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" th:field="*{firstName}" id="firstName" name="firstName" value="" required minlength="2" maxlength="45"/>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-sm-4">Last Name : </label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" th:field="*{lastName}" id="lastName" name="lastName" value="" required minlength="2" maxlength="45"
+						
+						/>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-sm-4">Password : </label>
+					<div class="col-sm-8">
+						<input  type="password" class="form-control" th:field="*{password}" placeholder="leave blank if you don't want to change password"  minlength="8" maxlength="20"
+						oninput="checkPasswordMatch(document.getElementById('confirmPassword'))"
+						/>
+						
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-sm-4">Confirm Password : </label>
+					<div class="col-sm-8">
+						<input  type="password" class="form-control" id="confirmPassword"  minlength="8" maxlength="20"
+						oninput="checkPasswordMatch(this)"
+						 />
+						
+					</div>
+				</div>
+				
+				
+				<div class="form-group row">
+					<label class="col-sm-4">Assigned Roles :</label>
+					<div class="col-sm-8">
+						<span>
+							<b>[[${user.roles}]]</b>
+						</span>
+							
+					
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-sm-4">Enabled : </label>
+					<div class="col-sm-8">
+						<input type="checkbox" class="" th:field="*{enabled}"  id="enabled" name="enabled" value=""/>
+					
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-sm-4">Photos : </label>
+					<div class="col-sm-8">
+						<input type="hidden" th:field="*{photos}">
+						<input type="file" id="fileImage" name="image" accept="image/png , image/jpeg" class="mb-2"/>
+						<img id="thumbnail"  alt="Photos preview" th:src="@{${user.photosImagePath}}" class="img-cluid"/>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-sm-4"></label>
+					<div class="col-sm-8">
+						<input type="submit" value="Save" class="btn btn-primary m-3"/>
+						<input type="button" value="Cancel" class="btn btn-secondary" id="btnCancel"/>
+					</div>
+				</div>
+			</div>
+			</form>
+		
+		
+		
+		<!-- Footer -->
+	
+		<div th:replace="comm/footer :: footer"></div>
+	</div>
+	
+	
+	<script type="text/javascript">
+	
+
+	// check password
+	function checkPasswordMatch(confirmPassword) {
+		if(confirmPassword.value != $("#password").val()) {
+			confirmPassword.setCustomValidity("Passwords do not match !");
+		} else {
+			confirmPassword.setCustomValidity("");
+		}
+	}
+	</script>
+	
+	<!-- Logout -->
+	<script th:src="@{/js/comm.js}"></script>
+	
+	<!-- animation user -->
+	<script th:src="@{/js/navigationJS.js}"></script>
+	
+	<!-- check image -->
+	<script th:src="@{/js/comm_form.js}"></script>
+</body>
+</html>

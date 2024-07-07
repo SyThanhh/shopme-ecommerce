@@ -1,0 +1,29 @@
+
+T
+java:S5838%"Use isPositive() instead.8ø“°„2b c3a641c198c2f74f6950ac39a2eac20eh
+Y
+java:S57867"Remove this 'public' modifier.8ºêŠ×„2b 4c9184f37cff01bcdc32dc486ec36961h
+T
+java:S58383"Use isPositive() instead.8ºêŠ×„2b c3a641c198c2f74f6950ac39a2eac20eh
+|
+java:S1128"ARemove this unused import 'javax.persistence.PersistenceContext'.8Êô“×„2b d558c2a9894e823062889b3a1e7f84d4h
+h
+java:S26997"-Add at least one assertion to this test case.8“Ì½×„2b 77081fc796be6a6480f88b8ecab8c021h
+Y
+java:S5786"Remove this 'public' modifier.8“Ì½×„2b 4c9184f37cff01bcdc32dc486ec36961h
+…
+java:S1128"JRemove this unused import 'javax.persistence.criteria.CriteriaBuilder.In'.8“Ì½×„2b 3a55265ade7779211881e1212f15a80dh
+Y
+java:S5786?"Remove this 'public' modifier.8ÑÑ×„2b 4c9184f37cff01bcdc32dc486ec36961h
+Y
+java:S5786F"Remove this 'public' modifier.8˜ƒâ×„2b 4c9184f37cff01bcdc32dc486ec36961h
+h
+java:S2699O"-Add at least one assertion to this test case.8ÆÍ„Ø„2b 673a9d9ca14464a05fc46b74ae1f5016h
+Y
+java:S5786O"Remove this 'public' modifier.8ÆÍ„Ø„2b 4c9184f37cff01bcdc32dc486ec36961h
+h
+java:S2699["-Add at least one assertion to this test case.8åâˆØ„2b ab9a6babe4b56ae2f7d3ee579c3fbf1eh
+Y
+java:S5786["Remove this 'public' modifier.8åâˆØ„2b 4c9184f37cff01bcdc32dc486ec36961h
+Y
+java:S5786)"Remove this 'public' modifier.8÷—²Û„2b 4c9184f37cff01bcdc32dc486ec36961h

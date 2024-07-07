@@ -1,0 +1,16 @@
+/**
+ * 
+ */
+$(document).ready(function() {
+	customizeDropdownMenu();
+});
+
+function customizeDropdownMenu() {
+	
+	$(".navbar .dropdown").hover(
+		
+	);
+	$(".dropdown > a").click(function() {
+			location.href = this.href;
+		});
+}

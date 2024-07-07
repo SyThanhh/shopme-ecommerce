@@ -1,0 +1,37 @@
+/**
+ * 
+ */
+
+$(document)
+               .ready(
+                       function() {
+                           $("#btnCancel").on("click", function() {
+                               window.location = "[[@{/users}]]";
+                           });
+
+                           $("#fileImage").change(function() {
+                                   fileSize = this.files[0].size;
+                                   if (fileSize > 1048576) { // Kiểm tra xem kích thước tệp có lớn hơn 1MB (1048576 bytes) không
+                                       this.setCustomValidity("You must choose an image less than 1MB!"); // Đặt thông báo lỗi tùy chỉnh cho đầu vào tệp
+                                       this.reportValidity(); // Hiển thị thông báo lỗi cho người dùng
+                                   } else {
+                                       // alert("FileSize : " + fileSize);  // Hiển thị một thông báo với kích thước tệp
+                                       showImageThumbnail(this); // Gọi hàm showImageThumbnail để hiển thị hình ảnh thu nhỏ
+                                   }
+
+                               });
+                       });
+
+       // lúc tạo
+       function showImageThumbnail(fileInput) {
+           var file = fileInput.files[0]; // Lấy tệp đầu tiên từ input file
+           var reader = new FileReader(); // Tạo một đối tượng FileReader
+           console.log(file);
+
+           reader.onload = function(e) { // Đặt một hàm xử lý sự kiện khi đọc tệp hoàn thành
+
+               $("#thumbnail").attr("src", e.target.result); // Đặt thuộc tính src của phần tử hình ảnh có id là "thumbnail" bằng dữ liệu base64 của tệp
+           };
+
+           reader.readAsDataURL(file); // Đọc tệp dưới dạng URL data (base64)
+       }

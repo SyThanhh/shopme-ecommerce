@@ -1,0 +1,7 @@
+
+^	java:S1061"+Replace this use of System.out by a logger.b bb1c3f2ea781263d3a2bb92b06a2061fh
+n
+java:S1118":Add a private constructor to hide the implicit public one.b 49e537a497ae52a18365638dc011240fh
+^	java:S106,"+Replace this use of System.out by a logger.b bb1c3f2ea781263d3a2bb92b06a2061fh
+x
+java:S2095'"DUse try-with-resources or close this "Stream" in a "finally" clause.b cde78e50113cf4638a8f951cf5725e88h

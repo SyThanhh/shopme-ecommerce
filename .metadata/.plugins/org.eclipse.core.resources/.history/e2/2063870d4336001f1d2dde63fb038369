@@ -1,0 +1,11 @@
+package com.shopme.admin;
+
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+public class messageAlertCheckNull<T> {
+
+	
+	public void alertCheckNull(T item, RedirectAttributes redirectAttributes) {
+		
+	}
+}

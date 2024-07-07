@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>[[${pageTitle}]]</title> 
+	
+	<link rel="stylesheet" type="text/css" th:href="@{/css/user_form.css}"/>
+	<!--Bootstrap CSS -->
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+	
+	<!-- Fontawesome -->
+	<link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}"/>
+	
+	<!-- Jquery -->
+	<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	
+	<!-- Bootstrap JS -->
+	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	
+</head>
+<body>
+
+	<div class="container-fluid">
+		<div th:replace="comm/navigation :: menu"></div>
+		
+		
+		<div>
+			<h2>Manage Users | [[${pageTitle}]]</h2>
+			
+		</div>
+		
+		<form th:action="@{/users/save}" method="post" style="max-width:700px; margin:0 auto;"
+		th:object="${user}"  id="userForm" enctype="multipart/form-data">  
+		
+		<input type="hidden" th:field="*{id}"/>
+		
+		 <div class="border border-secondary rounded p-3">
+				<div class="form-group row">
+					<label class="col-sm-4">E-mail :</label>
+					<div class="col-sm-8">
+						<input type="email" class="form-control" th:field="*{email}" id="email" name="email" value="" readonly="readonly"/>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-sm-4">First Name :</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" th:field="*{firstName}" id="firstName" name="firstName" value="" required minlength="2" maxlength="45"/>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-sm-4">Last Name : </label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" th:field="*{lastName}" id="lastName" name="lastName" value="" required minlength="2" maxlength="45"/>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-sm-4">Password : </label>
+					<div class="col-sm-8">
+						<input th:if="${user.id == null}" type="password" class="form-control" 
+						th:field="*{password}" id="password" name="password" required minlength="8" maxlength="20"/>
+						
+						<input th:if="${user.id != null}" type="password" class="form-control" 
+						th:field="*{password}" id="password" name="password" minlength="8" maxlength="20"/>
+					</div>
+				</div>
+				
+				
+				<div class="form-group row">
+					<label class="col-sm-4">Roles :</label>
+					<div class="col-sm-8">
+						<th:block th:each="role : ${listroles}">
+							<input type="checkbox" th:field="*{roles}"
+							 th:text="${role.name}" th:value="${role.id}" class="mr-2" />
+							 
+							 - <small>[[${role.description}]]</small> <br>
+						</th:block>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-sm-4">Enabled : </label>
+					<div class="col-sm-8">
+						<input type="checkbox" class="" th:field="*{enabled}"  id="enabled" name="enabled" value=""/>
+					
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-sm-4">Photos : </label>
+					<div class="col-sm-8">
+						<input type="hidden" th:field="*{photos}">
+						<input type="file" id="fileImage" name="image" accept="image/png , image/jpeg" class="mb-2"/>
+						<img id="thumbnail"  alt="Photos preview" th:src="@{${user.photosImagePath}}" class="img-cluid"/>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-sm-4"></label>
+					<div class="col-sm-8">
+						<input type="submit" value="Save" class="btn btn-primary m-3"/>
+						<input type="button" value="Cancel" class="btn btn-secondary" id="btnCancel"/>
+					</div>
+				</div>
+			</div>
+			</form>
+		
+		
+		<!-- Modal -->
+		<div class="modal fade text-center" id="modalDialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="modalTitle">Warning</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					
+					<div class="modal-body">
+						<span id="modalBody"></span>
+					</div>
+					
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Footer -->
+		
+		<div class="text-center">
+			<p>Shopme Control Panel - Copyright &copy; Shopme</p>
+		</div>
+	</div>
+	
+	
+	<script type="text/javascript">
+	
+	$(document).ready(function() {
+	    $("#btnCancel").on("click", function() {
+	        window.location = "[[@{/users}]]";
+	    });
+	    
+	    $("#fileImage").change(function() {
+	    	fileSize = this.files[0].size;
+	    	
+	    	if (fileSize > 1048576) {  // Kiểm tra xem kích thước tệp có lớn hơn 1MB (1048576 bytes) không
+	    	    this.setCustomValidity("You must choose an image less than 1MB!"); // Đặt thông báo lỗi tùy chỉnh cho đầu vào tệp
+	    	    this.reportValidity();  // Hiển thị thông báo lỗi cho người dùng
+	    	} else {
+	    	   // alert("FileSize : " + fileSize);  // Hiển thị một thông báo với kích thước tệp
+	    	    showImageThumbnail(this);  // Gọi hàm showImageThumbnail để hiển thị hình ảnh thu nhỏ
+	    	}
+	    	
+	    });
+	});
+
+	// lúc tạo
+	function showImageThumbnail(fileInput) {
+	    var file = fileInput.files[0];  // Lấy tệp đầu tiên từ input file
+	    var reader = new FileReader();  // Tạo một đối tượng FileReader
+
+	    reader.onload = function(e) {  // Đặt một hàm xử lý sự kiện khi đọc tệp hoàn thành
+	       
+	        $("#thumbnail").attr("src", e.target.result);  // Đặt thuộc tính src của phần tử hình ảnh có id là "thumbnail" bằng dữ liệu base64 của tệp
+	    };
+
+	    reader.readAsDataURL(file);  // Đọc tệp dưới dạng URL data (base64)
+	}
+
+		
+	</script>
+</body>
+</html>

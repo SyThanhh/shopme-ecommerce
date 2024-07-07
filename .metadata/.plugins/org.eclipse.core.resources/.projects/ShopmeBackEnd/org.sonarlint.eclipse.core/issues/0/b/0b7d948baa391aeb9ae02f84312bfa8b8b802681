@@ -1,0 +1,13 @@
+
+|
+java:S62014"HReplace this instanceof check and cast with 'instanceof Integer integer'b e757282bb2464777e53b6239dabaa3d0h
+|
+java:S62016"HReplace this instanceof check and cast with 'instanceof Boolean boolean'b 9898fccfb9fc215adc4d61f902552da3h
+s
+java:S1854P"?Remove this useless assignment to local variable "columnIndex".b 6a48d20bb8bdcd66c01ff5a1dbe8e395h
+e
+java:S1128"1Remove this unused import 'java.text.DateFormat'.b bd011c8eae34dde84b1d15663c44d938h
+k
+java:S1128"7Remove this unused import 'java.text.SimpleDateFormat'.b cc413db771d17601860b4d8843c50de9h
+_
+java:S1128"+Remove this unused import 'java.util.Date'.b c51dfda6afc6b826c509c14b0a183fc7h

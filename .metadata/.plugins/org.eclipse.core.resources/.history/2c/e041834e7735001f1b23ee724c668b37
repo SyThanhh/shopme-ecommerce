@@ -1,0 +1,105 @@
+package com.shopme.admin.user;
+
+import java.util.List;
+
+import org.hibernate.service.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.shopme.admin.exception.UserNotFoundException;
+import com.shopme.common.entity.Role;
+import com.shopme.common.entity.User;
+
+@Controller
+public class UserController {
+
+	
+	@Autowired
+	private UserService userService;
+	
+	@GetMapping("/users")
+	private String listAll(Model model) {
+		
+		List<User> listUser = userService.listAll();
+		// if(listUser.isEmpty()) 
+		model.addAttribute("listusers", listUser);
+		return "users";
+	}
+	
+	@GetMapping("/users/new")
+	public String newUser(Model model) {
+		List<Role> listRoles = userService.listRoles();
+		User user = new User();
+		
+		model.addAttribute("user", user);
+		
+		model.addAttribute("listroles", listRoles);
+		
+		model.addAttribute("pageTitle", "Create new User");
+		return "user_form";
+	}
+	
+	@PostMapping("/users/save")
+	public String saveUser(User user, RedirectAttributes redirectAttributes) {
+		System.out.println(user);
+		
+		User newUser = userService.save(user);
+		if(newUser != null) {
+			redirectAttributes.addFlashAttribute("message", "The user has been saved successfully");
+			redirectAttributes.addFlashAttribute("typeAlert", "success");
+		} else {
+			redirectAttributes.addFlashAttribute("message", "The user has been saved falsely");
+			redirectAttributes.addFlashAttribute("typeAlert", "danger");
+		}
+		
+		return "redirect:/users";
+	}
+	
+	@GetMapping("/users/edit/{id}")
+	public String editUser(@PathVariable("id") Integer id,
+			Model model,
+			RedirectAttributes redirectAttributes) {
+		try {
+			List<Role> listRoles = userService.listRoles();
+			User user = userService.getUserById(id);
+			
+			model.addAttribute("user", user);
+			model.addAttribute("pageTitle", "Edit User (ID : " + id + ")");
+			model.addAttribute("listroles", listRoles);
+			
+			return "user_form";
+		} catch (UserNotFoundException e) {
+			redirectAttributes.addFlashAttribute("message", e.getMessage());
+			redirectAttributes.addFlashAttribute("typeAlert", "danger");
+			return "redirect:/users";
+		}
+	
+	
+	}
+	
+	@GetMapping("/users/delete/{id}")
+	public String deleteUser(@PathVariable("id") Integer id,
+			Model model,
+			RedirectAttributes redirectAttributes) {
+		try {
+		
+			userService.deleteById(id);
+			
+			redirectAttributes.addFlashAttribute("message", "The User ID " + id + " has been deleted successfully");
+			redirectAttributes.addFlashAttribute("typeAlert", "success");
+			
+			return "redirect:/users";
+		} catch (UserNotFoundException e) {
+			redirectAttributes.addFlashAttribute("message", e.getMessage());
+			redirectAttributes.addFlashAttribute("typeAlert", "danger");
+			return "redirect:/users";
+		}
+		
+	}
+}

@@ -1,0 +1,14 @@
+*.icon-white {color : white;}
+*.icon-silver {color : silver;}
+*.icon-green {color : green;}
+*.icon-dark {color : gray;}
+*.icon-red{color:red;}
+*.icon-blue{color:blue;}
+
+.fas.fa-sort-down {
+	transform: translate(10px, -2px);
+}
+
+.fas.fa-sort-up {
+	transform: translate(6px, 5px);
+}

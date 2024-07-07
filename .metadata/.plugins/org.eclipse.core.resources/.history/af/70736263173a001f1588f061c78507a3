@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:fragment="footer"
+		<div class="text-center">
+			<p>Shopme Control Panel - Copyright &copy; Shopme</p>
+		</div>
+	</div>
+</body>
+</html>

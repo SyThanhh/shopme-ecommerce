@@ -1,0 +1,19 @@
+
+‹
+java:S3655M"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.8ò®™»ˆ2b d1e3efbbafaa1519714f579cb674a6d7h
+‹
+java:S3655]"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.8ò®™»ˆ2b 589e5039907eefec75c713aceb70f0c3h
+}
+java:S6813"BRemove this field injection and use constructor injection instead.8ò®™»ˆ2b 0132ec8cee01c5dd244e1a60fe6448a1h
+}
+java:S6813"BRemove this field injection and use constructor injection instead.8ò®™»ˆ2b 0132ec8cee01c5dd244e1a60fe6448a1h
+}
+java:S6813""BRemove this field injection and use constructor injection instead.8ò®™»ˆ2b 0132ec8cee01c5dd244e1a60fe6448a1h
+Ÿ
+java:S1128"dRemove this unused import 'org.springframework.security.core.userdetails.UsernameNotFoundException'.8ò®™»ˆ2b 2b82c3b492f12f73e931611060137510h
+r
+java:S2589{"7Remove this expression which always evaluates to "true"8³°¡»ˆ2b a9ca77afa23925d50624567a2f7e5571h
+w
+java:S4973~"<Strings and Boxed types should be compared using "equals()".8³°¡»ˆ2b de0219f9333d57ea89a9ba235df098bah
+Œ
+java:S3655ˆ"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.8³°¡»ˆ2b de948247630be399ff661e1974d2880bh
