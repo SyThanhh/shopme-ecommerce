@@ -1,0 +1,25 @@
+package com.shopme.admin.category;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+
+import com.shopme.common.entity.Category;
+
+
+@Controller
+public class CategoryController {
+
+	@Autowired
+	private CategoryService cateService;
+	
+	public String listAll(Model model) {
+		List<Category> listCategories = cateService.listAll();
+		
+		model.addAttribute("listcategories", listCategories);
+		
+		return "categories/categories";
+	}
+}

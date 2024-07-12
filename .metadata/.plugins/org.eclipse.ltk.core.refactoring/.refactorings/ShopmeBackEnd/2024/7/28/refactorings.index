@@ -5,3 +5,11 @@
 1720340728660	Rename resource 'error_403.html'
 1720340819809	Copy file
 1720340994697	Copy file
+1720461601907	Rename type 'CategoryRespository'
+1720543101022	Copy file
+1720543120983	Rename resource 'users.html'
+1720668827369	Copy file
+1720668840337	Rename resource 'user_form.html'
+1720690255479	Rename method 'listRootCategories'
+1720690752263	Rename method 'listChildren'
+1720690777047	Rename local variable 'listCategoriesUsedInForm'

@@ -1,0 +1,7 @@
+package com.shopme.admin.category;
+
+import org.springframework.data.repository.PagingAndSortingRepository;
+
+public class CategoryRespository implements PagingAndSortingRepository<T, ID> {
+
+}

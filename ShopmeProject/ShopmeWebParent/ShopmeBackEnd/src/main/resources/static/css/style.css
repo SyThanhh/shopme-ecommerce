@@ -53,3 +53,9 @@
 	margin: 12px 10px 0 50px;
     color: white;
 }
+
+/*Css image*/
+#thumbnail {
+	
+    object-fit: cover;
+}

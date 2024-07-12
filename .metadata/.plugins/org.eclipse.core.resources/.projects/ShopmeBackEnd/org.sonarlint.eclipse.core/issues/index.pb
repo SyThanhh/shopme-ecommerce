@@ -3,14 +3,10 @@ g
 7src/main/java/com/shopme/admin/user/UserRepository.java,d\9\d90afa2d08f208bd806e5e41b9c06951690b58ff
 n
 >src/main/java/com/shopme/admin/security/WebSecurityConfig.java,2\0\20eb2fa601b5237db064e0cec184b64273896cca
-g
-7src/main/java/com/shopme/admin/user/UserController.java,1\e\1e3db433a199885073866ab0774e7be7ee9068e1
 [
 +src/main/resources/static/css/user_form.css,1\9\19aa6eb1024269d759735de9b535c3142a51c6ba
 W
 'src/main/resources/templates/index.html,c\4\c4d2f13df3643ad7f9a42f7eb5462518cbeba268
-[
-+src/main/resources/templates/user_form.html,6\9\6979371dabe8d573b54c1a72acde3d0a4db0e63f
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 l
@@ -21,12 +17,8 @@ l
 <src/test/java/com/shopme/admin/user/RoleRepositoryTests.java,9\8\9894b886c45bc271418b28b20b98138ddf146747
 l
 <src/test/java/com/shopme/admin/user/UserRepositoryTests.java,f\f\ff58f06a126db46ec6d6a30c67401481300a1249
-W
-'src/main/resources/templates/users.html,2\e\2e3772be5df7079e1c215a5c730712c0ce4ff262
 g
 7src/main/java/com/shopme/admin/user/RoleRepository.java,f\b\fb09f2672cf71609a25bd205713acef8e7c5d8bf
-k
-;src/main/java/com/shopme/admin/user/UserRestController.java,1\5\150ec9706e86207e0df4f211e844fef0018cf62d
 W
 'src/main/resources/static/css/style.css,f\1\f1805981f76a3b436234f76681e9b7554336982e
 b
@@ -65,7 +57,3 @@ a
 -src/main/resources/templates/comm/footer.html,3\3\331c8424e318fd050e0ff240e8c5da9236aee45f
 \
 ,src/main/resources/static/js/navigationJS.js,1\e\1eac0ee4c5b71357aeccf925fbea3924c8d85635
-j
-:src/main/java/com/shopme/admin/user/AccountController.java,b\2\b2946d780635245fb8fc3fc5897eaf28c1126371
-^
-.src/main/resources/templates/account_form.html,7\4\74e6bc3dbb778b6828657bbce970bb246e4bc83e

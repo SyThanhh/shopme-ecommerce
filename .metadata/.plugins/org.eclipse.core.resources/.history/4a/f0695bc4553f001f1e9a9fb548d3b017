@@ -1,0 +1,70 @@
+package com.shopme.admin.category;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import org.apache.poi.hpsf.Array;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.shopme.common.entity.Category;
+
+import javassist.expr.NewArray;
+
+@Service
+public class CategoryService {
+
+	@Autowired
+	private CategoryRepository cateRepo;
+	
+	public List<Category> listAll() {
+		return (List<Category>) cateRepo.findAll();
+	}
+	
+	public List<Category> listCategoriesUsedInForm() {
+		List<Category> listCategoriesUsedInForm = new ArrayList<>();
+		
+		Iterable<Category> listcategories = cateRepo.findAll();
+		
+		for (Category category : listcategories) {
+			if(category.getParent() == null) {
+				listCategoriesUsedInForm.add(category.copyIdAndName(category));
+			
+				Set<Category> children = category.getChildren();
+				
+				for (Category subcate : children) {
+					String name = "--" + subcate.getName();
+					listCategoriesUsedInForm.add(Category.copyIdAndName(subCategory.getId(), name));
+					listChildren(listCategoriesUsedInForm,subcate, 1);
+					
+				}
+			}
+		}
+		return listCategoriesUsedInForm;
+	}
+	
+	public void listChildren(List<Category> listCategoriesUsedInForm,Category parent , int subLevel) {
+		int newSubLevel = subLevel + 1;
+	
+		Set<Category> children = parent.getChildren();
+	
+		for (Category subCategory : children) {
+			String name = "";
+			for (int i = 0; i < newSubLevel; i++) {
+				name += "--";
+			}
+			name += subCategory.getName();
+			listCategoriesUsedInForm.add(Category.copyIdAndName(subCategory.getId(), name));
+	
+			listChildren(listCategoriesUsedInForm,subCategory, newSubLevel);
+		}
+
+	}
+	
+	public Category saveCategory(Category category) {
+		return cateRepo.save(category);
+	}
+
+
+}

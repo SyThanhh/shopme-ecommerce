@@ -6,11 +6,16 @@ public class MessageAlertCheckNull<T> {
 
 	
 	public static<T> void alertCheckNull(T item, RedirectAttributes redirectAttributes) {
+		Class<?> classItem = item.getClass();
+		String name = classItem.getName();
+		String[] parts = name.split("\\.");
+		String objectName = parts[parts.length - 1];
+
 		if(item != null) {
-			redirectAttributes.addFlashAttribute("message", "The user has been saved successfully");
+			redirectAttributes.addFlashAttribute("message", "The " + objectName +" has been saved successfully");
 			redirectAttributes.addFlashAttribute("typeAlert", "success");
 		} else {
-			redirectAttributes.addFlashAttribute("message", "The user has been saved falsely");
+			redirectAttributes.addFlashAttribute("message", "The " + objectName +" has been saved falsely");
 			redirectAttributes.addFlashAttribute("typeAlert", "danger");
 		}
 	}

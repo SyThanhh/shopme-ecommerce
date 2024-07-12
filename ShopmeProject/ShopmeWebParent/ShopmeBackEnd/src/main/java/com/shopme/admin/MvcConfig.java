@@ -26,6 +26,19 @@ public class MvcConfig implements WebMvcConfigurer {
 	    // Cấu hình bộ xử lý tài nguyên cho các ảnh người dùng
 	    registry.addResourceHandler("/" + dirName + "/**")
 	        .addResourceLocations("file:/" + userPhotosPath + "/");
+	    
+	    
+	    String categoryDirName = "../categories-images";
+	    
+	  
+	    Path categoryPhotoDir = Paths.get(categoryDirName);
+	    
+	   
+	    String categoryPhotosPath = categoryPhotoDir.toFile().getAbsolutePath();
+	    
+	   
+	    registry.addResourceHandler("/categories-images/**")
+	        .addResourceLocations("file:/" + categoryPhotosPath + "/");
 	}
 
 
