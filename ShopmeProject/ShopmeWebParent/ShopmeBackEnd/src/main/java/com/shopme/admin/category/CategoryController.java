@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -34,12 +35,30 @@ public class CategoryController {
 	private CategoryService cateService;
 	
 	@GetMapping("/categories")
-	public String listAll(Model model) {
-		List<Category> listCategories = cateService.listAll();
-		
-		model.addAttribute("listcategories", listCategories);
-		
-		return "categories/categories";
+	public String listFirstPage(@RequestParam(name = "sortDir", required = false, defaultValue = "asc") String sortDir, Model model) {
+		return listByPage(1, sortDir, model);
+	}
+	
+
+	@GetMapping("/categories/page/{pageNum}")
+	public String listByPage(@PathVariable(name="pageNum") int pageNum,
+	                         @RequestParam(name = "sortDir", required = false, defaultValue = "asc") String sortDir, Model model) {
+
+	    CategoryPageInfo categoryPageInfo = new CategoryPageInfo();
+	    List<Category> listCategories = cateService.listByPage(categoryPageInfo, pageNum, sortDir);
+
+	    String reverseSortDir = sortDir.equals("asc") ? "desc" : "asc";
+
+	    model.addAttribute("totalPages", categoryPageInfo.getTotalPages());
+	    model.addAttribute("totalItems", categoryPageInfo.getTotalElements());
+	    model.addAttribute("currentPage", pageNum);
+	    model.addAttribute("sortField", "name");
+	    model.addAttribute("sortDir", sortDir);
+	    
+	    model.addAttribute("listcategories", listCategories);
+	    model.addAttribute("reserverSortDir", reverseSortDir);
+
+	    return "categories/categories";
 	}
 	
 	@GetMapping("/categories/new")
@@ -98,5 +117,39 @@ public class CategoryController {
 	    }
 	}
 
+	@GetMapping("/categories/{id}/enabled/{status}")
+	public String updateCategoryEnabledStatus(@PathVariable("id") Integer id, @PathVariable("status") boolean enabled, RedirectAttributes redirectAttributes) {
+		
+		cateService.updatedCategoryEnabledStatus(id, enabled);
+		String status = enabled ? "enabled" : "disabled";
+		 
+		String message = "The Category ID " + id +" has been " + status;
+		
+		redirectAttributes.addFlashAttribute("message", message);
+		redirectAttributes.addFlashAttribute("typeAlert", "success");
+		
+		return "redirect:/categories";
+		
+	}
+	
+	@GetMapping("/categories/delete/{id}")
+	public String deleteUser(@PathVariable("id") Integer id,
+			Model model,
+			RedirectAttributes redirectAttributes) {
+		try {
+		
+			cateService.deleteById(id);
+			
+			redirectAttributes.addFlashAttribute("message", "The Category ID " + id + " has been deleted successfully");
+			redirectAttributes.addFlashAttribute("typeAlert", "success");
+			
+			return "redirect:/categories";
+		} catch (CategoryNotFoundException e) {
+			redirectAttributes.addFlashAttribute("message", e.getMessage());
+			redirectAttributes.addFlashAttribute("typeAlert", "danger");
+			return "redirect:/categories";
+		}
+		
+	}
 	
 }

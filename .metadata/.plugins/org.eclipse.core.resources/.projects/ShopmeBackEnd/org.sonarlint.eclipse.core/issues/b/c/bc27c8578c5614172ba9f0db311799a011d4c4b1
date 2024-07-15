@@ -1,0 +1,19 @@
+
+t
+java:S2184="@Cast one of the operands of this addition operation to a "long".b 26b17225b626fb9238849fd60eabdf60h
+ƒ
+java:S4449p"èAnnotate the parameter with @javax.annotation.Nullable in method 'cleanPath' declaration, or make sure that null can not be passed as argument.b bfcaaf7e291a55efb95b519e1e9d3db1h
+Ö
+java:S1192ü"PDefine a constant instead of duplicating this literal "redirect:/users" 4 times.b 089a63a89bf0d0f25cfc4322cc1885a5h
+
+java:S1192û"JDefine a constant instead of duplicating this literal "typeAlert" 4 times.b 7dd1c6b5cc4575dd0ee21deea35013a2h
+}
+java:S1192ù"HDefine a constant instead of duplicating this literal "message" 4 times.b 9040ca9bfe0a4c38f81140904fb9db9dh
+v
+java:S6813'"BRemove this field injection and use constructor injection instead.b 0132ec8cee01c5dd244e1a60fe6448a1h
+S
+java:S3751,"Make this method non "private".b 07132c9ca5c9684b6cb8c085e5160571h
+t
+java:S4684k"@Replace this persistent entity with a simple POJO or DTO object.b ee11cbb19052e40b07aac0ca060c23eeh
+n
+java:S1128":Remove this unused import 'org.hibernate.service.Service'.b a3cf8929507d859ec9cc2db88d74f1ffh

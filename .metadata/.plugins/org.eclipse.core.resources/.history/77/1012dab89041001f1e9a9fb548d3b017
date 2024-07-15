@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- <head th:replace="fragments :: page_head(${pageTitle})"></head> -->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>[[${title}]]</title> 
+	
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+	<!-- FontAwesome CSS -->
+	<link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.min.css}"/>
+	
+	<!-- jQuery -->
+	<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<!-- Bootstrap JS -->
+	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div th:replace="comm/navigation :: menu"></div>
+
+        <div class="text-center">
+            <h2>[[${pageTitle}]]</h2>
+        </div>
+
+        <form th:action="@{/categories/save}" method="post"
+            style="max-width: 500px; margin: 0 auto;"
+           th:object="${category}"
+         
+            id="categoryForm" enctype="multipart/form-data">
+
+            <input type="hidden" th:field="*{id}" />
+
+            <div class="border border-secondary rounded p-3">
+                <div class="form-group row">
+                    <label class="col-sm-4">Category name :</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" th:field="*{name}"
+                           required minlength="3"
+                            maxlength="128" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4">Alias :</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" th:field="*{alias}"
+                           required minlength="3"
+                            maxlength="64" />
+                    </div>
+                </div>
+
+                 <div class="form-group row">
+			       <label class="col-sm-4">Parent Category</label>
+			       <div class="col-sm-8">
+			          <select class="form-control" th:field="*{parent}">
+			               <option value="0">[ No Parent ]</option>
+			               <th:block th:each="cat : ${listcategories}">
+			                   <option th:value="${cat.id}" th:text="${cat.name}"></option>
+			               </th:block>
+			          </select>
+			       </div>
+			   </div>
+
+
+                <div class="form-group row">
+                    <label class="col-sm-4">Images : </label>
+                    <div class="col-sm-8">
+                        <input type="hidden" th:field="*{image}"> <input
+                            type="file" id="fileImage" name="fileImage"
+                            accept="image/png , image/jpeg" class="mb-2" th:required="${category.imagePath  == null}" />
+                            
+                            <div class="mt-2">
+                            	 <img id="thumbnail" alt="Image preview" class="img-cluid" th:src="@{${category.imagePath}}" />
+                            </div>
+                    </div>
+                </div>
+                
+                 <div class="form-group row">
+                    <label class="col-sm-4">Enabled : </label>
+                    <div class="col-sm-8">
+                        <input type="checkbox" class="" th:field="*{enabled}" id="enabled"
+                            name="enabled" value="" />
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4"></label>
+                    <div class="col-sm-8">
+                        <input type="submit" value="Save" class="btn btn-primary m-3" /> <input
+                            type="button" value="Cancel" class="btn btn-secondary"
+                            id="btnCancel" />
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <!-- Modal -->
+       <div th:replace="modal_fragments :: modal_dialog"> </div>
+
+        <!-- Footer -->
+
+        <div th:replace="comm/footer :: footer"></div>
+    </div>
+
+    <!-- Load jQuery before other scripts -->
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+
+    <script type="text/javascript">
+      moduleURL = "[[@{/categories}]]"; 
+       
+      $(document).ready(function() {
+          $("#categoryForm").submit(function(e) {
+              e.preventDefault(); // Ngăn chặn form submit mặc định
+              checkunique(this); // Gọi hàm checkUnique
+          });
+      });
+      
+       function checkunique(form) {
+    	   
+    	   url = "[[@{/categories/check_unique}]]";
+    	   catId = $("#id").val();
+    	   catName = $("#name").val();
+    	   catAlias = $("#alias").val();
+    	   
+    	   csrfValue = $("input[name='_csrf']").val(); // Lấy giá trị CSRF token từ input ẩn
+           params = {
+               id : catId,
+               name : catName,
+               alias : catAlias,
+               _csrf : csrfValue
+           }; 
+           $.post(
+                   url,
+                   params,
+                   function(response) { // Thực hiện POST request
+                       if (response == "OK") {
+                           form.submit();
+                       } else if (response == "DuplicateName") {
+                           showModalDialog("Warning",
+                                   "There is another Category having same name  "
+                                           + catName); // Hiển thị phản hồi từ server
+                       } else if (response == "DuplicateAlias") {
+                           showModalDialog("Warning",
+                                   "There is another Category having same alias  "
+                                           + catAlias);
+                       } else {
+                           showModalDialog("Error",
+                                   "Unknow response from server");
+                       } 
+                       
+                   }).fail(function() { // khi sai đường dẫn
+                	   showErrorModal("Could not connect to the server"); 
+                   }
+           });
+
+           return false; // Ngăn form submit mặc định
+       }
+
+       function showModalDialog(title, message) {
+           $("#modalTitle").text(title);
+           $("#modalBody").text(message);
+           jQuery.noConflict(); /* fix lỗi modal is not function do xung đột jquery */
+           $('#modalDialog').modal('show');
+         
+       }
+       
+       function showErrorModal(message) {
+    	   showModalDialog("Error", message)
+       }
+       
+       function showWarningModal(message) {
+    	   showModalDialog("Warning", message)
+       }
+      
+        
+       
+    </script>
+
+    <script th:src="@{/js/comm.js}"></script>
+    <script th:src="@{/js/navigationJS.js}"></script>
+   <script th:src="@{/js/comm_form.js}"></script>
+</body>
+</html>
+    

@@ -1,9 +1,0 @@
-package com.shopme.admin;
-
-public class messageAlertCheckNull<T> {
-
-	
-	public void alertCheckNull(T item) {
-		
-	}
-}

@@ -57,3 +57,17 @@ a
 -src/main/resources/templates/comm/footer.html,3\3\331c8424e318fd050e0ff240e8c5da9236aee45f
 \
 ,src/main/resources/static/js/navigationJS.js,1\e\1eac0ee4c5b71357aeccf925fbea3924c8d85635
+g
+7src/main/resources/templates/categories/categories.html,4\c\4cd09fa30188a0e24e5f67d64ec87a5dbf9bbd2f
+]
+-src/main/resources/templates/users/users.html,7\3\736430a29623f86c36fb6ff6986f4a1027b15242
+l
+<src/main/resources/templates/categories/categories_form.html,d\7\d735349d1a4f9c3e586f7b897ffcdc3cab519c9a
+l
+<src/main/java/com/shopme/admin/category/CategoryService.java,7\0\70d01486c97df5ffda6249cf4bbde99329eb83e3
+o
+?src/main/java/com/shopme/admin/category/CategoryController.java,8\e\8e69f35baac13492b1b17c9216779abd5a53da3f
+r
+Bsrc/main/java/com/shopme/admin/user/controller/UserController.java,b\c\bc27c8578c5614172ba9f0db311799a011d4c4b1
+o
+?src/main/java/com/shopme/admin/category/CategoryRepository.java,1\c\1c3be64582ba3fe2e9c4e030e46f3440a06edc3c

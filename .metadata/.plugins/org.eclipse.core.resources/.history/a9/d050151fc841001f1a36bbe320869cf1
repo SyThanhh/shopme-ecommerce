@@ -1,0 +1,29 @@
+package com.shopme.admin.category;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
+
+import com.shopme.common.entity.Category;
+
+@Repository
+public interface CategoryRepository extends PagingAndSortingRepository<Category, Integer> {
+
+	@Query("SELECT c FROM Category c WHERE c.parent.id is NULL")
+	public List<Category> findRootCategories(Sort sort);
+	
+	
+	public Category findByName(String name);
+	
+	public Category findByAlias(String alias);
+	
+	@Query("UPDATE Category c SET c.enabled = ?2 WHERE c.id = ?1 ")
+	public void updatedEnabledStatus(Integer id, boolean enabled);
+	
+}

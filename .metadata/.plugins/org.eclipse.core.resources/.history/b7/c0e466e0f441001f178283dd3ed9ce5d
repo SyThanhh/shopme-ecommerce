@@ -1,0 +1,17 @@
+/**
+ * 
+ */
+
+function clearFilter() {
+	window.location=moduleURL;
+}
+
+function showDeleteConfirmModal(link, entityName) {
+	entityId = link.attr("entityId");
+	
+	$("#yesBtn").attr("href", link.attr("href"));
+	
+	$("#confirmBody").attr("Are you sure you want to delete his " + entityName + " ID " + entityId+ "?");
+	
+	$("#confirmModal").modal();
+}

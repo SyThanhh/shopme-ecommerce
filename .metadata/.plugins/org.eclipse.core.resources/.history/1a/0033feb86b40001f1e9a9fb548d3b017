@@ -1,0 +1,41 @@
+package com.shopme.admin.category;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import com.shopme.common.entity.Category;
+
+@ExtendWith(MockitoExtension.class) // kích hoạt mockito
+@ExtendWith(SpringExtension.class) // kích hoạt spring testcontext 
+public class CategoryServiceTests {
+
+	@MockBean // Khi Spring context được tải lên, một bean mock của CategoryRepository sẽ được tạo và thay thế cho bean thực sự nếu có trong context.
+	private CategoryRepository cateRepo;
+	
+	@InjectMocks // Được sử dụng để tạo một instance của lớp mục tiêu ,inject tất cả các mock dependencies được đánh dấu bằng @MockBean hoặc @Mock vào lớp đó.
+	private CategoryService cateService;
+	
+	@Test
+	public void testCheckUniqueDuplicatedByName() {
+		Integer id = null;
+		String name ="Computers";
+		String alias = "abc";
+		
+		Category category = new Category(id, name, alias);
+		
+		Mockito.when(cateRepo.findByName(name)).thenReturn(category);
+		Mockito.when(cateRepo.findByAlias(alias)).thenReturn(null);
+		
+		
+		String result = cateService.checkUnique(id, name, alias);
+		
+		assertThat(result).isEqualTo("DuplicateName");
+	}
+}

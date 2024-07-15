@@ -1,0 +1,224 @@
+package com.shopme.admin.category;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
+import javax.transaction.Transactional;
+
+import org.apache.poi.hpsf.Array;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+
+import com.shopme.admin.contstant.SystemConstant;
+import com.shopme.admin.exception.CategoryNotFoundException;
+import com.shopme.admin.exception.UserNotFoundException;
+import com.shopme.common.entity.Category;
+import com.shopme.common.entity.User;
+
+import ch.qos.logback.core.net.SyslogConstants;
+import javassist.expr.NewArray;
+
+@Service
+@Transactional
+public class CategoryService {
+
+	@Autowired
+	private CategoryRepository cateRepo;
+	
+	public List<Category> listByPage(int pageNum, String sortDir) {
+		Sort sort = sortDir.equals("asc") ? Sort.by("name").ascending() : Sort.by("name").descending();
+	
+		Pageable pageable = PageRequest.of(pageNum - 1, SystemConstant.ROOT_CATEGORIES_PER_PAGE, sort);
+		
+
+		
+		
+		List<Category>  rootCategories = cateRepo.findRootCategories(sort);
+		rootCategories.forEach(cat -> System.out.println(cat.getName()));
+		return listHierachicalCategories(rootCategories,sortDir );
+	}
+	
+	
+	// parent (hierachical)
+	private List<Category> listHierachicalCategories(List<Category> rootCategories, String sortDir) {
+		List<Category> hierachicalCategories = new ArrayList<>();
+		for (Category rootCategory : rootCategories) {
+			
+			hierachicalCategories.add(Category.copyFull(rootCategory));
+			
+			Set<Category> children = rootCategory.getChildren();
+			
+			for (Category subcate : children) {
+				String name = "--" + subcate.getName();
+				hierachicalCategories.add(Category.copyFull(subcate, name));
+				
+				listSubHierachicalCategories(hierachicalCategories, subcate, 1, sortDir);
+			}
+		}
+		
+		return hierachicalCategories;
+		
+	}
+	
+	// children (hierachical)
+	public void listSubHierachicalCategories(List<Category> hierachicalCategories  
+			,Category parent, int subLevel, String sortDir) {
+		int newSubLevel = subLevel + 1;
+		
+		Set<Category> children = sortSubCategories(parent.getChildren(), sortDir);
+	
+		for (Category subCategory : children) {
+			String name = "";
+			for (int i = 0; i < newSubLevel; i++) {
+
+				name +="--";
+			}
+			name += subCategory.getName();
+			
+			hierachicalCategories.add(Category.copyFull(subCategory, name));
+			
+			listSubHierachicalCategories(hierachicalCategories, subCategory, newSubLevel, sortDir);
+		}
+	}
+	
+	// used in form
+	public List<Category> listCategoriesUsedInForm() {
+		Sort sort = Sort.by("name").ascending();
+		List<Category> categoriesUsedInForm = new ArrayList<>();
+		
+		Iterable<Category> listcategories = cateRepo.findRootCategories(sort);
+		
+		for (Category category : listcategories) {
+			if(category.getParent() == null) {
+				categoriesUsedInForm.add(category.copyIdAndName(category));
+			
+				Set<Category> children = sortSubCategories(category.getChildren());
+				
+				for (Category subcate : children) {
+					String name = "--" + subcate.getName();
+					categoriesUsedInForm.add(Category.copyIdAndName(subcate.getId(), name));
+					listCategoriesUsedInForm(categoriesUsedInForm,subcate, 1);
+					
+				}
+			}
+		}
+		return categoriesUsedInForm;
+	}
+	
+	// used in form
+	public void listCategoriesUsedInForm(List<Category> categoriesUsedInForm, 
+			Category parent , int subLevel) {
+		int newSubLevel = subLevel + 1;
+	
+		Set<Category> children = sortSubCategories(parent.getChildren());
+	
+		for (Category subCategory : children) {
+			String name = "";
+			for (int i = 0; i < newSubLevel; i++) {
+				name += "--";
+			}
+			name += subCategory.getName();
+			categoriesUsedInForm.add(Category.copyIdAndName(subCategory.getId(), name));
+	
+			listCategoriesUsedInForm(categoriesUsedInForm ,subCategory, newSubLevel);
+		}
+
+	}
+	
+	public Category getCategoryById(Integer id) throws CategoryNotFoundException {
+		try {
+			return cateRepo.findById(id).get();
+		} catch(NoSuchElementException ex) {
+			throw new CategoryNotFoundException("Could not find any Category with ID " + id);
+		}
+		
+	}
+	
+	public Category saveCategory(Category category) {
+		return cateRepo.save(category);
+	}
+	
+	public String checkUnique(Integer id, String name, String alias) {
+		
+		boolean isCreatingNew = (id == null || id == 0);
+		
+		Category categoryByName = cateRepo.findByName(name);
+		if(isCreatingNew) {
+			if(categoryByName != null) {
+				return "DuplicateName";
+			} else {
+				Category categoryByAlias = cateRepo.findByAlias(alias);
+				
+				if(categoryByAlias != null) {
+					return "DuplicateAlias";
+				}
+			}
+			
+		} else {
+			// trường hợp update
+			if(categoryByName != null && categoryByName.getId() != id) {
+				return "DuplicateName";
+			} else {
+				Category categoryByAlias = cateRepo.findByAlias(alias);
+				
+				if(categoryByAlias != null && categoryByAlias.getId() != id) {
+					return "DuplicateAlias";
+				}
+			}
+		}
+		
+		
+		return "OK";
+	}
+	
+	// sort
+	private SortedSet<Category> sortSubCategories(Set<Category> children){
+		return sortSubCategories(children, "asc");
+	}
+
+	// sort
+	private SortedSet<Category> sortSubCategories(Set<Category> children, String sortDir) {
+		SortedSet<Category> sortedChildren = new TreeSet<>(new Comparator<Category>() {
+
+			@Override
+			public int compare(Category cat1, Category cat2) {
+			
+				if(sortDir.equals("asc") ) {
+					return cat1.getName().compareTo(cat2.getName());
+				} else  {
+					return cat2.getName().compareTo(cat1.getName());
+				}
+			
+			}
+			
+		
+		});
+		
+		return sortedChildren;
+	}
+	
+	// update status
+	public void updatedCategoryEnabledStatus(Integer id, boolean enabled) {
+		cateRepo.updatedEnabledStatus(id, enabled);
+	}
+	
+	// deleted
+	public void deleteById(Integer id) throws CategoryNotFoundException {
+		Long countById = cateRepo.countById(id);
+		
+		if(countById == null || countById == 0) {
+			throw new CategoryNotFoundException("Could not find any Category with ID " + id);
+		} 
+		
+		cateRepo.deleteById(id);
+	}
+
+}

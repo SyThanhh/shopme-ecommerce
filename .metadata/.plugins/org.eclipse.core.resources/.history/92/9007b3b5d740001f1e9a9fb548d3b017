@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="page_head(title)">
+	 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[[${title}]]</title> 
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css}"/>
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.min.css}"/>
+
+    <!-- jQuery (webjars) -->
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
+    <!-- Bootstrap JS (webjars) -->
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/4.5.2/js/bootstrap.min.js}"></script>
+</head>
+
+<body>
+
+
+	<th th:fragment="column_link(fieldName, columnLabel, removeTag)" th:remove="${removeTag}">
+		<a  th:href="@{'/users/page/' + ${currentPage} +'?sortField='+ ${fieldName} +'&sortDir=' + ${sortField != fieldName ? sortDir : reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}" class="text-white">
+			[[${columnLabel}]]
+		</a>
+						
+		
+		<span th:if="${sortField == fieldName}" 
+		th:class="${sortDir == 'asc' ? 'fas fa-sort-up' : 'fas fa-sort-down'}"></span>
+	</th>
+	
+		<a th:fragment="page_link(pageNum, label)" 
+			class="page-link" th:href="@{'/users/page/' + ${pageNum} + '?sortField=' + ${sortField} + '&sortDir=' + ${reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">
+			[[${label}]]
+		</a>
+</body>
+</html>
+

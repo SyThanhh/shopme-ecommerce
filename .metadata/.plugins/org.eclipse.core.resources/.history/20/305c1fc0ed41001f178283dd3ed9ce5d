@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+
+function clearFilter() {
+	window.location=moduleURL;
+}
+
+function showDeleteConfirmModal() {}

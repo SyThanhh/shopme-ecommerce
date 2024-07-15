@@ -31,9 +31,96 @@ public class CategoryServiceTests {
 		Category category = new Category(id, name, alias);
 		
 		Mockito.when(cateRepo.findByName(name)).thenReturn(category);
+		Mockito.when(cateRepo.findByAlias(alias)).thenReturn(null);
+		
 		
 		String result = cateService.checkUnique(id, name, alias);
 		
 		assertThat(result).isEqualTo("DuplicateName");
+	}
+	
+	@Test
+	public void testCheckUniqueDuplicatedByAlias() {
+		Integer id = null;
+		String name ="name-abc";
+		String alias = "Computers";
+		
+		Category category = new Category(id, name, alias);
+		
+		Mockito.when(cateRepo.findByName(name)).thenReturn(null);
+		Mockito.when(cateRepo.findByAlias(alias)).thenReturn(category);
+		
+		
+		String result = cateService.checkUnique(id, name, alias);
+		
+		assertThat(result).isEqualTo("DuplicateName");
+	}
+	
+	@Test
+	public void testCheckUniqueDuplicatedReturnOK() {
+		Integer id = null;
+		String name ="abc";
+		String alias = "abc";
+		
+		Category category = new Category(id, name, alias);
+		
+		Mockito.when(cateRepo.findByName(name)).thenReturn(category);
+		Mockito.when(cateRepo.findByAlias(alias)).thenReturn(category);
+		
+		
+		String result = cateService.checkUnique(id, name, alias);
+		
+		assertThat(result).isEqualTo("OK");
+	}
+	
+	@Test
+	public void testCheckUniqueEditDuplicated() {
+		Integer id = 1;
+		String name ="abc";
+		String alias = "abc";
+		
+		Category category = new Category(2, name, alias);
+		
+		Mockito.when(cateRepo.findByName(name)).thenReturn(category);
+		Mockito.when(cateRepo.findByAlias(alias)).thenReturn(category);
+		
+		
+		String result = cateService.checkUnique(id, name, alias);
+		
+		assertThat(result).isEqualTo("DuplicateName");
+	}
+	
+	@Test
+	public void testCheckUniqueEditDuplicatedAlias() {
+		Integer id = 1;
+		String name ="abc";
+		String alias = "abc";
+		
+		Category category = new Category(2, name, alias);
+		
+		Mockito.when(cateRepo.findByName(name)).thenReturn(null);
+		Mockito.when(cateRepo.findByAlias(alias)).thenReturn(category);
+		
+		
+		String result = cateService.checkUnique(id, name, alias);
+		
+		assertThat(result).isEqualTo("DuplicateAlias");
+	}
+	
+	@Test
+	public void testCheckUniqueEditDuplicatedOK() {
+		Integer id = 1;
+		String name ="abc";
+		String alias = "abc";
+		
+		Category category = new Category(id, name, alias);
+		
+		Mockito.when(cateRepo.findByName(name)).thenReturn(null);
+		Mockito.when(cateRepo.findByAlias(alias)).thenReturn(category);
+		
+		
+		String result = cateService.checkUnique(id, name, alias);
+		
+		assertThat(result).isEqualTo("OK");
 	}
 }

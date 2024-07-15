@@ -1,0 +1,11 @@
+/**
+ * 
+ */
+
+function clearFilter() {
+	window.location=moduleURL;
+}
+
+function showDeleteConfirmModal(link, entityName) {
+	entityId = link.attr("entityId");
+}

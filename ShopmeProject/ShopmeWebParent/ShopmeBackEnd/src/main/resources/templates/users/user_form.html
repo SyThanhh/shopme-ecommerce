@@ -12,7 +12,7 @@
 
         <form th:action="@{/users/save}" method="post"
             style="max-width: 700px; margin: 0 auto;"
-            onsubmit="return checkEmailUnique(this);" th:object="${user}"
+           th:object="${user}"
             id="userForm" enctype="multipart/form-data">
 
             <input type="hidden" th:field="*{id}" />
@@ -104,25 +104,8 @@
 
 
         <!-- Modal -->
-        <div class="modal fade text-center" id="modalDialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="modalTitle">Warning</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-
-                    <div class="modal-body">
-                        <span id="modalBody"></span>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+     <div th:replace="modal_fragments :: modal_dialog"> </div>
+		
         <!-- Footer -->
 
         <div th:replace="comm/footer :: footer"></div>
@@ -132,8 +115,16 @@
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 
     <script type="text/javascript">
-      moduleURL = "[[@{/}]]"; 
-       
+   
+        moduleURL = "[[@{/}]]"; 
+        
+        $(document).ready(function() {
+            $("#userForm").submit(function(e) {
+                e.preventDefault(); // Ngăn chặn form submit mặc định
+                checkEmailUnique(this); // Gọi hàm checkUnique
+            });
+        });
+        
         function checkEmailUnique(form) {
             url = "[[@{/users/check_email}]]"; // URL để kiểm tra email
             userId = $("#id").val();
@@ -152,12 +143,13 @@
                         if (response == "OK") {
                             form.submit();
                         } else if (response == "Duplicated") {
-                            showModalDialog("Warning",
+                        
+                          showWarningModal(
                                     "There is another user having the email "
-                                            + userEmail); // Hiển thị phản hồi từ server
+                                            + userEmail);  /* hiển thị phản hồi từ server */
                         } else {
-                            showModalDialog("Error",
-                                    "Unknow response from server");
+                           showErrorModal(
+                                    "Unknown response from server");
                         }
 
                     }).fail(function() { // khi sai đường dẫn
@@ -167,13 +159,8 @@
             return false; // Ngăn form submit mặc định
         }
 
-        function showModalDialog(title, message) {
-            $("#modalTitle").text(title);
-            $("#modalBody").text(message);
-            $("#modalDialog").modal();
-        }
-        
        
+   
     </script>
 
     <script th:src="@{/js/comm.js}"></script>

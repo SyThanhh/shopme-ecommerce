@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Rollback;
 
 import com.shopme.common.entity.Category;
@@ -24,7 +25,7 @@ public class CategoryRepositoryTests {
 	
 	@Test
 	public void testCreateRootCategory() {
-		Category category= new Category("Electronics");
+		Category category= new Category("Houseware");
 		
 		Category save = cateRepo.save(category);
 		
@@ -33,9 +34,9 @@ public class CategoryRepositoryTests {
 	
 	@Test
 	public void testCreateSubCategory() {
-		Category  parent = new Category(2);
+		Category  parent = new Category(9);
 	
-		Category memory = new Category("Smartphones", parent);
+		Category memory = new Category("Jeans", parent);
 
 		Category saveSub= cateRepo.save(memory);
 		
@@ -98,7 +99,7 @@ public class CategoryRepositoryTests {
 	
 	@Test
 	public void testListRootCategories() {
-		List<Category> listRootCategories = cateRepo.findRootCategories();
+		List<Category> listRootCategories = cateRepo.findRootCategories(Sort.by("name").ascending());
 		
 		listRootCategories.forEach(cate -> System.out.println(cate.getName()));
 	}
