@@ -19,10 +19,10 @@
 </head>
 
 <body>
+	
 
-
-	<th th:fragment="column_link(fieldName, columnLabel, removeTag)" th:remove="${removeTag}">
-		<a  th:href="@{'/users/page/' + ${currentPage} +'?sortField='+ ${fieldName} +'&sortDir=' + ${sortField != fieldName ? sortDir : reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}" class="text-white">
+	<th th:fragment="column_link(moduleURL ,fieldName, columnLabel, removeTag)" th:remove="${removeTag}">
+		<a  th:href="@{${moduleURL} +'/page/' + ${currentPage} +'?sortField='+ ${fieldName} +'&sortDir=' + ${sortField != fieldName ? sortDir : reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}" class="text-white">
 			[[${columnLabel}]]
 		</a>
 						
@@ -36,14 +36,6 @@
 		[[${label}]]
 	</a>
 	
-	<!-- Enabled Category -->
-	<div th:fragment="category_status" th:remove="tag">
-		<a th:if="${cat.enabled == true}" class="far fa-check-circle icon-blue" 
-		th:href="@{'/categories/' + ${cat.id} + '/enabled/false'}" title="Disabled this Category"></a>
-		
-		<a th:if="${cat.enabled == false}" class="far fa-check-circle icon-dark" 
-		th:href="@{'/categories/' + ${cat.id} + '/enabled/true'}" title="Enabled this Category"></a>
-	</div>
 	
 	<!-- Action Category -->
 	<div th:fragment="category_actions" th:remove="tag">
@@ -95,6 +87,49 @@
 			</nav>
 		</div> 
 		
+	</div>
+	
+	<!-- Search -->
+	<div th:fragment="search_form(moduleURL)">
+			<form th:action="@{${moduleURL}}" class="form-inline m-3">
+				<input type="hidden" name="sortField" th:value="${sortField}" />
+				<input type="hidden" name="sortDir" th:value="${sortDir}" />
+				Filter : &nbsp;
+				<input type="search" name="keyword" th:value="${keyword}" class="form-control" placeholder=""/>
+				&nbsp;&nbsp;
+				<button type="submit" value="search" class="btn btn-primary">
+					<i class="fas fa-search"></i>
+				</button>
+				&nbsp;&nbsp;
+				<button type="button" value="clear" class="btn btn-secondary" onclick="clearFilter()">
+					<i class="fas fa-eraser"></i>
+				</button>
+			</form>
+		</div>
+		
+	<!-- User status -->
+	<div th:fragment="status(enabled, entityName, entityURL)" th:remove="tag">
+		<a th:if="${enabled == true}" class="far fa-check-circle icon-blue" 
+		th:href="@{${entityURL} + '/enabled/false'}" th:title="'Disabled this' + ${entityName}"></a>
+		
+		<a th:if="${enabled == false}" class="far fa-check-circle icon-dark" 
+		th:href="@{${entityURL} + '/enabled/true'}" th:title="'Enabled this' +  ${entityName}"></a>
+	
+	</div>
+	
+	<!-- User actions -->
+	<div th:fragment="edit(entityName, editURL)" th:remove="tag">
+		<a class="far fa-edit icon-green" th:href="@{${editURL}}" th:title="'Edit this ' + ${entityName}"></a> 
+		
+	</div>
+	
+	<div th:fragment="delete(entityName , entityId, deleteURL, visible)" th:remove="tag">
+		 <th:block th:if="${visible}"> <!-- cat.hasChildren == false -->
+			 <a class="far fa-minus-square icon-red link-delete" 
+			 th:href="@{${deleteURL}}" 
+			 th:entityId="${entityId}"
+			 th:title="'Delete this' +  ${enityName}"></a>
+		</th:block>
 	</div>
 </body>
 </html>

@@ -30,25 +30,35 @@ public class CategoryService {
 	@Autowired
 	private CategoryRepository cateRepo;
 
-	public List<Category> listByPage(CategoryPageInfo pageInfo, int pageNum, String sortDir) {
+	public List<Category> listByPage(CategoryPageInfo pageInfo, int pageNum, String sortDir, String keyword) {
 	    Sort sort = sortDir.equals("asc") ? Sort.by("name").ascending() : Sort.by("name").descending();
 	    Pageable pageable = PageRequest.of(pageNum - 1, SystemConstant.ROOT_CATEGORIES_PER_PAGE, sort);
-
-	    Page<Category> pageCategories = cateRepo.findRootCategories(pageable);
+	    Page<Category> pageCategories = null;
+	    if(keyword != null && !keyword.isEmpty()) {
+	    	pageCategories = cateRepo.search( keyword,pageable);
+		  
+	    } else {
+	    	pageCategories = cateRepo.findRootCategories(pageable);
+	    }
+	    
 	    List<Category> rootCategories = pageCategories.getContent();
 
-	 // Debugging output
-	    System.out.println("Total elements: " + pageCategories.getTotalElements());
-	    System.out.println("Total pages: " + pageCategories.getTotalPages());
-	    System.out.println("Current page: " + pageNum);
-	    System.out.println("Number of categories on this page: " + rootCategories.size());
-	    rootCategories.forEach(cat -> System.out.println("Category: " + cat.getName()));
-
-	    
 	    pageInfo.setTotalElements(pageCategories.getTotalElements());
 	    pageInfo.setTotalPages(pageCategories.getTotalPages());
 
-	    return listHierachicalCategories(rootCategories, sortDir);
+	    if(keyword != null && !keyword.isEmpty()) {
+	    	List<Category> searchResult = pageCategories.getContent();
+	    	
+	    	for (Category category : searchResult) {
+				category.setHasChildren(category.getChildren().size() > 0);
+			}
+	    	
+	    	return searchResult;
+	    } else {
+	    	 return listHierachicalCategories(rootCategories, sortDir);
+	    }
+	    
+	   
 	}
 
 	// parent (hierachical)
@@ -78,11 +88,10 @@ public class CategoryService {
 		int newSubLevel = subLevel + 1;
 
 		Set<Category> children = sortSubCategories(parent.getChildren(), sortDir);
-		children.forEach(cat -> System.out.println("children : " + cat.getName()));
+	
 		for (Category subCategory : children) {
 			String name = "";
 			for (int i = 0; i < newSubLevel; i++) {
-
 				name += "--";
 			}
 			name += subCategory.getName();
@@ -105,7 +114,7 @@ public class CategoryService {
 				categoriesUsedInForm.add(category.copyIdAndName(category));
 
 				Set<Category> children = category.getChildren();
-				children.forEach(cat -> System.out.println("children : " + cat.getName()));
+				
 				for (Category subcate : children) {
 					String name = "--" + subcate.getName();
 					categoriesUsedInForm.add(Category.copyIdAndName(subcate.getId(), name));

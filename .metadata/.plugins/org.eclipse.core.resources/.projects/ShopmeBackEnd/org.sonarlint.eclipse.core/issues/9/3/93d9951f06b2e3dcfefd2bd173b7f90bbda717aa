@@ -1,0 +1,27 @@
+
+a
+java:S2699e"-Add at least one assertion to this test case.b 6ca308d6835d130dc63bc1dd0122f3c2h
+R
+java:S5786"Remove this 'public' modifier.b 4c9184f37cff01bcdc32dc486ec36961h
+R
+java:S5786$"Remove this 'public' modifier.b 4c9184f37cff01bcdc32dc486ec36961h
+R
+java:S5786/"Remove this 'public' modifier.b 4c9184f37cff01bcdc32dc486ec36961h
+R
+java:S5786="Remove this 'public' modifier.b 4c9184f37cff01bcdc32dc486ec36961h
+R
+java:S5786Q"Remove this 'public' modifier.b 4c9184f37cff01bcdc32dc486ec36961h
+R
+java:S5786e"Remove this 'public' modifier.b 4c9184f37cff01bcdc32dc486ec36961h
+R
+java:S5786l"Remove this 'public' modifier.b 4c9184f37cff01bcdc32dc486ec36961h
+R
+java:S5786v"Remove this 'public' modifier.b 4c9184f37cff01bcdc32dc486ec36961h
+R
+java:S5786"Remove this 'public' modifier.b 4c9184f37cff01bcdc32dc486ec36961h
+M
+java:S5838 "Use isPositive() instead.b c3a641c198c2f74f6950ac39a2eac20eh
+M
+java:S5838+"Use isPositive() instead.b c3a641c198c2f74f6950ac39a2eac20eh
+M
+java:S58389"Use isPositive() instead.b c3a641c198c2f74f6950ac39a2eac20eh

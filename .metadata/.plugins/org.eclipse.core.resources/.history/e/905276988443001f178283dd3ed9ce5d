@@ -1,0 +1,5 @@
+package com.shopme.admin.category.exporter;
+
+public class CategoryCsvExporter {
+
+}

@@ -19,7 +19,7 @@ public class UserCsvExporter extends AbstractExporter {
 	public void export(List<User> listUsers, HttpServletResponse response) throws IOException {
 		
 		// type file and header  response
-		super.setResponseHeader(response, "text/csv" ,".csv");
+		super.setResponseHeader(response, "text/csv" ,".csv", "_user");
 		
 		// response.getWriter(): Lấy PrintWriter từ đối tượng phản hồi HTTP
 		//để ghi dữ liệu trực tiếp vào phản hồi, giúp trình duyệt tải về tệp CSV.

@@ -1,9 +1,9 @@
 
-z
-java:S2095"FUse try-with-resources or close this "Document" in a "finally" clause.b 347443612898cba3b4c93a590ea6e3fch
-n
-java:S1128":Remove this unused import 'com.lowagie.text.pdf.PdfTable'.b 0e045237f39dba111ebb11cf54e1b62fh
 y
 java:S3252+"EUse static access with "com.lowagie.text.Element" for "ALIGN_CENTER".b e74c6b284e30fab310a944208f8eb436h
-m
-java:S1128"9Remove this unused import 'com.lowagie.text.pdf.PdfCell'.b 429086746db48e5ddcc62e58313743b0h
+Ѓ
+java:S2095"FUse try-with-resources or close this "Document" in a "finally" clause.8мЧа‹2b 347443612898cba3b4c93a590ea6e3fch
+t
+java:S1128"9Remove this unused import 'com.lowagie.text.pdf.PdfCell'.8мЧа‹2b 429086746db48e5ddcc62e58313743b0h
+u
+java:S1128":Remove this unused import 'com.lowagie.text.pdf.PdfTable'.8мЧа‹2b 0e045237f39dba111ebb11cf54e1b62fh

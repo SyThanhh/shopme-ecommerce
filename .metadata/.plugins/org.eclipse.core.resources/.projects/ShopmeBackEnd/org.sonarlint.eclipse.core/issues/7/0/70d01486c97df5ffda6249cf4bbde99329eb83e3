@@ -1,32 +1,25 @@
 
-d
-java:S1604²"(Make this anonymous inner class a lambda8Â˜Ù…‹2b 79af7de97686c2a55639987a9590d619h
-x
-java:S4973œ"<Strings and Boxed types should be compared using "equals()".8Â˜Ù…‹2b de0219f9333d57ea89a9ba235df098bah
-x
-java:S4973¡"<Strings and Boxed types should be compared using "equals()".8Â˜Ù…‹2b de0219f9333d57ea89a9ba235df098bah
-¢
-java:S1488²"fImmediately return this expression instead of assigning it to the temporary variable "sortedChildren".8Â˜Ù…‹2b da1c1e769cfda3be088398b42391fa53h
-‹
-java:S3655"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.8Â˜Ù…‹2b 971331c15669bbd597b9654ae8ac77abh
-W
-java:S1643G"Use a StringBuilder instead.8Â˜Ù…‹2b b068931cc450442b63f5b3d276ea4297h
-W
-java:S1643s"Use a StringBuilder instead.8Â˜Ù…‹2b b068931cc450442b63f5b3d276ea4297h
 }
-java:S6813"BRemove this field injection and use constructor injection instead.8Â˜Ù…‹2b 0132ec8cee01c5dd244e1a60fe6448a1h
-e	java:S106$"+Replace this use of System.out by a logger.8Â˜Ù…‹2b bb1c3f2ea781263d3a2bb92b06a2061fh
-p
-java:S2209Z"5Change this instance-reference to a static reference.8Â˜Ù…‹2b c4ef352f74e502ef5e7bc98e6f4e493dh
-
-java:S3776Š"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.8Â˜Ù…‹2b 36ba10663cf9cc70e2cf2d54cc4e6a6fh
-k
-java:S1172±"/Remove this unused method parameter "children".8Â˜Ù…‹2b 268184c12df027f536154d099d497b31h
-q
-java:S1128"6Remove this unused import 'org.apache.poi.hpsf.Array'.8Ï‹Û…‹2b adebc4f8c4d30644a94d76a951043591h
+java:S6813"BRemove this field injection and use constructor injection instead.8Â˜Ù…‹2b 0132ec8cee01c5dd244e1a60fe6448a1h
 ˆ
-java:S1128"MRemove this unused import 'com.shopme.admin.exception.UserNotFoundException'.8Ï‹Û…‹2b 4aa1740123344ed468c9a41c5db42773h
+java:S1128"MRemove this unused import 'com.shopme.admin.exception.UserNotFoundException'.8Ãñ¨Ì‹2b 4aa1740123344ed468c9a41c5db42773h
 u
-java:S1128":Remove this unused import 'com.shopme.common.entity.User'.8Ï‹Û…‹2b 00d0b190ebebeb667128a7b82a0e79edh
-o
-java:S1128"4Remove this unused import 'javassist.expr.NewArray'.8Ï‹Û…‹2b 40e3bceb433255363f3a0dbce51f2e4dh
+java:S1128":Remove this unused import 'com.shopme.common.entity.User'.8Ãñ¨Ì‹2b 00d0b190ebebeb667128a7b82a0e79edh
+d
+java:S1604È"(Make this anonymous inner class a lambda8 ÎÛÌ‹2b 79af7de97686c2a55639987a9590d619h
+x
+java:S4973³"<Strings and Boxed types should be compared using "equals()".8 ÎÛÌ‹2b de0219f9333d57ea89a9ba235df098bah
+x
+java:S4973¸"<Strings and Boxed types should be compared using "equals()".8 ÎÛÌ‹2b de0219f9333d57ea89a9ba235df098bah
+Œ
+java:S3655–"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.8 ÎÛÌ‹2b 971331c15669bbd597b9654ae8ac77abh
+W
+java:S1643_"Use a StringBuilder instead.8 ÎÛÌ‹2b b068931cc450442b63f5b3d276ea4297h
+X
+java:S1643Š"Use a StringBuilder instead.8 ÎÛÌ‹2b b068931cc450442b63f5b3d276ea4297h
+p
+java:S2209r"5Change this instance-reference to a static reference.8 ÎÛÌ‹2b c4ef352f74e502ef5e7bc98e6f4e493dh
+
+java:S3776¡"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.8 ÎÛÌ‹2b 36ba10663cf9cc70e2cf2d54cc4e6a6fh
+y
+java:S11555">Use isEmpty() to check whether the collection is empty or not.8şâÌ‹2b bdafff848d5f1a383c86b176a7c2eef7h

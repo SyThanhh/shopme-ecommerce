@@ -26,7 +26,7 @@ public class UserPdfExporter extends AbstractExporter  {
 	public void export(List<User> listUsers, HttpServletResponse response) throws IOException {
 
 		// type file and header response
-		super.setResponseHeader(response, "application/pdf", ".pdf");
+		super.setResponseHeader(response, "application/pdf", ".pdf", "_user");
 
 		Document document = new Document(PageSize.A4);
 		

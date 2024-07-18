@@ -175,8 +175,7 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", name=" + name + ", alias=" + alias + ", image=" + image + ", enabled="
-				+ enabled + ", parent=" + parent + "]";
+		return "Category [name=" + name + "]";
 	}
 	
 	@Transient
@@ -187,6 +186,7 @@ public class Category {
 
 	@Transient
 	private boolean hasChildren;
+	
 	
 
 }

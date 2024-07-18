@@ -1,0 +1,28 @@
+package com.shopme.admin.brand;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.annotation.Rollback;
+
+import com.shopme.common.entity.Brand;
+import com.shopme.common.entity.Category;
+
+@DataJpaTest(showSql = false)
+@AutoConfigureTestDatabase(replace = Replace.NONE) // chỉ định sd csdl ở app ko đc thay thế
+@Rollback(false) // Giữ lại các thay đổi trong cơ sở dữ liệu sau khi kiểm thử kết thúc.
+public class ReponsitoryBrandTests {
+
+	@Autowired
+	private BrandRepository brandRepo;
+	
+	@Test
+	public void testCreateBrand1() {
+		Category laptops = new Category(6);
+		
+		Brand acer = new Brand("Acer");
+	}
+	
+}
