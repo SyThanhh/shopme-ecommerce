@@ -151,6 +151,7 @@ public class CategoryController {
 		redirectAttributes.addFlashAttribute("message", message);
 		redirectAttributes.addFlashAttribute("typeAlert", "success");
 		
+		
 		return "redirect:/categories";
 		
 	}
@@ -162,6 +163,8 @@ public class CategoryController {
 		try {
 		
 			cateService.deleteById(id);
+			String categorrDir = "../categires-images/" + id;
+			FileUploadUtil.removeDir(categorrDir);
 			
 			redirectAttributes.addFlashAttribute("message", "The Category ID " + id + " has been deleted successfully");
 			redirectAttributes.addFlashAttribute("typeAlert", "success");

@@ -1,10 +1,17 @@
 package com.shopme.admin.brand;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.shopme.admin.contstant.SystemConstant;
+import com.shopme.admin.exception.BrandNotFoundException;
 import com.shopme.common.entity.Brand;
 
 @Service
@@ -17,4 +24,57 @@ public class BrandService {
 		return (List<Brand>) brandRepo.findAll();
 		
 	}
+	
+	// pagination
+	public Page<Brand> listByPage(int pageNum, String sortField, String sortDir, String keyword) {
+	    Sort sort = sortDir.equals("asc") ? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
+	    
+
+		Pageable pageable = PageRequest.of(pageNum - 1, SystemConstant.BRANDS_PER_PAGE, sort);
+		if(keyword != null && !keyword.isEmpty()) {
+			return brandRepo.findAll(keyword, pageable);
+		}
+		return brandRepo.findAll(pageable);
+	}
+	
+	public Brand saveBrands(Brand brand) {
+		return brandRepo.save(brand);
+	}
+	
+	public Brand get(Integer id) throws BrandNotFoundException{
+		try {
+			Brand brandById = brandRepo.findById(id).get();
+			return brandById;
+		} catch (NoSuchElementException e) {
+			throw new BrandNotFoundException("Could not find any brand with ID " + id);
+		}
+		
+	}
+	
+	public void delete(Integer id) throws BrandNotFoundException {
+		Long countById = brandRepo.countById(id);
+		
+		if(countById == null || countById == 0) {
+			throw new BrandNotFoundException("Could not find any brand with ID " + id);
+		}
+		brandRepo.deleteById(id);
+	}
+	
+	public String checkUnique(Integer id, String name) {
+		boolean checkNewBrand = (id == null || id == 0);
+		Brand brandName = brandRepo.findByName(name);
+		
+		if(checkNewBrand) {
+			if(brandName != null) 
+				return "Duplicate";
+		} else {
+			if(brandName != null && brandName.getId() != id) 
+				return "Duplicate";
+			
+		
+		}
+		return "OK";
+	}
+	
+	
 }

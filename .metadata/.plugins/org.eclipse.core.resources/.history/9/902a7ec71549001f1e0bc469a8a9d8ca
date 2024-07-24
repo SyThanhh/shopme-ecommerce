@@ -1,0 +1,68 @@
+package com.shopme.admin;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+
+// cấu hình class này để hiển thị ảnh bên clients
+@Configuration
+public class MvcConfig implements WebMvcConfigurer {
+
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		
+		//User
+	    // Tên thư mục chứa ảnh người dùng
+	    String dirName = "user-photos";
+	    
+	    // Tạo đường dẫn tới thư mục ảnh người dùng
+	    Path userPhotoDir = Paths.get(dirName);
+	    
+	    // Lấy đường dẫn tuyệt đối của thư mục ảnh người dùng
+	    String userPhotosPath = userPhotoDir.toFile().getAbsolutePath();
+	    
+	    // Cấu hình bộ xử lý tài nguyên cho các ảnh người dùng
+	    registry.addResourceHandler("/" + dirName + "/**")
+	        .addResourceLocations("file:/" + userPhotosPath + "/");
+	    
+	    
+	    //Category
+	    String categoryDirName = "../categories-images";
+	    
+	  
+	    Path categoryPhotoDir = Paths.get(categoryDirName);
+	    
+	    String categoryPhotosPath = categoryPhotoDir.toFile().getAbsolutePath();
+	    
+	   
+	    registry.addResourceHandler("/categories-images/**")
+	        .addResourceLocations("file:/" + categoryPhotosPath + "/");
+	    
+	    
+	    // Brand
+	    String brandLogoName = "../brands-logos";
+	    Path brandLogoDir = Paths.get(brandLogoName);
+	    
+	    String brandPhotosPath = brandLogoDir.toFile().getAbsolutePath();
+	    System.out.println("brandPhotosPath :" + brandPhotosPath);
+	    
+	    registry.addResourceHandler("/brands-logos/**")
+	    	.addResourceLocations("file:/" + brandPhotosPath + "/");
+	    
+	    
+	}
+
+	private void exposeDirectory(String pathPattern, ResourceHandlerRegistry registry) {
+		 // Tạo đường dẫn tới thư mục ảnh người dùng
+	    Path userPhotoDir = Paths.get(pathPattern);
+	    
+
+	    // Lấy đường dẫn tuyệt đối của thư mục ảnh người dùng
+	    String path = userPhotoDir.toFile().getAbsolutePath();
+	}
+
+}

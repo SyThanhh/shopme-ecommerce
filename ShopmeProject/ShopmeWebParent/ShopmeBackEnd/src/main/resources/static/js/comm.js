@@ -7,8 +7,6 @@ $(document).ready(function() {
 			document.logoutForm.submit();
 		});
 		
-
-		
 });
 	
 	

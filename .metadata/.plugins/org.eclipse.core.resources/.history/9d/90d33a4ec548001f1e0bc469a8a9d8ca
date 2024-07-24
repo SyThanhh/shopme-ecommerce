@@ -1,0 +1,15 @@
+package com.shopme.admin.brand;
+
+import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class BrandRestController {
+
+	
+	@PostMapping("/check_unique")
+	public String checkUnique(@Param("name") String name) {
+		
+	}
+}

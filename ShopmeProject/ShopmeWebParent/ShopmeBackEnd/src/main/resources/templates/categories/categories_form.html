@@ -1,23 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<!-- <head th:replace="fragments :: page_head(${pageTitle})"></head> -->
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>[[${title}]]</title> 
-	
-	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
-	<!-- FontAwesome CSS -->
-	<link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.min.css}"/>
-	
-	<!-- jQuery -->
-	<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
-	<!-- Bootstrap JS -->
-	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-</head>
+<head th:replace="fragments :: page_head(${pageTitle})"></head> 
+
 <body>
 
     <div class="container-fluid">
@@ -162,24 +146,7 @@
            return false; // Ngăn form submit mặc định
        }
 
-       function showModalDialog(title, message) {
-           $("#modalTitle").text(title);
-           $("#modalBody").text(message);
-           jQuery.noConflict(); /* fix lỗi modal is not function do xung đột jquery */
-           $('#modalDialog').modal('show');
-         
-       }
-       
-       function showErrorModal(message) {
-    	   showModalDialog("Error", message)
-       }
-       
-       function showWarningModal(message) {
-    	   showModalDialog("Warning", message)
-       }
-      
-        
-       
+   
     </script>
 
     <script th:src="@{/js/comm.js}"></script>

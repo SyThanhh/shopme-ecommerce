@@ -14,32 +14,35 @@ public class MvcConfig implements WebMvcConfigurer {
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		
+		//User
 	    // Tên thư mục chứa ảnh người dùng
 	    String dirName = "user-photos";
 	    
-	    // Tạo đường dẫn tới thư mục ảnh người dùng
-	    Path userPhotoDir = Paths.get(dirName);
+	    exposeDirectory(dirName, registry);
 	    
-	    // Lấy đường dẫn tuyệt đối của thư mục ảnh người dùng
-	    String userPhotosPath = userPhotoDir.toFile().getAbsolutePath();
-	    
-	    // Cấu hình bộ xử lý tài nguyên cho các ảnh người dùng
-	    registry.addResourceHandler("/" + dirName + "/**")
-	        .addResourceLocations("file:/" + userPhotosPath + "/");
-	    
-	    
+	    //Category
 	    String categoryDirName = "../categories-images";
-	    
+	    exposeDirectory(categoryDirName, registry);
 	  
-	    Path categoryPhotoDir = Paths.get(categoryDirName);
-	    
-	   
-	    String categoryPhotosPath = categoryPhotoDir.toFile().getAbsolutePath();
-	    
-	   
-	    registry.addResourceHandler("/categories-images/**")
-	        .addResourceLocations("file:/" + categoryPhotosPath + "/");
+
+	    // Brand
+	    String brandDirName = "../brands-logos";
+	    exposeDirectory(brandDirName, registry);
 	}
 
+	private void exposeDirectory(String pathPattern, ResourceHandlerRegistry registry) {
+		 // Tạo đường dẫn tới thư mục ảnh người dùng
+	    Path path = Paths.get(pathPattern);
+	    
+	    // Lấy đường dẫn tuyệt đối của thư mục ảnh người dùng
+	    String absolutePath = path.toFile().getAbsolutePath();
+	    
+	    String logicalPath = pathPattern.replace("..", "") + "/**";
+	    
+	    // Cấu hình bộ xử lý tài nguyên cho các ảnh người dùng
+	    registry.addResourceHandler(logicalPath)
+	        .addResourceLocations("file:/" + absolutePath + "/");
+	}
 
 }
