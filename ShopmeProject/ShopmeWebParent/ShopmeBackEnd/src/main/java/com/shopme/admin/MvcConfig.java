@@ -27,7 +27,7 @@ public class MvcConfig implements WebMvcConfigurer {
 	  
 
 	    // Brand
-	    String brandDirName = "../brands-logos";
+	    String brandDirName = "../brand-logos";
 	    exposeDirectory(brandDirName, registry);
 	}
 

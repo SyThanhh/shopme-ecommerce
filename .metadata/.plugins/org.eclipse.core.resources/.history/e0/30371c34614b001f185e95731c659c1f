@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: page_head(${pageTitle})"></head>
+<body>
+
+    <div class="container-fluid">
+        <div th:replace="comm/navigation :: menu"></div>
+
+        <div>
+            <h2>[[${pageTitle}]]</h2>
+        </div>
+
+        <form th:action="@{/users/save}" method="post"
+            style="max-width: 700px; margin: 0 auto;"
+           th:object="${user}"
+            id="userForm" enctype="multipart/form-data">
+
+            <input type="hidden" th:field="*{id}" />
+
+          
+        </form>
+
+
+        <!-- Modal -->
+     <div th:replace="modal_fragments :: modal_dialog"> </div>
+		
+        <!-- Footer -->
+
+        <div th:replace="comm/footer :: footer"></div>
+    </div>
+
+    <!-- Load jQuery before other scripts -->
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+
+    <script type="text/javascript">
+   
+        moduleURL = "[[@{/}]]"; 
+        
+        $(document).ready(function() {
+            $("#userForm").submit(function(e) {
+                e.preventDefault(); // Ngăn chặn form submit mặc định
+                checkEmailUnique(this); // Gọi hàm checkUnique
+            });
+        });
+        
+        function checkEmailUnique(form) {
+            url = "[[@{/users/check_email}]]"; // URL để kiểm tra email
+            userId = $("#id").val();
+            userEmail = $('#email').val(); // Lấy giá trị của email từ input với ID là 'email'
+            csrfValue = $("input[name='_csrf']").val(); // Lấy giá trị CSRF token từ input ẩn
+            params = {
+                id : userId,
+                email : userEmail,
+                _csrf : csrfValue
+            }; // Tạo object chứa các tham số gửi đi
+
+            $.post(
+                    url,
+                    params,
+                    function(response) { // Thực hiện POST request
+                        if (response == "OK") {
+                            form.submit();
+                        } else if (response == "Duplicated") {
+                        
+                          showWarningModal(
+                                    "There is another user having the email "
+                                            + userEmail);  /* hiển thị phản hồi từ server */
+                        } else {
+                           showErrorModal(
+                                    "Unknown response from server");
+                        }
+
+                    }).fail(function() { // khi sai đường dẫn
+                showModalDialog("Error", "Could not connect to the server");
+            });
+
+            return false; // Ngăn form submit mặc định
+        }
+
+       
+   
+    </script>
+
+    <script th:src="@{/js/comm.js}"></script>
+    <script th:src="@{/js/navigationJS.js}"></script>
+   <script th:src="@{/js/comm_form.js}"></script>
+</body>
+</html>
+    

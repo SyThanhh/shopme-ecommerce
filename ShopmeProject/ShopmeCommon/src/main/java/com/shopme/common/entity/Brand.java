@@ -91,7 +91,7 @@ public class Brand {
 	@Transient
 	public String getLogoPath() {
 		if(id == null || logo == null) return "/logo/brand-default.png";
-		return "/brands-logos/" + this.id + "/" + this.logo;
+		return "/brand-logos/" + this.id + "/" + this.logo;
 	}
 	
 	@Override

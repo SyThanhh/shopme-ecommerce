@@ -10,11 +10,12 @@ import org.supercsv.io.ICsvBeanWriter;
 import org.supercsv.prefs.CsvPreference;
 
 import com.shopme.admin.user.exproter.AbstractExporter;
+import com.shopme.common.entity.Brand;
 import com.shopme.common.entity.Category;
 
 public class BrandCsvExporter extends AbstractExporter {
 	
-	public void export(List<Category> listCategory, HttpServletResponse response) throws IOException {
+	public void export(List<Brand> listBrands, HttpServletResponse response) throws IOException {
 			
 			// type file and header  response
 			super.setResponseHeader(response, "text/csv" ,".csv", "brands_");
@@ -29,9 +30,8 @@ public class BrandCsvExporter extends AbstractExporter {
 			
 			csvWriter.writeHeader(csvHeaer);
 			
-			for (Category category : listCategory) {
-				category.setName(category.getName().replace("--", ""));
-				csvWriter.write(category, fieldMapping);
+			for (Brand brand : listBrands) {
+				csvWriter.write(brand, fieldMapping);
 			}
 			
 			csvWriter.close();

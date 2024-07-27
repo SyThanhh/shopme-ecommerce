@@ -33,7 +33,7 @@ public class UserRepositoryTests {
 	@Autowired
 	private TestEntityManager entityManager;
 	
-//	@Test
+	@Test
 	public void testCreateUserWithOneRole() {
 		Role roleAdmin = entityManager.find(Role.class,1);
 		User userThanh = new User("phong@gmail.com", "123", "Phong", "Nguyen");

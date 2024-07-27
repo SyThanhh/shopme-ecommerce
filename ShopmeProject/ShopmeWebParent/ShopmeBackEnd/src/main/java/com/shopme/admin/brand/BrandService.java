@@ -27,8 +27,8 @@ public class BrandService {
 	
 	// pagination
 	public Page<Brand> listByPage(int pageNum, String sortField, String sortDir, String keyword) {
-	    Sort sort = sortDir.equals("asc") ? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
-	    
+		Sort sort = Sort.by(sortField);
+		sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
 
 		Pageable pageable = PageRequest.of(pageNum - 1, SystemConstant.BRANDS_PER_PAGE, sort);
 		if(keyword != null && !keyword.isEmpty()) {

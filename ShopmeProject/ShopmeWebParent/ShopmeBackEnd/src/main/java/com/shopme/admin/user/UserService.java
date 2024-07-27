@@ -50,13 +50,13 @@ public class UserService {
 	// lấy list Pageable
 	public Page<User> listByPage(int pageNum, String sortField, String sortDir,String keyword) {
 		// check sortField and sortDir
-		if (sortField == null || sortField.isEmpty()) {
+		if (sortField == null || sortField.isEmpty()) 
 	        sortField = "firstName"; // Thay bằng tên cột mặc định của bạn
-	    }
+	 
 
-	    if (sortDir == null || sortDir.isEmpty()) {
+	    if (sortDir == null || sortDir.isEmpty())
 	        sortDir = "asc"; // Đặt mặc định là sắp xếp tăng dần
-	    }
+	 
 		Sort sort = Sort.by(sortField);
 		sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
 		Pageable pageable = PageRequest.of(pageNum - 1, SystemConstant.USER_PER_PAGE, sort); // tạo 1 pageable với kích thước đã định

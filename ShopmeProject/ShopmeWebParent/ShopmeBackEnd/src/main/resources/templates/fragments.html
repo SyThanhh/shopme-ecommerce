@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="page_head(title)">
+<head th:fragment="page_head(title, remove)" th:remove="${remove}">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>[[${title}]]</title> 
@@ -110,10 +110,10 @@
 	<!-- User status -->
 	<div th:fragment="status(enabled, entityName, entityURL)" th:remove="tag">
 		<a th:if="${enabled == true}" class="far fa-check-circle icon-blue" 
-		th:href="@{${entityURL} + '/enabled/false'}" th:title="'Disabled this' + ${entityName}"></a>
+		th:href="@{${entityURL} + '/enabled/false'}" th:title="'Disabled this ' + ${entityName}"></a>
 		
 		<a th:if="${enabled == false}" class="far fa-check-circle icon-dark" 
-		th:href="@{${entityURL} + '/enabled/true'}" th:title="'Enabled this' +  ${entityName}"></a>
+		th:href="@{${entityURL} + '/enabled/true'}" th:title="'Enabled this ' +  ${entityName}"></a>
 	
 	</div>
 	
