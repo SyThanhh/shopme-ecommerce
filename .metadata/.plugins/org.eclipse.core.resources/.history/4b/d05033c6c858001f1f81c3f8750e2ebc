@@ -1,0 +1,34 @@
+package com.shopme.admin;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+@SpringBootApplication
+@EntityScan({"com.shopme.common.entity","com.shopme.admin.user"}) // được sử dụng khi các lớp thực thể không được đặt trong gói ứng dụng chính hoặc các gói phụ của nó. 
+public class ShopmeBackEndApplication {
+
+	public static void main(String[] args) {
+		/* SpringApplication.run(ShopmeBackEndApplication.class, args); */
+		 Path rootDir = Paths.get("C:\\Users\\HP\\Downloads\\Shopme Sample Products Data\\product-images");
+
+	        try {
+	            Files.walk(rootDir)
+	                .filter(Files::isDirectory)
+	                .forEach(path -> {
+	                    if (path.getFileName().toString().equals("extras")) {
+	                        Path newPath = path.resolveSibling("extra-images");
+	                        try {
+	                            Files.move(path, newPath);
+	                            System.out.println("Đã đổi tên: " + path + " thành " + newPath);
+	                        } catch (IOException e) {
+	                            System.err.println("Lỗi khi đổi tên " + path + ": " + e.getMessage());
+	                        }
+	                    }
+	                });
+	        } catch (IOException e) {
+	            System.err.println("Lỗi khi duyệt thư mục: " + e.getMessage());
+	        }
+	}
+
+}

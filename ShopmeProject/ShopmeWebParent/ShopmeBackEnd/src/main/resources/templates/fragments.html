@@ -20,19 +20,21 @@
 
 <body>
 	
-
+	<!-- Sort by label -->
 	<th th:fragment="column_link(moduleURL ,fieldName, columnLabel, removeTag)" th:remove="${removeTag}">
 		<a  th:href="@{${moduleURL} +'/page/' + ${currentPage} +'?sortField='+ ${fieldName} +'&sortDir=' + ${sortField != fieldName ? sortDir : reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}" class="text-white">
 			[[${columnLabel}]]
 		</a>
 						
-		<!-- icon -->
+		<!-- icon down and up -->
 		<span th:if="${sortField == fieldName}" 
 		th:class="${sortDir == 'asc' ? 'fas fa-sort-up' : 'fas fa-sort-down'}"></span>
 	</th>
 	
+	<!-- Sort down and up -->
 	<a th:fragment="page_link(moduleURL, pageNum, label)" 
-		class="page-link" th:href="@{ ${moduleURL}+'/page/' + ${pageNum} + '?sortField=' + ${sortField} + '&sortDir=' + ${reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}">
+		class="page-link" th:href="@{${moduleURL}+'/page/' + ${pageNum} + 
+		'?sortField=' + ${sortField} + '&sortDir=' + ${reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''} + ${categoryId != null ? '&categoryId=' + categoryId : ''}}">
 		[[${label}]]
 	</a>
 	
@@ -123,6 +125,7 @@
 		
 	</div>
 	
+	<!-- Delete condition with haven't hasChildren -->
 	<div th:fragment="delete(entityName , entityId, deleteURL, visible)" th:remove="tag">
 		 <th:block th:if="${visible}"> <!-- cat.hasChildren == false -->
 			 <a class="far fa-minus-square icon-red link-delete" 

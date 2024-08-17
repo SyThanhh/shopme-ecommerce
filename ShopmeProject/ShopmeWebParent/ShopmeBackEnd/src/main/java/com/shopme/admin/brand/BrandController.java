@@ -34,7 +34,7 @@ public class BrandController {
 	private CategoryService categoryService;
 	
 	@GetMapping("/brands")
-	public String listAll(Model model) {
+	public String listFirstPgae(Model model) {
 		return listByPage(1, "asc", "name",null, model);
 	}
 	

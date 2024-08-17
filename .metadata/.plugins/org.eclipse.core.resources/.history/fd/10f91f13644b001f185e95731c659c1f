@@ -1,9 +1,0 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<body>
-
-    <div th:fragment="product_overview" th:remove="tag">
-    
-    </div>
-</body>
-</html>

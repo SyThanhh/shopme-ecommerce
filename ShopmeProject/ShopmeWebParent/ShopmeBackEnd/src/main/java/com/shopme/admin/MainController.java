@@ -17,7 +17,7 @@ public class MainController {
 	
 	@GetMapping("/login")
     public String viewLoginPage() {
-		
+		// check User instanceof
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if(authentication == null || authentication instanceof AnonymousAuthenticationToken) {
 			return "login";  // trả về tên template "login.html"

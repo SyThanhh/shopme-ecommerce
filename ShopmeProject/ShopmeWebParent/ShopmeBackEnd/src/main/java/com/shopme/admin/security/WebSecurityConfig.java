@@ -50,8 +50,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
         	.antMatchers("/users/**").hasAuthority("Admin")
-        	.antMatchers("/categories/**", "brands/**").hasAnyAuthority("Admin", "Editor")
-        	.antMatchers("/products/**").hasAnyAuthority("Admin", "Salesperson", "Edit", "Shipper")
+        	.antMatchers("/categories/**", "brands/**").hasAnyAuthority("Admin", "Editor") 
+        	
+        	.antMatchers("/products/new", "/prodducts/delete/**")
+        		.hasAnyAuthority("Admin", "Editor")
+        		
+        	.antMatchers("/products/edit/**", "/products/save", "/products/check_unique")
+        		.hasAnyAuthority("Admin", "Editor", "Salesperson")
+        		
+        	.antMatchers("/products", "/products/", "/products/detail/**", "/products/page/**")
+        		.hasAnyAuthority("Admin", "Editor","Salesperson", "Shippers")
+        		
+        	.antMatchers("/products/**").hasAnyAuthority("Admin",  "Edit")
             .anyRequest().authenticated() // Mọi yêu cầu đều phải xác thực
             .and()
             .formLogin()

@@ -6,10 +6,17 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.shopme.admin.contstant.SystemConstant;
 import com.shopme.admin.exception.CategoryNotFoundException;
+import com.shopme.admin.exception.ProductNotFoundException;
 import com.shopme.common.entity.Product;
+import com.shopme.common.entity.ProductImage;
 
 @Service
 @Transactional
@@ -22,19 +29,67 @@ public class ProductService {
 		return (List<Product>) productRepository.findAll();
 	}
 	
-	public Product saveProduct(Product product) {
-		if(product.getId() == null) product.setCreatedTime(new Date());
-		if(product.getAlias() == null || product.getName().isEmpty()) {
-			String defaultAlias = product.getAlias().replace(" ", "-");
-		} else {
-			product.setAlias(product.getAlias().replace(" ", "-"));
+	public Page<Product> listByPage(int pageNum, String sortField, String sortDir, String keyword, Integer categoryId) {
+		Sort sort = Sort.by(sortField);
+		sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
+
+		Pageable pageable = PageRequest.of(pageNum - 1, SystemConstant.PRODUCTS_PER_PAGE, sort);
+		// search in category
+		if(keyword != null && !keyword.isEmpty()) {
+			// check categoryId exist
+			if(categoryId != null && categoryId > 0) {
+				String categoryIdMatch = "-" + String.valueOf(categoryId) + "-";
+				return productRepository.searchInCategory(categoryId, categoryIdMatch,keyword, pageable);
+				
+			}
+			return productRepository.findAll(keyword, pageable);
 		}
 		
-		product.setUpdatedTime(new Date());
-		
-		return productRepository.save(product);
+		// check categoryId exist
+		if(categoryId != null && categoryId > 0) {
+			String categoryIdMatch = "-" + String.valueOf(categoryId) + "-";
+			return productRepository.findAllInCategory(categoryId, categoryIdMatch, pageable);
+			
+		}
+		return productRepository.findAll(pageable);
+	}
+	
+	
+	@Transactional
+	public Product saveProduct(Product product) {
+	    if (product.getId() == null) {
+	        product.setCreatedTime(new Date());
+	    }
+	    
+	    // Thiết lập alias
+	    if (product.getAlias() == null || product.getName() == null || product.getName().isEmpty()) {
+	        String defaultAlias = product.getName() != null ? product.getName().replace(" ", "-") : "default-alias";
+	        product.setAlias(defaultAlias);
+	    } else {
+	        product.setAlias(product.getAlias().replace(" ", "-"));
+	    }
+
+	    // Cập nhật thời gian
+	    product.setUpdatedTime(new Date());
+
+
+	    return productRepository.save(product);
 	}
 
+	public Product saveProductPrice(Product productInForm) throws ProductNotFoundException {
+		try {
+			Product productInDB = productRepository.findById(productInForm.getId()).get();
+			productInDB.setPrice(productInForm.getPrice());
+			productInDB.setCost(productInForm.getCost());
+			productInDB.setDiscountPercent(productInForm.getDiscountPercent());
+			
+			return productRepository.save(productInDB);
+		} catch (Exception e) {
+			throw new ProductNotFoundException("Could nopt find any product with ID " + productInForm.getId());
+		}
+	
+	}
+	
 	public String checkUnique(Integer id, String name) {
 		boolean checkProduct = (id == null || id == 0);
 		Product productByName = productRepository.findByName(name);
@@ -60,6 +115,15 @@ public class ProductService {
 		}
 
 		productRepository.deleteById(id);
+	}
+	
+	public Product get(Integer id) throws ProductNotFoundException {
+		try {
+			return productRepository.findById(id).get();
+		} catch (Exception e) {
+			throw new ProductNotFoundException("Could nopt find any product with ID " + id);
+		}
+		
 	}
 	
 	

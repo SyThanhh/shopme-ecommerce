@@ -1,0 +1,5 @@
+
+v
+java:S6813"BRemove this field injection and use constructor injection instead.b 0132ec8cee01c5dd244e1a60fe6448a1h
+„
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.b 56f405ddb5bc363f3774807aeb136e18h

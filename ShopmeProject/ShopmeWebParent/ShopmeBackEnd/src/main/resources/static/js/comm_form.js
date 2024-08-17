@@ -10,18 +10,27 @@ $(document)
                });
 
                $("#fileImage").change(function() {
-                       fileSize = this.files[0].size;
-                       if (fileSize > 1048576) { // Kiểm tra xem kích thước tệp có lớn hơn 1MB (1048576 bytes) không
-                           this.setCustomValidity("You must choose an image less than 1MB!"); // Đặt thông báo lỗi tùy chỉnh cho đầu vào tệp
-                           this.reportValidity(); // Hiển thị thông báo lỗi cho người dùng
-                       } else {
-                           // alert("FileSize : " + fileSize);  // Hiển thị một thông báo với kích thước tệp
-                           showImageThumbnail(this); // Gọi hàm showImageThumbnail để hiển thị hình ảnh thu nhỏ
-                       }
-
-                   });
+                     if(!checkFileSize(this)) {
+						return;
+					 } 
+					showImageThumbnail(this);
+					 
+					
+               });
            });
 
+		   
+		// check file size
+		function checkFileSize(fileInput) {
+			fileSize = fileInput.files[0].size;
+             if (fileSize > MAX_FILE_SIZE) { // Kiểm tra xem kích thước tệp có lớn hơn 1MB (1048576 bytes) không
+                 fileInput.setCustomValidity("You must choose an image less than " + MAX_FILE_SIZE + " bytes !"); // Đặt thông báo lỗi tùy chỉnh cho đầu vào tệp
+                 fileInput.reportValidity(); // Hiển thị thông báo lỗi cho người dùng
+             } else {
+                
+				 return true;
+             }
+		}
        // lúc tạo
        function showImageThumbnail(fileInput) {
            var file = fileInput.files[0]; // Lấy tệp đầu tiên từ input file

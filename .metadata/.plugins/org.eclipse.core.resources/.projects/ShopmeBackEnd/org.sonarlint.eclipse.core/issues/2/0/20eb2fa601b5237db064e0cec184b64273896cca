@@ -1,5 +1,9 @@
 
 u
 java:S1161":Add the "@Override" annotation above this method signature8ù›‹¾‡2b 010ac1b919b408103fdf7e3c0ac41c10h
+
+java:S11924"FDefine a constant instead of duplicating this literal "Admin" 6 times.8°¶ñ­•2b 13045abc02e4f005324568f4724cf898h
+‚
+java:S11925"GDefine a constant instead of duplicating this literal "Editor" 4 times.8éÔ³•2b a5deb9921390f119361f8409ce13af50h
 –
-java:S1128"[Remove this unused import 'org.springframework.web.servlet.config.annotation.EnableWebMvc'.8©Œù¿‡2b 63f0f12f8429fd6102728ef8f471680ah
+java:S1128"[Remove this unused import 'org.springframework.web.servlet.config.annotation.EnableWebMvc'.8éÔ³•2b 63f0f12f8429fd6102728ef8f471680ah

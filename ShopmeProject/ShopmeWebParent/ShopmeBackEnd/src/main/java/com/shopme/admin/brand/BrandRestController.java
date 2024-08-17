@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shopme.admin.exception.BrandNotFoundException;
+import com.shopme.admin.exception.BrandNotFoundRestException;
 import com.shopme.common.entity.Brand;
 import com.shopme.common.entity.Category;
 
@@ -47,7 +48,7 @@ public class BrandRestController {
 	        }
 	        return listCategories;
 	    } catch (BrandNotFoundException e) {
-	        throw new BrandNotFoundRestException();
+	        throw new BrandNotFoundRestException("Could not found any Brand with ID " + id);
 	    }
 	}
 

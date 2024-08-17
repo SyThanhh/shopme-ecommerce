@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;product_overview.html&apos; to &apos;products&apos;&#x0D;&#x0A;- Original project: &apos;ShopmeBackEnd&apos;&#x0D;&#x0A;- Destination element: &apos;products&apos;&#x0D;&#x0A;- Original element: &apos;product_overview.html&apos;" description="Copy file" element1="src/main/resources/templates/products/product_overview.html" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1722440568655" target="/ShopmeBackEnd/src/main/resources/templates/products" units="0" version="1.0"/>
+</session>

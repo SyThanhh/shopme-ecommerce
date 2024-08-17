@@ -1,7 +1,13 @@
 package com.shopme.common.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +15,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="products")
@@ -53,6 +61,10 @@ public class Product {
 	private float height;
 	private float weight;
 	
+	@Column(name="main_image", nullable = false)
+	private String mainImage;
+	
+	
 	@ManyToOne
 	@JoinColumn(name="category_id")
 	private Category category;
@@ -61,7 +73,13 @@ public class Product {
 	@ManyToOne
 	@JoinColumn(name="brand_id")
 	private Brand brand;
+	
+	//orphanRemoval = true: Điều này có nghĩa là nếu một ProductImage không còn được tham chiếu bởi thực thể Product
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true) // mappedBy chỉ định trường áxạ tới
+	private Set<ProductImage> images = new HashSet<>();
 
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+	private List<ProductDetail> details = new ArrayList<>();
 	
 	public Product() {
 		
@@ -217,11 +235,73 @@ public class Product {
 	}
 
 
+	public String getMainImage() {
+		return mainImage;
+	}
 
+	public void setMainImage(String mainImage) {
+		this.mainImage = mainImage;
+	}
+
+	public Set<ProductImage> getImages() {
+		return images;
+	}
+
+	public void setImages(Set<ProductImage> images) {
+		this.images = images;
+	}
+	
+	public List<ProductDetail> getDetails() {
+		return details;
+	}
+
+	public void setDetails(List<ProductDetail> details) {
+		this.details = details;
+	}
+
+	public void addExtraImage(String image) {
+		this.images.add(new ProductImage(image, this));
+	}
+	
+	public void addDetail(String name, String value) {
+		this.details.add(new ProductDetail(name, value, this));
+	}
+	
+	public void addDetail( Integer id ,String name, String value) {
+		this.details.add(new ProductDetail(id ,name, value, this));
+	}
+	
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + "]";
 	}
+	
+	
+	@Transient
+	public String getMainImagePath() {
+		if(id == null || mainImage == null) return "/images/image-thumbnail.png";
+		return "/product-images/" + this.id+ "/" + this.mainImage;
+	}
+
+	public boolean containsImageName(String imageName) {
+		Iterator<ProductImage> iterator = images.iterator();
+		
+		while (iterator.hasNext()) {
+			ProductImage image = iterator.next();
+			if (image.getName().equals(imageName)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+
+	@Transient
+	public String getShortName() {
+		if(name.length() > 70) return this.name.substring(0, 70).concat("...");
+		return name;
+	}
+	
 	
 	
 }

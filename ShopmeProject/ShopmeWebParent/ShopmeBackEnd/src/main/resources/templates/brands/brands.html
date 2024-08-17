@@ -42,8 +42,8 @@
 						
 						<td class="hideable-column">[[${brand.id}]]</td>
 						<td>
-							<span th:if="${brand.logo == null}" class="fas fa-portrait fa-3x icon-silver"></span>
-							<img th:if="${brand.logo != null}" th:src="@{${brand.logoPath}}" style="width:100px;"/>
+							<td><img th:src="@{${brand.logoPath}}" style="width: 100px"
+							class="img-fluid" /></td>
 						</td>
 						<td>[[${brand.name}]]</td> 
 						<td>

@@ -1,0 +1,11 @@
+
+p
+java:S4973G"<Strings and Boxed types should be compared using "equals()".b de0219f9333d57ea89a9ba235df098bah
+•
+java:S1488."aImmediately return this expression instead of assigning it to the temporary variable "brandById".b 39456f640ccf03b6f22d8f65489a9999h
+„
+java:S3655."PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.b ee6ac6d7a6e0379c429174dd606e44d5h
+v
+java:S6813"BRemove this field injection and use constructor injection instead.b 0132ec8cee01c5dd244e1a60fe6448a1h
+[
+java:S1905"'Remove this unnecessary cast to "List".b 6e5c2978c777b880a2ce8202817da921h

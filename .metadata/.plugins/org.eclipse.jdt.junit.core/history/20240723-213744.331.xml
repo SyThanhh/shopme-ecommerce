@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="BrandReponsitoryTests.testCreateBrand2" project="ShopmeBackEnd" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="com.shopme.admin.brand.BrandReponsitoryTests" time="0.248" displayname="BrandReponsitoryTests" uniqueid="[engine:junit-jupiter]/[class:com.shopme.admin.brand.BrandReponsitoryTests]">
-    <testcase name="testCreateBrand2" classname="com.shopme.admin.brand.BrandReponsitoryTests" time="0.248" displayname="testCreateBrand2()" uniqueid="[engine:junit-jupiter]/[class:com.shopme.admin.brand.BrandReponsitoryTests]/[method:testCreateBrand2()]"/>
-  </testsuite>
-</testrun>

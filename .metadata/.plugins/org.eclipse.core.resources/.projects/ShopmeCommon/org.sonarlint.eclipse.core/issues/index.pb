@@ -9,3 +9,9 @@ d
 4src/main/java/com/shopme/common/entity/Category.java,c\d\cd9cf72050fc01f99a6c45a61735267275a0f08c
 a
 1src/main/java/com/shopme/common/entity/Brand.java,5\4\54a4910773e757e6a1339e987f548060e5798127
+h
+8src/main/java/com/shopme/common/entity/ProductImage.java,d\a\da7d787a98b32da0a09bfb737b96c25161c1ff68
+c
+3src/main/java/com/shopme/common/entity/Product.java,3\8\38c1fcddfdabd0054cfc5bcf7842ff5e7f61d6dc
+i
+9src/main/java/com/shopme/common/entity/ProductDetail.java,3\b\3b3e419d8b89a1c5ca04b5dfcbea05ce47fb4735

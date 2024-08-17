@@ -1,9 +1,9 @@
 
 b
 java:S1128".Remove this unused import 'java.util.HashMap'.b d84992d255a05fff2c29a54090661da8h
-k
-java:S1128"7Remove this unused import 'javax.annotation.Generated'.b f888292ca67708c6a225a53c5531e1f6h
 m
 java:S1128"9Remove this unused import 'javax.persistence.ManyToMany'.b 4e357957d731d0b2a155a4de9273179dh
+k
+java:S1128"7Remove this unused import 'javax.annotation.Generated'.b f888292ca67708c6a225a53c5531e1f6h
 y
-java:S1155N">Use isEmpty() to check whether the collection is empty or not.8¶ÿÅπã2b bdafff848d5f1a383c86b176a7c2eef7h
+java:S1155Q">Use isEmpty() to check whether the collection is empty or not.8¶ÿÅπã2b bdafff848d5f1a383c86b176a7c2eef7h

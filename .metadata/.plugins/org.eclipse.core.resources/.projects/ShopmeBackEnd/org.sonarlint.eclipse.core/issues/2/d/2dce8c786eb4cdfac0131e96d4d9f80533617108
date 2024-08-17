@@ -1,12 +1,12 @@
 
-x
-java:S2095*"DUse try-with-resources or close this "Stream" in a "finally" clause.b cde78e50113cf4638a8f951cf5725e88h
+v	java:S1255"<This block of commented-out lines of code should be removed.8öã„‹2b 13a226f994923f2f3e209002f590d0f5h
+|
+java:S34576"AFormat specifiers should be used instead of string concatenation.8öã„‹2b 2825e23a66ea7fb417c8eeed5eb4adc2h
+e	java:S106@"+Replace this use of System.out by a logger.8’çŒ‹2b bb1c3f2ea781263d3a2bb92b06a2061fh
 n
 java:S1118":Add a private constructor to hide the implicit public one.b 49e537a497ae52a18365638dc011240fh
 |
 java:S3457/"AFormat specifiers should be used instead of string concatenation.8öã„‹2b aa298224514c9c958c4b1920e5c4d4aeh
+x
+java:S2095*"DUse try-with-resources or close this "Stream" in a "finally" clause.b cde78e50113cf4638a8f951cf5725e88h
 v	java:S1250"<This block of commented-out lines of code should be removed.8öã„‹2b 118447d62e0eca94b2c598bc1a65699eh
-|
-java:S34576"AFormat specifiers should be used instead of string concatenation.8öã„‹2b 2825e23a66ea7fb417c8eeed5eb4adc2h
-v	java:S1255"<This block of commented-out lines of code should be removed.8öã„‹2b 13a226f994923f2f3e209002f590d0f5h
-e	java:S106@"+Replace this use of System.out by a logger.8’çŒ‹2b bb1c3f2ea781263d3a2bb92b06a2061fh

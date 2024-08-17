@@ -1,0 +1,42 @@
+
+Ñ
+java:S1192Ü"HDefine a constant instead of duplicating this literal "product" 3 times.8¥∆ù£ï2b 8bce98aa69bb954541be5ed5c2f1fe44h
+è
+java:S1192û"SDefine a constant instead of duplicating this literal "redirect:/products" 7 times.8¥∆ù£ï2b 6686b8087ee9a731044d0047e863b403h
+Ñ
+java:S1192Ø"HDefine a constant instead of duplicating this literal "message" 3 times.8¥∆ù£ï2b 9040ca9bfe0a4c38f81140904fb9db9dh
+Ã
+java:S4449°"èAnnotate the parameter with @javax.annotation.Nullable in method 'cleanPath' declaration, or make sure that null can not be passed as argument.8¥∆ù£ï2b bfcaaf7e291a55efb95b519e1e9d3db1h
+Ü
+java:S1192∞"JDefine a constant instead of duplicating this literal "typeAlert" 3 times.8¥∆ù£ï2b 7dd1c6b5cc4575dd0ee21deea35013a2h
+}
+java:S6813."BRemove this field injection and use constructor injection instead.8‘˚ú£ï2b 0132ec8cee01c5dd244e1a60fe6448a1h
+}
+java:S3457»"AFormat specifiers should be used instead of string concatenation.8¥∆ù£ï2b 7f334974837d05745042e8674b87d356h
+î	java:S135⁄"YReduce the total number of break and continue statements in this loop to use at most one.8¥∆ù£ï2b d55669822f1a8cf72ec1911e462a54ebh
+|
+java:S4684é"@Replace this persistent entity with a simple POJO or DTO object.8¥∆ù£ï2b f5bf48aa40cad7891eb709fcf1fde128h
+}
+java:S68131"BRemove this field injection and use constructor injection instead.8‘˚ú£ï2b 0132ec8cee01c5dd244e1a60fe6448a1h
+{
+java:S2184P"@Cast one of the operands of this addition operation to a "long".8‘˚ú£ï2b 26b17225b626fb9238849fd60eabdf60h
+Ã
+java:S4449â"èAnnotate the parameter with @javax.annotation.Nullable in method 'cleanPath' declaration, or make sure that null can not be passed as argument.8¥∆ù£ï2b bfcaaf7e291a55efb95b519e1e9d3db1h
+è
+java:S1192º"SDefine a constant instead of duplicating this literal "../product-images/" 5 times.8¥∆ù£ï2b 54b0ab5e9c8423a46659fffcf02975e9h
+Ä
+java:S2095¿"DUse try-with-resources or close this "Stream" in a "finally" clause.8¥∆ù£ï2b cde78e50113cf4638a8f951cf5725e88h
+ä
+java:S1192º"NDefine a constant instead of duplicating this literal "/extra-images" 3 times.8¥∆ù£ï2b 3dd5e73e3ff478bea2f94ae602eb2207h
+Ã
+java:S4449ï"èAnnotate the parameter with @javax.annotation.Nullable in method 'cleanPath' declaration, or make sure that null can not be passed as argument.8¥∆ù£ï2b bfcaaf7e291a55efb95b519e1e9d3db1h
+Ã
+java:S4449¸"èAnnotate the parameter with @javax.annotation.Nullable in method 'cleanPath' declaration, or make sure that null can not be passed as argument.8¥∆ù£ï2b bfcaaf7e291a55efb95b519e1e9d3db1h
+á
+java:S1192á"KDefine a constant instead of duplicating this literal "listBrands" 3 times.8¥∆ù£ï2b 20b9f96d0f9a86862bf495d287259f6dh
+}
+java:S68134"BRemove this field injection and use constructor injection instead.8‘˚ú£ï2b 0132ec8cee01c5dd244e1a60fe6448a1h
+j
+java:S1128"/Remove this unused import 'java.util.Iterator'.8œÓ˜·ï2b d5884e7ee7689e3595cedec1312f6d14h
+~
+java:S1128'"CRemove this unused import 'com.shopme.common.entity.ProductDetail'.8œÓ˜·ï2b f4d9469d639b1a4150556c401b707f01h

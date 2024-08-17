@@ -1,0 +1,41 @@
+
+$(document).ready(function(){
+	$("#btnAddDetailSeciton").click(()=>{
+		addNexTDetailSection();
+	});
+	
+	
+});
+
+function addNexTDetailSection() {
+	
+	allDivDetails = $("[id^='divDetail']");
+	divDetailsCount = allDivDetails.length;
+
+	
+	htmlDetailSection = `<div class="form-row mt-3" id="divDetail${divDetailsCount}">
+			    <div class="col-4">
+			      <input type="text" class="form-control" placeholder="Name" name="detailNames" maxlength="255" required>
+			    </div>
+			    <div class="col-4">
+			      <input type="text" class="form-control" placeholder="Value" name="detailValues" maxlength="255" required>
+			    </div>
+	 		 </div>`;
+			 
+	$("#divProductDetails").append(htmlDetailSection);
+	previousDivDetailSection = allDivDetails.last(); // lay elenment cuoi
+	previousDivDetailID = previousDivDetailSection.attr("id");
+	
+
+	
+	htmlIconDelete = `<div class="col-4">
+	<a class="btn fas fa-minus icon-dark" title="Remove this Ddetail" style="color:gray;"
+	 href="javascript:removeDetailSectionById('${previousDivDetailID}')"></a>
+	</div>`;
+	
+	previousDivDetailSection.append(htmlIconDelete);
+}
+
+function removeDetailSectionById(element) {
+	$("#" + element).remove();
+}
