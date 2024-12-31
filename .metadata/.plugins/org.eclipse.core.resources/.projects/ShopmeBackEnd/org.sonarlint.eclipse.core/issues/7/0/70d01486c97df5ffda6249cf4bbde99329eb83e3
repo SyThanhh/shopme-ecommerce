@@ -1,28 +1,28 @@
 
-y
-java:S11555">Use isEmpty() to check whether the collection is empty or not.8şâÌ‹2b bdafff848d5f1a383c86b176a7c2eef7h
-W
-java:S1643_"Use a StringBuilder instead.8 ÎÛÌ‹2b b068931cc450442b63f5b3d276ea4297h
-X
-java:S1643Š"Use a StringBuilder instead.8 ÎÛÌ‹2b b068931cc450442b63f5b3d276ea4297h
-Œ
-java:S3655–"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.8 ÎÛÌ‹2b 971331c15669bbd597b9654ae8ac77abh
-}
-java:S6813"BRemove this field injection and use constructor injection instead.8Â˜Ù…‹2b 0132ec8cee01c5dd244e1a60fe6448a1h
-p
-java:S2209r"5Change this instance-reference to a static reference.8 ÎÛÌ‹2b c4ef352f74e502ef5e7bc98e6f4e493dh
-f	java:S106 "+Replace this use of System.out by a logger.8ëšÉá”2b bb1c3f2ea781263d3a2bb92b06a2061fh
-d
-java:S1604Õ"(Make this anonymous inner class a lambda8£‰Êá”2b 79af7de97686c2a55639987a9590d619h
-x
-java:S4973À"<Strings and Boxed types should be compared using "equals()".8£‰Êá”2b de0219f9333d57ea89a9ba235df098bah
 x
 java:S4973Å"<Strings and Boxed types should be compared using "equals()".8£‰Êá”2b de0219f9333d57ea89a9ba235df098bah
-
-java:S3776®"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.8£‰Êá”2b 36ba10663cf9cc70e2cf2d54cc4e6a6fh
-f	java:S106§"+Replace this use of System.out by a logger.8©¹Óá”2b bb1c3f2ea781263d3a2bb92b06a2061fh
-f	java:S106¨"+Replace this use of System.out by a logger.8ñîâ”2b bb1c3f2ea781263d3a2bb92b06a2061fh
+x
+java:S4973À"<Strings and Boxed types should be compared using "equals()".8£‰Êá”2b de0219f9333d57ea89a9ba235df098bah
 ˆ
 java:S1128"MRemove this unused import 'com.shopme.admin.exception.UserNotFoundException'.8…ßºâ”2b 4aa1740123344ed468c9a41c5db42773h
+d
+java:S1604Õ"(Make this anonymous inner class a lambda8£‰Êá”2b 79af7de97686c2a55639987a9590d619h
+X
+java:S1643Š"Use a StringBuilder instead.8 ÎÛÌ‹2b b068931cc450442b63f5b3d276ea4297h
 u
 java:S1128":Remove this unused import 'com.shopme.common.entity.User'.8…ßºâ”2b 00d0b190ebebeb667128a7b82a0e79edh
+y
+java:S11555">Use isEmpty() to check whether the collection is empty or not.8şâÌ‹2b bdafff848d5f1a383c86b176a7c2eef7h
+f	java:S106 "+Replace this use of System.out by a logger.8ëšÉá”2b bb1c3f2ea781263d3a2bb92b06a2061fh
+f	java:S106§"+Replace this use of System.out by a logger.8©¹Óá”2b bb1c3f2ea781263d3a2bb92b06a2061fh
+
+java:S3776®"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.8£‰Êá”2b 36ba10663cf9cc70e2cf2d54cc4e6a6fh
+p
+java:S2209r"5Change this instance-reference to a static reference.8 ÎÛÌ‹2b c4ef352f74e502ef5e7bc98e6f4e493dh
+}
+java:S6813"BRemove this field injection and use constructor injection instead.8Â˜Ù…‹2b 0132ec8cee01c5dd244e1a60fe6448a1h
+f	java:S106¨"+Replace this use of System.out by a logger.8ñîâ”2b bb1c3f2ea781263d3a2bb92b06a2061fh
+Œ
+java:S3655–"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.8 ÎÛÌ‹2b 971331c15669bbd597b9654ae8ac77abh
+W
+java:S1643_"Use a StringBuilder instead.8 ÎÛÌ‹2b b068931cc450442b63f5b3d276ea4297h

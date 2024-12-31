@@ -17,12 +17,12 @@ import com.shopme.admin.FileUploadUtil;
 import com.shopme.admin.MessageAlertCheckNull;
 import com.shopme.admin.category.exporter.CategoryCsvExporter;
 import com.shopme.admin.contstant.SystemConstant;
-import com.shopme.admin.exception.CategoryNotFoundException;
 import com.shopme.admin.exception.UserNotFoundException;
 import com.shopme.admin.user.exproter.UserCsvExporter;
 import com.shopme.common.entity.Category;
 import com.shopme.common.entity.Role;
 import com.shopme.common.entity.User;
+import com.shopme.common.exception.CategoryNotFoundException;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

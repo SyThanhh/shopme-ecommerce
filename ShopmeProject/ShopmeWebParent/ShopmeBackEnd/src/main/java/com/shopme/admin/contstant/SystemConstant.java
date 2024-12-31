@@ -9,4 +9,6 @@ public class SystemConstant {
 	public static final int BRANDS_PER_PAGE = 4;
 	
 	public static final int PRODUCTS_PER_PAGE = 4;
+	
+	public static final int PRODUCTS_PER_PAGE_FE = 10;
 }

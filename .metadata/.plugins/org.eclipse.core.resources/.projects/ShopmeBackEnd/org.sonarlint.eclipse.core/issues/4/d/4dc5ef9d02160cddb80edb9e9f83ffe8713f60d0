@@ -1,15 +1,15 @@
 
-w
-java:S4973c"<Strings and Boxed types should be compared using "equals()".8Œêçà•2b de0219f9333d57ea89a9ba235df098bah
 l
 java:S1153)"1Directly append the argument of String.valueOf().8Œêçà•2b 45cdfe1355af8440ef0718e3bad44243h
+}
+java:S1128"BRemove this unused import 'com.shopme.common.entity.ProductImage'.8ÇŠ÷á•2b ea610f0204ce83ca63bfa78fb12a50b0h
+}
+java:S6813"BRemove this field injection and use constructor injection instead.8Œêçà•2b 0132ec8cee01c5dd244e1a60fe6448a1h
+w
+java:S4973c"<Strings and Boxed types should be compared using "equals()".8Œêçà•2b de0219f9333d57ea89a9ba235df098bah
+‹
+java:S3655z"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.8Œêçà•2b 202b833ebfddceff24532cf9701da0abh
 l
 java:S11532"1Directly append the argument of String.valueOf().8Œêçà•2b 45cdfe1355af8440ef0718e3bad44243h
 ‹
-java:S3655z"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.8Œêçà•2b 202b833ebfddceff24532cf9701da0abh
-}
-java:S6813"BRemove this field injection and use constructor injection instead.8Œêçà•2b 0132ec8cee01c5dd244e1a60fe6448a1h
-‹
 java:S3655Q"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.8ÇŠ÷á•2b c005912a9cc6fe8bcd6dc984fac065edh
-}
-java:S1128"BRemove this unused import 'com.shopme.common.entity.ProductImage'.8ÇŠ÷á•2b ea610f0204ce83ca63bfa78fb12a50b0h

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+	<div th:fragment="header_menu">
+		<form th:action="@{/logout}" method="post" th:hidden="true"
+			name="logoutForm">
+			<input type="submit" />
+		</form>
+		<div class="container-fluid">
+			<div>
+				<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+					<a th:href="@{/}" class="navbar-brand"> <img
+						th:src="@{/images/ShopmeAdminSmall.png}" />
+					</a>
+
+					<button class="navbar-toggler" type="button" data-toggle="collapse"
+						data-target="#topNavbar" aria-controls="topNavbar"
+						aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="topNavbar">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item"><a href="" class="nav-link">Careers</a>
+							</li>
+
+							<li class="nav-item"><a href="" class="nav-link">Payments</a>
+							</li>
+
+							<li class="nav-item"><a href="" class="nav-link">Shipping
+									&amp; Delivery</a></li>
+
+							<li class="nav-item"><a href="" class="nav-link">Login</a></li>
+
+							<li class="nav-item"><a href="" class="nav-link">Contact</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+
+	<!-- Search product -->
+	<div th:fragment="search_nav" class="row">
+		<div class="col-md">
+			<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+		</div>
+	
+	</div>
+	
+	<!-- Footer -->
+	<div th:fragment="footer_menu">
+		<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#bottomNavbar" aria-controls="topNavbar"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="bottomNavbar">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item"><a href="" class="nav-link">About US</a>
+					</li>
+
+					<li class="nav-item"><a href="" class="nav-link">Privacy
+							Notice</a></li>
+
+					<li class="nav-item"><a href="" class="nav-link">Returns
+							&amp; Refunds</a></li>
+
+				</ul>
+
+			</div>
+		</nav>
+		<div th:fragment="footer">
+			<div class="text-center">
+				<p>Shopme - Copyright &copy; Shopme</p>
+
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
+

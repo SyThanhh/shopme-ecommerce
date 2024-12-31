@@ -1,0 +1,24 @@
+
+
+java:S2095"DUse try-with-resources or close this "Stream" in a "finally" clause.8ş§êû•2b cde78e50113cf4638a8f951cf5725e88h
+u
+java:S1118":Add a private constructor to hide the implicit public one.8Àöëû•2b 741051d0343646a4ad4edf2e95e1d70bh
+€
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.8Í²ìû•2b a81259cef8e959c624df1d456e5d3297h
+€
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.8Àöëû•2b a81259cef8e959c624df1d456e5d3297h
+Ë
+java:S4449s"Annotate the parameter with @javax.annotation.Nullable in method 'cleanPath' declaration, or make sure that null can not be passed as argument.8¥ßâû•2b bfcaaf7e291a55efb95b519e1e9d3db1h
+Ë
+java:S4449Z"Annotate the parameter with @javax.annotation.Nullable in method 'cleanPath' declaration, or make sure that null can not be passed as argument.8¥ßâû•2b bfcaaf7e291a55efb95b519e1e9d3db1h
+Ë
+java:S4449"Annotate the parameter with @javax.annotation.Nullable in method 'cleanPath' declaration, or make sure that null can not be passed as argument.8¥ßâû•2b bfcaaf7e291a55efb95b519e1e9d3db1h
+“	java:S1358"YReduce the total number of break and continue statements in this loop to use at most one.8¥ßâû•2b d55669822f1a8cf72ec1911e462a54ebh
+Ë
+java:S4449g"Annotate the parameter with @javax.annotation.Nullable in method 'cleanPath' declaration, or make sure that null can not be passed as argument.8¥ßâû•2b bfcaaf7e291a55efb95b519e1e9d3db1h
+
+java:S1192"SDefine a constant instead of duplicating this literal "../product-images/" 3 times.8¥ßâû•2b 54b0ab5e9c8423a46659fffcf02975e9h
+o
+java:S3416"4Update this logger to use "ProductSaveHelper.class".8ªÑèû•2b 50cf16bee48773edd06e32840b9950e3h
+|
+java:S3457&"AFormat specifiers should be used instead of string concatenation.8Àöëû•2b 7f334974837d05745042e8674b87d356h

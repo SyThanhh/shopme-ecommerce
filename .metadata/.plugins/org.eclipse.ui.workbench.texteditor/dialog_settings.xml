@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="brand"/>
+		<item key="selection" value=""/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
@@ -9,6 +9,13 @@
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
 			<item value="brand"/>
+			<item value="Brand"/>
+			<item value="modal"/>
+			<item value="showDeleteConfirmModal"/>
+			<item value="listCategoriesByBrand"/>
+			<item value="listBrands"/>
+			<item value="/brands/{id}/categories"/>
+			<item value="start"/>
 			<item value="page_link"/>
 			<item value="pagelink"/>
 			<item value="pagi"/>
@@ -16,13 +23,6 @@
 			<item value="logo"/>
 			<item value="updateStatusProduct"/>
 			<item value="link-delete"/>
-			<item value="update"/>
-			<item value="clearFilter"/>
-			<item value="btnCancel"/>
-			<item value="getUserByEmail\"/>
-			<item value="getUserByEmail"/>
-			<item value="Access Denied"/>
-			<item value="Filter"/>
 		</list>
 		<list key="replacehistory">
 		</list>

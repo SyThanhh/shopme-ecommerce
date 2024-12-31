@@ -159,3 +159,13 @@ x
 Hsrc/main/resources/templates/products/product_description_read_only.html,8\d\8d420d1ad0bce6af7142b7cf107cd57411794b3f
 s
 Csrc/main/resources/templates/products/product_images_read_only.html,e\1\e1a21f2364bb5bed060ad3f12d5b4592bb730ac8
+m
+=src/main/java/com/shopme/admin/product/ProductSaveHelper.java,c\7\c795ad56794a89d1db2c6900073149f187d75dda
+e
+5src/main/java/com/shopme/admin/brand/CategoryDTO.java,7\6\766b29fc2f3aa7a0a427686e7ed376092cf4adf4
+i
+9src/main/java/com/shopme/admin/brand/BrandRepository.java,2\a\2ae709b0658336a561bc6e0dfd3ce2a0aef89625
+v
+Fsrc/main/java/com/shopme/admin/user/controller/UserRestController.java,f\2\f29a264a3867874d137c668b5bf633ac148c1a04
+u
+Esrc/main/java/com/shopme/admin/user/controller/AccountController.java,a\1\a1c915424508383abd415a1ac68ccb42b42a6c22

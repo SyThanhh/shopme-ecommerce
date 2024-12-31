@@ -18,10 +18,10 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.shopme.admin.contstant.SystemConstant;
-import com.shopme.admin.exception.CategoryNotFoundException;
 import com.shopme.admin.exception.UserNotFoundException;
 import com.shopme.common.entity.Category;
 import com.shopme.common.entity.User;
+import com.shopme.common.exception.CategoryNotFoundException;
 
 @Service
 @Transactional

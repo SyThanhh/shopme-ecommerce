@@ -1,0 +1,13 @@
+package com.shopme.product;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class ProductService {
+
+	public static final Product_Per_Page = 1;
+	
+	@Autowired
+	ProductRepository productRepository;
+}

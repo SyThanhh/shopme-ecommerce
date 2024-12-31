@@ -31,13 +31,13 @@ import com.shopme.admin.MessageAlertCheckNull;
 import com.shopme.admin.brand.BrandService;
 import com.shopme.admin.category.CategoryService;
 import com.shopme.admin.contstant.SystemConstant;
-import com.shopme.admin.exception.CategoryNotFoundException;
-import com.shopme.admin.exception.ProductNotFoundException;
 import com.shopme.common.entity.Brand;
 import com.shopme.common.entity.Category;
 import com.shopme.common.entity.Product;
 import com.shopme.common.entity.ProductDetail;
 import com.shopme.common.entity.ProductImage;
+import com.shopme.common.exception.CategoryNotFoundException;
+import com.shopme.common.exception.ProductNotFoundException;
 import com.shopme.admin.security.ShopmeUserDetails;
 @Controller
 public class ProductController {

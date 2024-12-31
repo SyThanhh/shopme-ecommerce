@@ -1,17 +1,17 @@
 
 t
+java:S21845"@Cast one of the operands of this addition operation to a "long".b 26b17225b626fb9238849fd60eabdf60h
+t
 java:S4684c"@Replace this persistent entity with a simple POJO or DTO object.b 8c4d3a946a1fcde2ded7e17651fd0ed7h
-v
-java:S6813!"BRemove this field injection and use constructor injection instead.b 0132ec8cee01c5dd244e1a60fe6448a1h
-{
-java:S1128"GRemove this unused import 'com.shopme.admin.category.CategoryPageInfo'.b a557a3591e51b36e44a34d30b437ca7eh
 ƒ
 java:S4449h"èAnnotate the parameter with @javax.annotation.Nullable in method 'cleanPath' declaration, or make sure that null can not be passed as argument.b bfcaaf7e291a55efb95b519e1e9d3db1h
-Ö
-java:S1192v"QDefine a constant instead of duplicating this literal "redirect:/brands" 4 times.b 8e992299ed9cbdda3861959149d781c9h
 }
 java:S1192â"HDefine a constant instead of duplicating this literal "message" 3 times.b 9040ca9bfe0a4c38f81140904fb9db9dh
-t
-java:S21845"@Cast one of the operands of this addition operation to a "long".b 26b17225b626fb9238849fd60eabdf60h
+{
+java:S1128"GRemove this unused import 'com.shopme.admin.category.CategoryPageInfo'.b a557a3591e51b36e44a34d30b437ca7eh
+Ö
+java:S1192v"QDefine a constant instead of duplicating this literal "redirect:/brands" 4 times.b 8e992299ed9cbdda3861959149d781c9h
+v
+java:S6813!"BRemove this field injection and use constructor injection instead.b 0132ec8cee01c5dd244e1a60fe6448a1h
 v
 java:S6813"BRemove this field injection and use constructor injection instead.b 0132ec8cee01c5dd244e1a60fe6448a1h

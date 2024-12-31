@@ -1,0 +1,13 @@
+
+Ä
+java:S4449-"Annotate the parameter with @javax.annotation.Nullable in method 'cleanPath' declaration, or make sure that null can not be passed as argument.b bfcaaf7e291a55efb95b519e1e9d3db1h
+v
+java:S6813"BRemove this field injection and use constructor injection instead.b 0132ec8cee01c5dd244e1a60fe6448a1h
+q
+java:S1854>"=Remove this useless assignment to local variable "savedUser".b 534340dc931cb218b18d9c854d4bb3cfh
+t
+java:S4684'"@Replace this persistent entity with a simple POJO or DTO object.b ee11cbb19052e40b07aac0ca060c23eeh
+b
+java:S1481>".Remove this unused "savedUser" local variable.b b39be3460a0690aca005e147c475e9e7h
+w
+java:S1128"CRemove this unused import 'com.shopme.admin.MessageAlertCheckNull'.b b71112f312bf9d40030db491dd88185ch

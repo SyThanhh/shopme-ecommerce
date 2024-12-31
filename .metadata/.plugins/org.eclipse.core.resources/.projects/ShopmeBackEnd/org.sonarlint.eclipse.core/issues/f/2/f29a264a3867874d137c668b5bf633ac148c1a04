@@ -1,0 +1,9 @@
+
+v
+java:S6813"BRemove this field injection and use constructor injection instead.b 0132ec8cee01c5dd244e1a60fe6448a1h
+ƒ
+java:S1128"ORemove this unused import 'org.springframework.web.bind.annotation.GetMapping'.b f7daf51c8d1fae012d7722cdfa37e0f6h
+v
+java:S6813"BRemove this field injection and use constructor injection instead.b 0132ec8cee01c5dd244e1a60fe6448a1h
+n
+java:S1128":Remove this unused import 'com.shopme.common.entity.User'.b 00d0b190ebebeb667128a7b82a0e79edh

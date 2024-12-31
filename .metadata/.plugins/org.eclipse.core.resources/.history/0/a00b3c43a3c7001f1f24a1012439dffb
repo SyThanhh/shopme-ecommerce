@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: page_head(${pageTitle}, 'none')"></head>
+<body>
+	<div class="container-fluid">
+		<div th:replace="navigation :: header_menu"></div>
+		<div th:replace="navigation :: search_nav"></div>
+		<div th:replace="breabcrumb :: content"></div>
+		
+		
+		<!-- Hiển thị product detail -->
+	
+		
+		
+		<div th:replace="products/images_carousel :: content"></div>
+		<div th:replace="navigation :: footer_menu"></div>
+		
+	</div>
+	
+</body>
+</html>
