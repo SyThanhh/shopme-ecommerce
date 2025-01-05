@@ -59,7 +59,7 @@
 		<item key="Blocks" value="false"/>
 		<item key="Objects.equals &amp; Objects.hash" value="true"/>
 		<item key="LimitElements" value="false"/>
-		<item key="IgnoreDefault" value="true"/>
+		<item key="IgnoreDefault" value="false"/>
 		<item key="StringStyle" value="0"/>
 		<item key="LimitValue" value="10"/>
 		<item key="SkipNull" value="false"/>
@@ -162,5 +162,10 @@
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
 	</section>
 	<section name="RenameInformationPopup">
+	</section>
+	<section name="ExtractMethodWizard">
+		<item key="ThrowRuntimeExceptions" value="false"/>
+		<item key="GenerateJavadoc" value="false"/>
+		<item key="AccessModifier" value="2"/>
 	</section>
 </section>

@@ -1,0 +1,8 @@
+
+}
+java:S6813"BRemove this field injection and use constructor injection instead.8¿™õ”Ã2b 0132ec8cee01c5dd244e1a60fe6448a1h
+e	java:S106&"+Replace this use of System.out by a logger.8È‚ù”Ã2b bb1c3f2ea781263d3a2bb92b06a2061fh
+
+java:S1128"FRemove this unused import 'org.springframework.core.annotation.Order'.8õù”Ã2b 2d3a3dff1bc73384c7ef2d4ae982f33fh
+v	java:S125)"<This block of commented-out lines of code should be removed.8ááú”Ã2b cccab950ed3dadc081a6c51727bf8e9dh
+e	java:S106("+Replace this use of System.out by a logger.8­Ôû”Ã2b bb1c3f2ea781263d3a2bb92b06a2061fh

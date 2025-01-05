@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<head th:replace="fragments :: page_head(${pageTitle},'tag')"></head>
+<link rel="stylesheet" th:href="@{/richtext/richtext.min.css}">
+<script th:src="@{/richtext/jquery.richtext.min.js}"></script>
+</head>
+<body>
+
+	<div class="container-fluid">
+		<div th:replace="comm/navigation :: menu"></div>
+
+		<div class="text-center">
+			<h2>Site Settings</h2>
+		</div>
+
+		<div>
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs" id="settingTab" role="tablist">
+					<li class="nav-item"><a class="nav-link active"
+						data-toggle="tab" href="#overview" role="tab">General</a></li>
+					<li class="nav-item"><a class="nav-link" data-toggle="tab"
+						href="#description" role="tab">Countries</a></li>
+					<li class="nav-item"><a class="nav-link" data-toggle="tab"
+						href="#images" role="tab">State</a></li>
+					<li class="nav-item"><a class="nav-link" data-toggle="tab"
+						href="#details" role="tab">Mail Server</a></li>
+					<li class="nav-item"><a class="nav-link" data-toggle="tab"
+						href="#shipping" role="tab">Mail Templates</a></li>
+				</ul>
+
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div class="tab-pane active p-3" id="general" role="tabpanel">
+						
+					</div>
+					<div class="tab-pane" id="description" role="tabpanel">
+
+						<th:block sec:authorize="hasAnyAuthority('Salesperson')">
+							<div
+								th:replace="products/product_description_read_only :: content"></div>
+						</th:block>
+
+						<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+							<div th:replace="products/product_description :: content"></div>
+						</th:block>
+					</div>
+					<div class="tab-pane" id="images" role="tabpanel">
+						<th:block sec:authorize="hasAnyAuthority('Salesperson')">
+							<div th:replace="products/product_images_read_only :: content"></div>
+						</th:block>
+
+						<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+							<div th:replace="products/product_images :: content"></div>
+						</th:block>
+					</div>
+					<div class="tab-pane p-3" id="details" role="tabpanel">
+
+						<th:block sec:authorize="hasAnyAuthority('Salesperson')">
+							<div th:replace="products/product_details_read_only :: content"></div>
+						</th:block>
+
+						<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+							<div th:replace="products/product_details :: content"></div>
+							<div>
+								<button class="btn btn-secondary mt-3" value=""
+									id="btnAddDetailSeciton">Add More Details</button>
+							</div>
+						</th:block>
+
+					</div>
+					<div class="tab-pane p-3" id="shipping" role="tabpanel">
+						<th:block sec:authorize="hasAnyAuthority('Salesperson')">
+							<div th:replace="products/product_shipping_read_only :: content"></div>
+						</th:block>
+
+						<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+							<div th:replace="products/product_shipping :: content"></div>
+						</th:block>
+					</div>
+				</div>
+				<!-- Action -->
+				
+			</div>
+	
+		
+
+			
+
+		<!-- Modal -->
+		<div th:replace="modal_fragments :: modal_dialog"></div>
+
+		<!-- Footer -->
+
+		<div th:replace="comm/footer :: footer"></div>
+	</div>
+
+</body>
+</html>

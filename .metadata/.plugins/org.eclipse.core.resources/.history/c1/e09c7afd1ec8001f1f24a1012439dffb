@@ -1,0 +1,8 @@
+package com.shopme.admin.setting;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class SettingService {
+
+}

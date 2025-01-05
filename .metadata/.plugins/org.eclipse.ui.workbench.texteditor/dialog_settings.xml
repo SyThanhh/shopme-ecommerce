@@ -8,6 +8,7 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="green"/>
 			<item value="brand"/>
 			<item value="Brand"/>
 			<item value="modal"/>
@@ -22,7 +23,6 @@
 			<item value="brand.logo"/>
 			<item value="logo"/>
 			<item value="updateStatusProduct"/>
-			<item value="link-delete"/>
 		</list>
 		<list key="replacehistory">
 		</list>

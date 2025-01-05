@@ -19,4 +19,6 @@ public class MessageAlertCheckNull<T> {
 			redirectAttributes.addFlashAttribute("typeAlert", "danger");
 		}
 	}
+	
+	
 }

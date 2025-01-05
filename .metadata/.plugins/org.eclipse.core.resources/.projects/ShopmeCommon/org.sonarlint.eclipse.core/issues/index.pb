@@ -15,3 +15,13 @@ c
 3src/main/java/com/shopme/common/entity/Product.java,3\8\38c1fcddfdabd0054cfc5bcf7842ff5e7f61d6dc
 i
 9src/main/java/com/shopme/common/entity/ProductDetail.java,3\b\3b3e419d8b89a1c5ca04b5dfcbea05ce47fb4735
+c
+3src/main/java/com/shopme/common/entity/Setting.java,2\7\27b39f8de5d3785f399cd0f0513353fe24a14433
+k
+;src/main/java/com/shopme/common/entity/SettingCategory.java,4\4\44bac4d29df1668934618df713b790b2fdd94d21
+f
+6src/main/java/com/shopme/common/entity/SettingBag.java,d\8\d8561d9b103e77a0ffc54ae379d75758300df1d5
+w
+Gsrc/main/java/com/shopme/common/exception/ProductNotFoundException.java,6\3\6307c8f9997a4b50c307a712c723fefcdd36e74c
+d
+4src/main/java/com/shopme/common/entity/Currency.java,7\9\790380a3f7d2f0856baa82a9b5ee4c041b45f381

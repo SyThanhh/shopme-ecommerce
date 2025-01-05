@@ -1,0 +1,11 @@
+
+R
+java:S5786"Remove this 'public' modifier.b 4c9184f37cff01bcdc32dc486ec36961h
+ˆ
+java:S1128"TRemove this unnecessary import: same package classes are always implicitly imported.b 0f297945a1b88be0805593b604ad1043h
+R
+java:S5786!"Remove this 'public' modifier.b 4c9184f37cff01bcdc32dc486ec36961h
+a
+java:S2699"-Add at least one assertion to this test case.b d18f6fbae959d75d8e276ac8032b62c7h
+R
+java:S5786"Remove this 'public' modifier.b 4c9184f37cff01bcdc32dc486ec36961h
