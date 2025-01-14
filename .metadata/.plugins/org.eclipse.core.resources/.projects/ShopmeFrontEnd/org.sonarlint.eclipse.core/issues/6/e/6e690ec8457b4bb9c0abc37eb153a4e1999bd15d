@@ -9,3 +9,7 @@ java:S6813"BRemove this field injection and use constructor injection instead.
 java:S2184e"@Cast one of the operands of this addition operation to a "long".8††ÿïÁ2b 26b17225b626fb9238849fd60eabdf60h
 …
 java:S1192;"JDefine a constant instead of duplicating this literal "pageTitle" 3 times.8žï€ðÁ2b 8867422bd3a297029a1bccaef6e4eb37h
+ƒ
+java:S1128"HRemove this unused import 'org.springframework.data.domain.PageRequest'.8«½É¹Ã2b 78f4cb0687ca97c9613e6daef8706edah
+€
+java:S1128"ERemove this unused import 'org.springframework.data.domain.Pageable'.8«½É¹Ã2b a995f8500c9dbf3b8e69965ebd7ea269h

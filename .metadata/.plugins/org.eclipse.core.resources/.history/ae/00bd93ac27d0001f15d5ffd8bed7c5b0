@@ -1,0 +1,18 @@
+package com.shopme.common.entity;
+
+import java.util.Set;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+public class Country {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	private String name;
+	private String code;
+	private Set<State> states;
+}

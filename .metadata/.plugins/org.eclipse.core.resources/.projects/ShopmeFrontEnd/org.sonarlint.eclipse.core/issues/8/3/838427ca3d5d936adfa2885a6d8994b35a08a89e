@@ -1,5 +1,5 @@
 
-v
-java:S6813"BRemove this field injection and use constructor injection instead.b 0132ec8cee01c5dd244e1a60fe6448a1h
 k
 java:S1128"0Remove this unused import 'java.util.ArrayList'.8í¼™”Ã2b 510ef3bd202c030c041eba1094753b66h
+v
+java:S6813"BRemove this field injection and use constructor injection instead.b 0132ec8cee01c5dd244e1a60fe6448a1h

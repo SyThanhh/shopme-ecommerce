@@ -1,0 +1,25 @@
+package com.shopme.common.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "state")
+public class State {
+
+	@Id
+	@GeneratedValue(strategy = false, length=45)
+	private Integer id;
+	
+	@Column(nullable = false, length=45)
+	private String name;
+	
+	@ManyToOne
+	@JoinColumn(name="country_id")
+	private Country country;
+}
