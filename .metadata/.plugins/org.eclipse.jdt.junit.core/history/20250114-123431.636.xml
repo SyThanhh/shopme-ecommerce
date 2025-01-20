@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="Rerun testListCountries()" project="ShopmeBackEnd" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="com.shopme.admin.setting.country.CountryRestControllerTests" time="0.609" displayname="CountryRestControllerTests" uniqueid="[engine:junit-jupiter]/[class:com.shopme.admin.setting.country.CountryRestControllerTests]">
-    <testcase name="testListCountries" classname="com.shopme.admin.setting.country.CountryRestControllerTests" time="0.609" displayname="testListCountries()" uniqueid="[engine:junit-jupiter]/[class:com.shopme.admin.setting.country.CountryRestControllerTests]/[method:testListCountries()]"/>
-  </testsuite>
-</testrun>

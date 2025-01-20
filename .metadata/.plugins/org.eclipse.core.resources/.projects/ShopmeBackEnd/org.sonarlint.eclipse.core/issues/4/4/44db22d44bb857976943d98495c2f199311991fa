@@ -1,0 +1,23 @@
+
+R
+java:S2970H"Complete the assertion.8Å±ÓØ∆2b e069df186d4ad17b8dff755709e7bb65h
+Y
+java:S5786'"Remove this 'public' modifier.8∂‘®ö∆2b 4c9184f37cff01bcdc32dc486ec36961h
+¢
+java:S1128"gRemove this unused import 'org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete'.8ñº†∞∆2b 6335ab7c1966154b0d319f1f03d5a9fch
+…
+java:S11307"çRemove the declaration of thrown exception 'com.fasterxml.jackson.core.JsonProcessingException' which is a subclass of 'java.lang.Exception'.8ﬁÔıØ∆2b e049fc99996cc15a66c90a39ed32d79bh
+Y
+java:S5786"Remove this 'public' modifier.8≈Àò∞∆2b 4c9184f37cff01bcdc32dc486ec36961h
+Y
+java:S5786Q"Remove this 'public' modifier.8éö±Æ∆2b 4c9184f37cff01bcdc32dc486ec36961h
+Y
+java:S5786j"Remove this 'public' modifier.8ÇßÖ∞∆2b 4c9184f37cff01bcdc32dc486ec36961h
+R
+java:S2970a"Complete the assertion.8ÇßÖ∞∆2b e069df186d4ad17b8dff755709e7bb65h
+ó
+java:S1128"\Remove this unused import 'org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest'.8€»ú∞∆2b 4fda82504c050d836c18bded7d343713h
+Y
+java:S57867"Remove this 'public' modifier.8∂‘®ö∆2b 4c9184f37cff01bcdc32dc486ec36961h
+…
+java:S1130Q"çRemove the declaration of thrown exception 'com.fasterxml.jackson.core.JsonProcessingException' which is a subclass of 'java.lang.Exception'.8ÇßÖ∞∆2b e049fc99996cc15a66c90a39ed32d79bh

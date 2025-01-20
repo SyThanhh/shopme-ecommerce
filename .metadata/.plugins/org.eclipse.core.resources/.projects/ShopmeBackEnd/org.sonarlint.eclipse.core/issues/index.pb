@@ -181,3 +181,15 @@ c
 3src/main/resources/templates/settings/settings.html,7\7\77f3e6009706c6a04aad891b2e991d86a0a32ea8
 n
 >src/main/java/com/shopme/admin/setting/CurrencyRepository.java,5\2\5249c29a3e70d457a2a55e9fa9a4670b52af56cf
+A
+shopmeBackend.log,c\5\c5dada1a50d177284cdca1d40d963b7977e1131d
+z
+Jsrc/test/java/com/shopme/admin/setting/country/CountryRepositoryTests.java,5\4\546b028cb38efeee30542b6c56524e28a3ec293a
+~
+Nsrc/test/java/com/shopme/admin/setting/country/CountryRestControllerTests.java,4\4\44db22d44bb857976943d98495c2f199311991fa
+y
+Isrc/main/java/com/shopme/admin/setting/country/CountryRestController.java,5\9\5987f42830acf2b1511600d0e2beef3a02cda01b
+d
+4src/main/resources/templates/settings/countries.html,1\f\1fc13e99e8fe71f2466e0f9e523345580bd93e33
+b
+2src/main/resources/static/js/countries_settings.js,0\3\030ebdf19a2ac536134f39c2d063f8c1bc8078d9

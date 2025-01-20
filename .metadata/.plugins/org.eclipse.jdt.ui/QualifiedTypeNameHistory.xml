@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="javax.persistence.OrderBy"/>
-    <fullyQualifiedTypeName name="com.shopme.product.ProductRepository"/>
-    <fullyQualifiedTypeName name="com.shopme.common.entity.Category"/>
-    <fullyQualifiedTypeName name="com.shopme.common.exception.CategoryNotFoundException"/>
-    <fullyQualifiedTypeName name="java.lang.Exception"/>
-    <fullyQualifiedTypeName name="com.shopme.common.exception.ProductNotFoundException"/>
-    <fullyQualifiedTypeName name="org.springframework.data.repository.query.Param"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
-    <fullyQualifiedTypeName name="org.springframework.data.domain.Page"/>
-    <fullyQualifiedTypeName name="com.shopme.common.entity.Product"/>
     <fullyQualifiedTypeName name="org.springframework.data.domain.Pageable"/>
     <fullyQualifiedTypeName name="javax.persistence.Enumerated"/>
     <fullyQualifiedTypeName name="javax.persistence.EnumType"/>
@@ -21,7 +11,6 @@
     <fullyQualifiedTypeName name="javax.persistence.GeneratedValue"/>
     <fullyQualifiedTypeName name="javax.persistence.GenerationType"/>
     <fullyQualifiedTypeName name="javax.persistence.Column"/>
-    <fullyQualifiedTypeName name="org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest"/>
     <fullyQualifiedTypeName name="org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase"/>
     <fullyQualifiedTypeName name="org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace"/>
     <fullyQualifiedTypeName name="com.shopme.admin.currency.CurrencyRepositoryTests"/>
@@ -37,7 +26,6 @@
     <fullyQualifiedTypeName name="com.shopme.admin.setting.CurrencyRepository"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.lang.Iterable"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
     <fullyQualifiedTypeName name="org.springframework.web.multipart.MultipartFile"/>
     <fullyQualifiedTypeName name="org.springframework.web.servlet.mvc.support.RedirectAttributes"/>
@@ -45,7 +33,6 @@
     <fullyQualifiedTypeName name="org.springframework.util.StringUtils"/>
     <fullyQualifiedTypeName name="com.shopme.admin.FileUploadUtil"/>
     <fullyQualifiedTypeName name="com.shopme.admin.setting.GeneralSettingBag"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="java.util.Optional"/>
     <fullyQualifiedTypeName name="com.shopme.common.entity.Currency"/>
     <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
@@ -56,8 +43,21 @@
     <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
     <fullyQualifiedTypeName name="javax.servlet.ServletRequest"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.shopme.setting.SettingService"/>
     <fullyQualifiedTypeName name="com.shopme.common.entity.Setting"/>
+    <fullyQualifiedTypeName name="org.springframework.security.test.context.support.WithMockUser"/>
+    <fullyQualifiedTypeName name="org.springframework.test.web.servlet.MvcResult"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.databind.ObjectMapper"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager"/>
+    <fullyQualifiedTypeName name="org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest"/>
+    <fullyQualifiedTypeName name="com.shopme.admin.setting.country.CountryRepository"/>
+    <fullyQualifiedTypeName name="com.shopme.common.entity.Country"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.DeleteMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+    <fullyQualifiedTypeName name="javax.persistence.criteria.CriteriaBuilder.In"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
 </qualifiedTypeNameHistroy>

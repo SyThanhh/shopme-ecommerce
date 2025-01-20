@@ -168,4 +168,7 @@
 		<item key="GenerateJavadoc" value="false"/>
 		<item key="AccessModifier" value="2"/>
 	</section>
+	<section name="BuildPathsPropertyPage">
+		<item key="pageIndex" value="3"/>
+	</section>
 </section>

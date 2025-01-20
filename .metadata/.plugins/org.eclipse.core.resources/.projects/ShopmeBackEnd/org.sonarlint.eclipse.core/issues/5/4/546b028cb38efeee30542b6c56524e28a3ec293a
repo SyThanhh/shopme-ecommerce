@@ -1,0 +1,21 @@
+
+K
+java:S2970F"Complete the assertion.b e069df186d4ad17b8dff755709e7bb65h
+R
+java:S5786"Remove this 'public' modifier.b 4c9184f37cff01bcdc32dc486ec36961h
+R
+java:S5786$"Remove this 'public' modifier.b 4c9184f37cff01bcdc32dc486ec36961h
+R
+java:S5786,"Remove this 'public' modifier.b 4c9184f37cff01bcdc32dc486ec36961h
+R
+java:S57869"Remove this 'public' modifier.b 4c9184f37cff01bcdc32dc486ec36961h
+R
+java:S5786@"Remove this 'public' modifier.b 4c9184f37cff01bcdc32dc486ec36961h
+R
+java:S5786"Remove this 'public' modifier.b 4c9184f37cff01bcdc32dc486ec36961h
+M
+java:S5838 "Use isPositive() instead.b c3a641c198c2f74f6950ac39a2eac20eh
+M
+java:S5838("Use isPositive() instead.b c3a641c198c2f74f6950ac39a2eac20eh
+è
+java:S1128"TRemove this unnecessary import: same package classes are always implicitly imported.8‰û†Æ∆2b 6c2fcd1dad421ef5b4399f5b6e5ae8cbh

@@ -1,0 +1,5 @@
+package com.shopme.admin.state;
+
+public class StateDTO {
+
+}

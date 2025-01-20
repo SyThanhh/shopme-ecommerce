@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<head th:replace="fragments :: page_head('Settings - Shopme Admin','tag')"></head>
+<link rel="stylesheet" th:href="@{/richtext/richtext.min.css}">
+<script th:src="@{/richtext/jquery.richtext.min.js}"></script>
+</head>
+<body>
+
+	<div class="container-fluid">
+		<div th:replace="comm/navigation :: menu"></div>
+
+		<div class="text-center">
+			<h2>Site Settings</h2>
+		</div>
+
+		<div th:if="${message != null}" th:class="'alert alert-' + ${typeAlert} + ' text-center'" role="alert">
+		    [[${message}]]
+		</div>
+
+		<div>
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs" id="settingTab" role="tablist">
+					<li class="nav-item"><a class="nav-link active"
+						data-toggle="tab" href="#general" role="tab">General</a></li>
+					<li class="nav-item"><a class="nav-link" data-toggle="tab"
+						href="#countries" role="tab">Countries</a></li>
+					<li class="nav-item"><a class="nav-link" data-toggle="tab"
+						href="#state" role="tab">State</a></li>
+					<li class="nav-item"><a class="nav-link" data-toggle="tab"
+						href="#mailServer" role="tab">Mail Server</a></li>
+					<li class="nav-item"><a class="nav-link" data-toggle="tab"
+						href="#mailTemplate" role="tab">Mail Templates</a></li>
+				</ul>
+
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div class="tab-pane active p-3" id="general" role="tabpanel">
+						<div th:replace="settings/general :: content"></div>
+					</div>
+					<div class="tab-pane p-3" id="countries" role="tabpanel">
+						<div th:replace="settings/countries :: content"></div>
+					</div>
+					<div class="tab-pane" id="state" role="tabpanel">
+						<h2>State</h2>
+					</div>
+					<div class="tab-pane p-3" id="mailServer" role="tabpanel">
+						<h2>Mail Server</h2>
+
+					</div>
+					<div class="tab-pane p-3" id="mailTemplate" role="tabpanel">
+						<h2>Mail Templates</h2>
+					</div>
+				</div>
+				<!-- Action -->
+				
+			</div>
+	
+		<!-- Toast -->
+		<div style="display: flex; justify-content: center; align-items: center; min-width: 200px; max-width: 600px; height: auto; background-color: #343a40; color: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);" 
+		    role="alert" aria-live="polite" aria-atomic="true" data-delay="3000">
+		    
+		    <div 
+		        style="width: 100%; text-align: center; font-size: 16px;" 
+		        role="alert" aria-live="assertive" aria-atomic="true">
+		        
+		        <div 
+		            id="toast-body" 
+		            style="padding: 12px; background-color: #495057; border-radius: 4px;">
+		            <span id="toastMessage" style="display: inline-block;">This is a toast message. The width is now adjusted!</span>
+		        </div>
+		    </div>
+		</div>
+
+
+					
+
+		<!-- Modal -->
+		<div th:replace="modal_fragments :: modal_dialog"></div>
+
+		<!-- Footer -->
+
+		<div th:replace="comm/footer :: footer"></div>
+	</div>
+	<script>
+	 	MAX_FILE_SIZE = 102400;	
+	 	contextPath = "[[@{/}]]"
+ 	</script>
+ <script th:src="@{/js/comm_form.js}"></script>
+  <script th:src="@{/js/countries_settings.js}"></script>
+</body>
+</html>

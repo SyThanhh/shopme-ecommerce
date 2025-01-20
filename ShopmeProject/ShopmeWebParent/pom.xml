@@ -17,12 +17,12 @@
 	<description>parent spring web project</description>
 	
 	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
+		<licenses>
+			<license/>
+		</licenses>
+		<developers>
+			<developer/>
+		</developers>
 	<scm>
 		<connection/>
 		<developerConnection/>

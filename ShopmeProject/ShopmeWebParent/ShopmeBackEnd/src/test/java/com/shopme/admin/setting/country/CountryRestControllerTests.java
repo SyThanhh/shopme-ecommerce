@@ -106,7 +106,7 @@ public class CountryRestControllerTests {
 	public void testDeleteCountry() throws Exception {
 		Integer countryId = 6;
 		String url = "/countries/delete/" + countryId;
-		mockMvc.perform(get(url)).andExpect(status().isOk());
+		mockMvc.perform(delete(url)).andExpect(status().isOk());
 		
 		Optional<Country> findById = repo.findById(countryId);
 		

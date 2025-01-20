@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="CountryRepositoryTests.testGetCountry" project="ShopmeBackEnd" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="com.shopme.admin.country.CountryRepositoryTests" time="0.341" displayname="CountryRepositoryTests" uniqueid="[engine:junit-jupiter]/[class:com.shopme.admin.country.CountryRepositoryTests]">
-    <testcase name="testGetCountry" classname="com.shopme.admin.country.CountryRepositoryTests" time="0.341" displayname="testGetCountry()" uniqueid="[engine:junit-jupiter]/[class:com.shopme.admin.country.CountryRepositoryTests]/[method:testGetCountry()]"/>
-  </testsuite>
-</testrun>

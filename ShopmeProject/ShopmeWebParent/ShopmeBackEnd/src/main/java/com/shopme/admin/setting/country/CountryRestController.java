@@ -26,10 +26,10 @@ public class CountryRestController {
 	@PostMapping("/countries/save")
 	public String save(@RequestBody Country country) {
 		Country savedCountry = repo.save(country);
-		return String.valueOf(savedCountry);
+		return String.valueOf(savedCountry.getId());
 	}
 	
-	@GetMapping("/countries/delete/{id}")
+	@DeleteMapping("/countries/delete/{id}")
 	public void detele(@PathVariable("id") Integer id) {
 		repo.deleteById(id);
 	}
