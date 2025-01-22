@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "state")
+@Table(name = "states")
 public class State {
 
 	@Id
@@ -60,7 +60,7 @@ public class State {
 
 	@Override
 	public String toString() {
-		return "State [id=" + id + ", name=" + name + ", country=" + country + "]";
+		return "State [id=" + id + ", name=" + name + "]";
 	}
 	
 }

@@ -148,7 +148,7 @@ function loadCountries() {
 	url = contextPath + "countries/list";
 	$.get(url, function(responseJSON) {
 		dropDownCountry.empty();
-		
+		console.log(responseJSON)
 		$.each(responseJSON, function(index, country) {
 			optionValue = country.id + "-" + country.code;
 			$("<option>").val(optionValue).text(country.name).appendTo(dropDownCountry);

@@ -21,7 +21,9 @@
 </head>
 
 <body>
-	
+	<div th:fragment="footer" class="text-center m-3">
+		<p>Shopme Control Panel - Copyright &copy; Shopme</p>
+	</div>
 	<!-- Sort by label -->
 	<th th:fragment="column_link(moduleURL ,fieldName, columnLabel, removeTag)" th:remove="${removeTag}">
 		<a  th:href="@{${moduleURL} +'/page/' + ${currentPage} +'?sortField='+ ${fieldName} +'&sortDir=' + ${sortField != fieldName ? sortDir : reverseSortDir} + ${keyword != null ? '&keyword=' + keyword : ''}}" class="text-white">

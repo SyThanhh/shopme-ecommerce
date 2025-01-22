@@ -21,6 +21,8 @@ import com.shopme.admin.FileUploadUtil;
 import com.shopme.admin.MessageAlertCheckNull;
 import com.shopme.common.entity.Currency;
 import com.shopme.common.entity.Setting;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @Controller
 public class SettingController {
@@ -88,6 +90,7 @@ public class SettingController {
 	private void updateSettingValuesFromForm(HttpServletRequest request, List<Setting> listSettings) {
 		for (Setting setting : listSettings) {
 			String value = request.getParameter(setting.getKey());
+			
 			if (value != null) {
 				setting.setValue(value);
 			}
@@ -96,5 +99,26 @@ public class SettingController {
 		service.saveAll(listSettings);
 	}
 	
+	@PostMapping("/settings/save_mail_server")
+	public String saveMailServerSetttings(HttpServletRequest request, RedirectAttributes ra) {
+		List<Setting> mailServerSettings = service.getMailServerSettings();
+		
+		updateSettingValuesFromForm(request, mailServerSettings);
+		
+		ra.addFlashAttribute("message", "Mail server settings have been saved");
+		
+		return "redirect:/settings#mailServer";
+	}
+	
+	@PostMapping("/settings/save_mail_templates")
+	public String saveMailTemplateSetttings(HttpServletRequest request, RedirectAttributes ra) {
+		List<Setting> mailTemplateSettings = service.getMailTemplateSettings();
+		
+		updateSettingValuesFromForm(request, mailTemplateSettings);
+		
+		ra.addFlashAttribute("message", "Mail template settings have been saved");
+		
+		return "redirect:/settings#mailTemplates";
+	}
 	
 }

@@ -73,8 +73,6 @@ o
 ?src/main/java/com/shopme/admin/category/CategoryRepository.java,1\c\1c3be64582ba3fe2e9c4e030e46f3440a06edc3c
 t
 Dsrc/test/java/com/shopme/admin/category/CategoryRepositoryTests.java,9\3\93d9951f06b2e3dcfefd2bd173b7f90bbda717aa
-T
-$src/main/resources/static/js/comm.js,f\8\f8a96b32314b3b7ee967c77fe19c5ea5f41dec22
 [
 +src/main/resources/templates/error/404.html,8\6\86ab23eafdb6c42007ea36ad265189b900f5bb37
 Y

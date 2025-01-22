@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: page_head(${pageTitle}, 'none')"></head>
+<body>
+	<div class="container-fluid">
+		<div th:replace="navigation :: header_menu"></div>
+		
+		<h2>Customer Register</h2>
+		<form th:action="@{/create_customer}" method="post" th:object="${customer}">
+			<div class="border border-secondary">
+				<div class="form-group row">
+				</div>
+			</div>
+		</form>
+		
+		<div th:replace="navigation :: footer_menu"></div>
+		
+	</div>
+	
+</body>
+</html>

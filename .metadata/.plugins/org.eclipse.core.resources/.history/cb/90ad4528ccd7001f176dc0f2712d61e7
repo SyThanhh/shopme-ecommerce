@@ -1,0 +1,18 @@
+package com.shopme.customer;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.shopme.common.entity.Customer;
+import com.shopme.setting.CountryRepository;
+
+@Service
+public class CustomerService {
+
+	@Autowired private CustomerRepository repo;
+	@Autowired private CountryRepository countryRepository;
+	
+	public List<Customer> listAllCoutries;
+}

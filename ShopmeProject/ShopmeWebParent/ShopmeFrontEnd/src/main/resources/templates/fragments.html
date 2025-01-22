@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="page_head(title, remove)" th:remove="${remove}">
+<head th:fragment="page_head(title, remove, additionalCssPath)" th:remove="${remove}">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>[[${title}]] - [[${SITE_NAME}]]</title> 
@@ -8,6 +8,10 @@
 	<!-- CSS -->
 	<link rel="stylesheet" th:href="@{/css/style.css}" />
 
+	<th:block th:if="${additionalCssPath != null}">
+        <link rel="stylesheet" th:href="@{${additionalCssPath}}" />
+    </th:block>
+   
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 	
@@ -133,6 +137,26 @@
 			 th:title="'Delete this' +  ${enityName}"></a>
 		</th:block>
 	</div>
+	
+	
+	 <div th:fragment="modal_dialog" class="modal fade text-center" id="modalDialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modalTitle">Warning</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <span id="modalBody"></span>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
 
