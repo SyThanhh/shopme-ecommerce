@@ -18,6 +18,11 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
  
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+	
     // Cấu hình bảo mật HTTP
     @Override
     protected void configure(HttpSecurity http) throws Exception {

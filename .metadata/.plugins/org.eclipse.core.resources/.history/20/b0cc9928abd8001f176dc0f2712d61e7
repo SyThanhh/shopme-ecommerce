@@ -1,0 +1,58 @@
+package com.shopme;
+
+import java.io.*;
+import java.security.KeyStore;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
+
+public class trustStoreUpdater {
+	public static void main(String[] args) throws Exception {
+        // Nội dung chứng chỉ PEM (thay thế với chứng chỉ thực tế của bạn)
+        String pemCertificate = 
+            "-----BEGIN CERTIFICATE-----\r\n"
+            + "MIIC7DCCAdSgAwIBAgIQe3B3OHALQEerWSwBDq3lcTANBgkqhkiG9w0BAQsFADCB\r\n"
+            + "gTE6MDgGA1UECwwxZ2VuZXJhdGVkIGJ5IEF2YXN0IEFudGl2aXJ1cyBmb3IgU1NM\r\n"
+            + "L1RMUyBzY2FubmluZzEeMBwGA1UECgwVQXZhc3QgV2ViL01haWwgU2hpZWxkMSMw\r\n"
+            + "IQYDVQQDDBpBdmFzdCBXZWIvTWFpbCBTaGllbGQgUm9vdDAeFw0yNDEyMDkwODM3\r\n"
+            + "MTdaFw0yNTAzMDMwODM3MTZaMBkxFzAVBgNVBAMTDnNtdHAuZ21haWwuY29tMFkw\r\n"
+            + "EwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE6ZKAKor7qgZ9KOvVmgNm8TNL9KaMMX8K\r\n"
+            + "pvIEOel+LmHysGfLr9/BHn4AwJYVeRyb3iR1ijN7leYRRup9QKEYDKOBkTCBjjAO\r\n"
+            + "BgNVHQ8BAf8EBAMCB4AwEwYDVR0lBAwwCgYIKwYBBQUHAwEwDAYDVR0TAQH/BAIw\r\n"
+            + "ADAdBgNVHQ4EFgQUtRpD/WqQOIiN6AiRWtqz6zwUjowwHwYDVR0jBBgwFoAU++c8\r\n"
+            + "fQ/9HgHdSBJPPNdkjmlJ/+QwGQYDVR0RBBIwEIIOc210cC5nbWFpbC5jb20wDQYJ\r\n"
+            + "KoZIhvcNAQELBQADggEBAKLX++hcytqmij4aU1UYdQjD/YNkQ3i8DwLuIaid+WUg\r\n"
+            + "ubIm56GxmMUiuxQFdGc+aLX9f1kALvu+I9s5e4yJsROong6pOFyN6tw6O/3nhG9O\r\n"
+            + "i7MPapSqA4ihCcjUZatVRVhBWBVbpuX0nt9uNM4VTN1yF8jU1LQH45Fi6JbHEoUq\r\n"
+            + "fR/Ia5qNEPMuKjoljff9Q13FbMaJtNMDevvHn9fWovSpVuEjAH2Aixt2f1V8Nrb1\r\n"
+            + "jEqkmsGId21PCKbx1Jo109RyC9zlXTlAwHjQ0Aw/zduv3ntfvUAZLR/9oFf/mXda\r\n"
+            + "iPTEuLJfisueni5mM2POrF6IkCbtITnxFChNwNoxGms=\r\n"
+            + "-----END CERTIFICATE-----";
+
+        // Chuyển chuỗi chứng chỉ thành InputStream
+        byte[] certBytes = pemCertificate.getBytes();
+        ByteArrayInputStream certStream = new ByteArrayInputStream(certBytes);
+
+        // Chuyển chứng chỉ PEM thành X509Certificate
+        CertificateFactory certFactory = CertificateFactory.getInstance("X.509");
+        X509Certificate certificate = (X509Certificate) certFactory.generateCertificate(certStream);
+
+        // Tải TrustStore mặc định
+        String trustStorePath = System.getProperty("java.home") + "/lib/security/cacerts";
+        String alias = "smtp-cert";
+
+        KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
+        try (java.io.FileInputStream trustStoreStream = new java.io.FileInputStream(trustStorePath)) {
+            trustStore.load(trustStoreStream, "changeit".toCharArray());
+        }
+
+        // Thêm chứng chỉ vào TrustStore
+        trustStore.setCertificateEntry(alias, certificate);
+
+        // Lưu lại TrustStore
+        try (java.io.FileOutputStream trustStoreOut = new java.io.FileOutputStream(trustStorePath)) {
+            trustStore.store(trustStoreOut, "changeit".toCharArray());
+        }
+
+        System.out.println("Chứng chỉ đã được thêm vào TrustStore.");
+    }
+}

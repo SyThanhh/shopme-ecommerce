@@ -1,0 +1,54 @@
+package com.shopme;
+
+import java.io.*;
+import java.security.KeyStore;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
+
+public class trustStoreUpdater {
+    public static void main(String[] args) throws Exception {
+        String certPath = "C:\\Program Files\\Java\\jdk-17\\lib\\security\\smtp_certificate.pem";
+        String trustStorePath = System.getProperty("java.home") + "/lib/security/cacerts";
+        String alias = "smtp-cert";
+
+        // Đọc chứng chỉ từ tệp PEM
+        try (BufferedReader reader = new BufferedReader(new FileReader(certPath))) {
+            StringBuilder certContent = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                certContent.append(line).append("\n");
+            }
+
+            // Kiểm tra nếu tệp chứng chỉ có nội dung hợp lệ
+            if (certContent.length() == 0) {
+                System.out.println("Tệp chứng chỉ trống.");
+                return;
+            }
+
+            // Chuyển chuỗi chứng chỉ thành InputStream
+            ByteArrayInputStream certStream = new ByteArrayInputStream(certContent.toString().getBytes());
+
+            // Chuyển chứng chỉ PEM thành X509Certificate
+            CertificateFactory certFactory = CertificateFactory.getInstance("X.509");
+            X509Certificate certificate = (X509Certificate) certFactory.generateCertificate(certStream);
+
+            // Tải TrustStore mặc định
+            KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
+            try (FileInputStream trustStoreStream = new FileInputStream(trustStorePath)) {
+                trustStore.load(trustStoreStream, "changeit".toCharArray());
+            }
+
+            // Thêm chứng chỉ vào TrustStore
+            trustStore.setCertificateEntry(alias, certificate);
+
+            // Lưu lại TrustStore
+            try (FileOutputStream trustStoreOut = new FileOutputStream(trustStorePath)) {
+                trustStore.store(trustStoreOut, "changeit".toCharArray());
+            }
+
+            System.out.println("Chứng chỉ đã được thêm vào TrustStore.");
+        } catch (IOException e) {
+            System.out.println("Lỗi khi đọc chứng chỉ: " + e.getMessage());
+        }
+    }
+}
