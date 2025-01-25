@@ -1,0 +1,70 @@
+package com.shopme.admin;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import com.shopme.admin.setting.GeneralSettingBag;
+
+
+// cấu hình class này để hiển thị ảnh bên clients
+@Configuration
+public class MvcConfig implements WebMvcConfigurer {
+
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		
+		//User
+	    // Tên thư mục chứa ảnh người dùng
+	    String dirName = "user-photos";
+	    
+	    exposeDirectory(dirName, registry);
+	    
+	    //Category
+	    String categoryDirName = "../categories-images";
+	    exposeDirectory(categoryDirName, registry);
+	  
+
+	    // Brand
+	    String brandDirName = "../brand-logos";
+	    exposeDirectory(brandDirName, registry);
+	    
+	    //Product image
+	    String productDirName = "../product-images";
+	    exposeDirectory(productDirName, registry);
+	    
+	    //Site logo
+	    String siteLogoDirName = "../site-logo";
+	    exposeDirectory(siteLogoDirName, registry);
+	  
+	}
+
+	private void exposeDirectory(String pathPattern, ResourceHandlerRegistry registry) {
+		 // Tạo đường dẫn tới thư mục ảnh người dùng
+	    Path path = Paths.get(pathPattern);
+	    
+	    // Lấy đường dẫn tuyệt đối của thư mục ảnh người dùng
+	    String absolutePath = path.toFile().getAbsolutePath();
+	    
+	    String logicalPath = pathPattern.replace("..", "") + "/**";
+	    
+	    // Cấu hình bộ xử lý tài nguyên cho các ảnh người dùng
+	    registry.addResourceHandler(logicalPath)
+	        .addResourceLocations("file:/" + absolutePath + "/");
+	}
+
+	@Override
+	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
+		// TODO Auto-generated method stub
+		WebMvcConfigurer.super.addArgumentResolvers(resolvers);
+	}
+
+	
+}

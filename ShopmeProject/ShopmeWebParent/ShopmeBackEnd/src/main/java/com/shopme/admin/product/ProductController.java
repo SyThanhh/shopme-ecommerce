@@ -31,6 +31,8 @@ import com.shopme.admin.MessageAlertCheckNull;
 import com.shopme.admin.brand.BrandService;
 import com.shopme.admin.category.CategoryService;
 import com.shopme.admin.contstant.SystemConstant;
+import com.shopme.admin.paging.PagingAndSortingHelper;
+import com.shopme.admin.paging.PagingAndSortingParam;
 import com.shopme.common.entity.Brand;
 import com.shopme.common.entity.Category;
 import com.shopme.common.entity.Product;
@@ -53,64 +55,26 @@ public class ProductController {
 	@Autowired
 	private CategoryService categoryService;
 
-	// 
-
-
 	
 	@GetMapping("/products")
 	public String listFirstPgae(Model model) {
-		return listByPage(1, "asc", "name",null, 0 ,model);
+		return "redirect:/products/page/1?sortField=name&sortDir=asc&categoryId=0";
 	}
 	
 	@GetMapping("/products/page/{pageNum}")
 	public String listByPage(@PathVariable(name="pageNum") int pageNum,
-			 @RequestParam(name = "sortDir", defaultValue = "asc") String sortDir,
-			 @RequestParam(name = "sortField", defaultValue = "name") String sortField,
-             @RequestParam(name = "keyword", required = false) String keyword,
+			 @PagingAndSortingParam(listName = "listProducts", moduleURL = "/products") PagingAndSortingHelper helper,
              @RequestParam(name= "categoryId", required = false) Integer categoryId,
 	                         Model model) {
 
-	
-	    Page<Product> page = productService.listByPage(pageNum, sortField, sortDir, keyword, categoryId);
-	    List<Product> listProducts  = page.getContent();
+		productService.listByPage(pageNum, helper, categoryId);
+	  
 	    
 	    List<Category> listCategories = categoryService.listCategoriesUsedInForm();
 
-	
-	 // tinh vi tri hien tai
-		long startCount= (pageNum - 1) * SystemConstant.BRANDS_PER_PAGE + 1;
 		
-		long endCount = startCount + SystemConstant.BRANDS_PER_PAGE - 1;
-		
-		if(endCount > page.getTotalElements()) {
-			endCount = page.getTotalElements();
-		}
-		
-	    // categoryId 
-	    if(categoryId != null ) model.addAttribute("categoryId", categoryId);
-		
-		// show categories user form filter
+		if (categoryId != null) model.addAttribute("categoryId", categoryId);
 		model.addAttribute("listCategories", listCategories);
-		// reserver sort firstName
-		String reverseSortDir = sortDir.equals("asc") ? "desc" : "asc";
-		
-		// show paging 
-		model.addAttribute("currentPage", pageNum);
-		model.addAttribute("totalPages", page.getTotalPages());
-		model.addAttribute("startCount", startCount);
-		model.addAttribute("endCount", endCount);
-		model.addAttribute("totalItems", page.getTotalElements()); // total user
-		model.addAttribute("listProducts", listProducts);
-		
-		// sort
-		model.addAttribute("sortField", sortField);
-		model.addAttribute("sortDir", sortDir);
-		
-		// reverse sort
-		model.addAttribute("reverseSortDir", reverseSortDir);
-		
-		// keyword
-		model.addAttribute("keyword", keyword);
 		
 		return "products/products";
 	}
@@ -151,14 +115,15 @@ public class ProductController {
 			@AuthenticationPrincipal ShopmeUserDetails loggedUser
 			) throws IOException, ProductNotFoundException {
 
-		if(loggedUser.hasRole("Salesperson")) {
-			Product productUpdatePrice =  productService.saveProductPrice(product);
-			
-			MessageAlertCheckNull.alertCheckNull(productUpdatePrice, ra);
+		if(!loggedUser.hasRole("Admin") && !loggedUser.hasRole("editor")) {
+			if(loggedUser.hasRole("Salesperson")) {
+				Product productUpdatePrice =  productService.saveProductPrice(product);
+				
+				MessageAlertCheckNull.alertCheckNull(productUpdatePrice, ra);
 
-			return "redirect:/products";
+				return "redirect:/products";
+			}
 		}
-		
 		ProductSaveHelper.setMainImageName(mainImageMultipart, product);
 
 		// Xử lý hình ảnh phụ đã có

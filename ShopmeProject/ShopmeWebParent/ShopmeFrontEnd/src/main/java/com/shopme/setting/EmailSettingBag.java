@@ -17,7 +17,6 @@ public class EmailSettingBag extends SettingBag {
 	}
 
 	public int getPort() {
-		System.out.println("Super : " + super.toString());
 		return Integer.parseInt(super.getValue("MAIL_PORT"));
 	}
 	

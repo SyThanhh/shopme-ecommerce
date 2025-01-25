@@ -24,6 +24,8 @@ import com.shopme.admin.FileUploadUtil;
 import com.shopme.admin.MessageAlertCheckNull;
 import com.shopme.admin.contstant.SystemConstant;
 import com.shopme.admin.exception.UserNotFoundException;
+import com.shopme.admin.paging.PagingAndSortingHelper;
+import com.shopme.admin.paging.PagingAndSortingParam;
 import com.shopme.admin.user.UserService;
 import com.shopme.admin.user.exproter.UserCsvExporter;
 import com.shopme.admin.user.exproter.UserExcelExporter;
@@ -41,51 +43,22 @@ public class UserController {
 	
 	// page first 
 	@GetMapping("/users")
-	private String listFirstPage(Model model) {
+	private String listFirstPage(Model model,
+			@PagingAndSortingParam(listName = "listUsers", moduleURL = "/users") PagingAndSortingHelper helper) {
 		
-		return listByPage(1, model, "firstName", "asc", null);
+		return "redirect:/users/page/1?sortField=firstName&sortDir=asc";
 	}
 	
 	
 	// paging 
 	@GetMapping("/users/page/{pageNum}")
-	public String listByPage(@PathVariable(name="pageNum") int pageNum,
-			Model model, @Param("sortField") String sortField, @Param("sortDir") String sortDir,
-			@Param("keyword") String keyword)
+	public String listByPage(@PagingAndSortingParam(listName = "listUsers", moduleURL = "/users") PagingAndSortingHelper helper,
+			@PathVariable(name="pageNum") int pageNum,
+			Model model)
 	{
-		Page<User> page = userService.listByPage(pageNum, sortField, sortDir, keyword);
+		System.out.println("helper : " + helper);
+		userService.listByPage(pageNum, helper);
 		
-		List<User> listUsers = page.getContent(); // lấy ds User
-	
-		// tinh vi tri hien tai
-		long startCount= (pageNum - 1) * SystemConstant.USER_PER_PAGE + 1;
-		
-		long endCount = startCount + SystemConstant.USER_PER_PAGE - 1;
-		
-		if(endCount > page.getTotalElements()) {
-			endCount = page.getTotalElements();
-		}
-		// reserver sort firstName
-		String reverseSortDir = sortDir.equals("asc") ? "desc" : "asc";
-		
-		// show paging 
-		model.addAttribute("currentPage", pageNum);
-		model.addAttribute("totalPages", page.getTotalPages());
-		model.addAttribute("startCount", startCount);
-		model.addAttribute("endCount", endCount);
-		model.addAttribute("totalItems", page.getTotalElements()); // total user
-		model.addAttribute("listusers", listUsers);
-		
-		// sort
-		model.addAttribute("sortField", sortField);
-		model.addAttribute("sortDir", sortDir);
-		
-		// reverse sort
-		model.addAttribute("reverseSortDir", reverseSortDir);
-		
-		// keyword
-		model.addAttribute("keyword", keyword);
-
 		return "users/users";
 	}
 	

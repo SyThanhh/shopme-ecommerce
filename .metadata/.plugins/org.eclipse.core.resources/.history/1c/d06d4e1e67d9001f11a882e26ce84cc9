@@ -1,0 +1,12 @@
+package com.shopme.admin.customer;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class CustomerService {
+
+	public static final int CUSTOMER_PER_PAGE = 10;
+	
+	@Autowired private CustomerRepository repo;
+}

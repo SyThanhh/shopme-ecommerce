@@ -63,53 +63,67 @@ function deleteCountry() {
 	});
 }
 function updateCountry() {
-	url = contextPath + "countries/save";
-	countryName = fieldCountryName.val();
-	countryCode = fieldCountryCode.val();
+	if(!validateFormCountry()) return;
+		url = contextPath + "countries/save";
+		countryName = fieldCountryName.val();
+		countryCode = fieldCountryCode.val();
 
-	countryId = dropDownCountry.val().split("-")[0];
-	
-	jsonData= {id : countryId, name: countryName, code : countryCode};
-	
-	$.ajax({
-		type: 'POST',
-		url : url,
-		beforeSend : function(xhr) {
-			xhr.setRequestHeader(csrfHeaderName, csrfValue);	
-		},
-		data : JSON.stringify(jsonData),
-		contentType : 'application/json',
-	}).done(function(countryId) {
-		$("#dropDownCountries option:selected").val(countryId + "-" + countryCode);
-		$("#dropDownCountries option:selected").text(countryName);
-		showToastMessage("The Country has been updated ");
+		countryId = dropDownCountry.val().split("-")[0];
 		
-		changeFormStateToNewCountry();
-	}).fail(function() {
-		showToastMessage("Error Couldn't Connect DB");
-	});
+		jsonData= {id : countryId, name: countryName, code : countryCode};
+		
+		$.ajax({
+			type: 'POST',
+			url : url,
+			beforeSend : function(xhr) {
+				xhr.setRequestHeader(csrfHeaderName, csrfValue);	
+			},
+			data : JSON.stringify(jsonData),
+			contentType : 'application/json',
+		}).done(function(countryId) {
+			$("#dropDownCountries option:selected").val(countryId + "-" + countryCode);
+			$("#dropDownCountries option:selected").text(countryName);
+			showToastMessage("The Country has been updated ");
+			
+			changeFormStateToNewCountry();
+		}).fail(function() {
+			showToastMessage("Error Couldn't Connect DB");
+		});
+}
+
+function validateFormCountry() {
+	formCountry = document.getElementById("formCountry");
+		if(!formCountry.checkValidity()) {
+			formCountry.reportValidity();
+			return false;
+		}
+		return true;
 }
 function addCountry() {
-	url = contextPath + "countries/save";
-	countryName = fieldCountryName.val();
-	countryCode = fieldCountryCode.val();
-
-	jsonData= {name: countryName, code : countryCode};
 	
-	$.ajax({
-		type: 'POST',
-		url : url,
-		beforeSend : function(xhr) {
-			xhr.setRequestHeader(csrfHeaderName, csrfValue);	
-		},
-		data : JSON.stringify(jsonData),
-		contentType : 'application/json',
-	}).done(function(countryId) {
-		selectNewlyAddedCountry(countryId, countryName, countryCode);
-		showToastMessage("The new Country has been added ");
-	}).fail(function() {
-		showToastMessage("Error Couldn't Connect DB");
-	});
+	if(!validateFormCountry()) return;
+		url = contextPath + "countries/save";
+		countryName = fieldCountryName.val();
+		countryCode = fieldCountryCode.val();
+
+		jsonData= {name: countryName, code : countryCode};
+		
+		$.ajax({
+			type: 'POST',
+			url : url,
+			beforeSend : function(xhr) {
+				xhr.setRequestHeader(csrfHeaderName, csrfValue);	
+			},
+			data : JSON.stringify(jsonData),
+			contentType : 'application/json',
+		}).done(function(countryId) {
+			selectNewlyAddedCountry(countryId, countryName, countryCode);
+			showToastMessage("The new Country has been added ");
+		}).fail(function() {
+			showToastMessage("Error Couldn't Connect DB");
+		});
+	
+	
 }
 function selectNewlyAddedCountry(countryId, countryName, countryCode) {
 	optionValue = countryId + "-" + countryCode;

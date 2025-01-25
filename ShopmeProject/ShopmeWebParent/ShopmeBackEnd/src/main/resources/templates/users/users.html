@@ -25,7 +25,7 @@
 		</div>
 		
 		<!-- Search -->
-		<div th:replace="fragments :: search_form('/users/page/1')"></div>
+		<div th:replace="fragments :: search_form"></div>
 		
 		<!-- List item -->
 		
@@ -34,29 +34,29 @@
 				<thead class="thead-dark">
 					<tr>
 						 <th class="hideable-column">
-						 	<th th:replace="fragments :: column_link('/users','id', 'User ID', 'tag')"></th>
+						 	<th th:replace="fragments :: column_link(,'id', 'User ID', 'tag')"></th>
 						 </th>
 						   
 					
 						<th>Photos</th>
 						<th class="hideable-column">
-						 	<th th:replace="fragments :: column_link('/users','email', 'E-mail', 'tag')"></th>
+						 	<th th:replace="fragments :: column_link('email', 'E-mail', 'tag')"></th>
 						 </th>
 					
 					
-						 <th th:replace="fragments :: column_link('/users','firstName', 'First Name', 'none')"></th>
+						 <th th:replace="fragments :: column_link('firstName', 'First Name', 'none')"></th>
 					
-						<th th:replace="fragments :: column_link('/users','lastName', 'Last Name', 'none')"></th>
+						<th th:replace="fragments :: column_link('lastName', 'Last Name', 'none')"></th>
 				
 						<th>Roles</th>
 					
-						<th th:replace="fragments :: column_link('/users','enabled', 'Enabled', 'none')"></th>
+						<th th:replace="fragments :: column_link('enabled', 'Enabled', 'none')"></th>
 				
 						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="user : ${listusers}">
+					<tr th:each="user : ${listUsers}">
 						
 						<td class="hideable-column" th:text="${user.id}"></td>
 						<td>
@@ -109,7 +109,7 @@
 		<!-- Showing User -->
 		
 		<!-- Paging -->
-			<div th:replace="fragments :: pagination('/users', 'users')"></div>
+			<div th:replace="fragments :: pagination('users')"></div>
 		<!-- Modal -->
 		<div th:replace="modal_fragments :: confirm_modal"></div>
 		

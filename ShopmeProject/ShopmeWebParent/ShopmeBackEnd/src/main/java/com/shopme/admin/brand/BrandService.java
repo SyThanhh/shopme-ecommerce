@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.shopme.admin.contstant.SystemConstant;
 import com.shopme.admin.exception.BrandNotFoundException;
+import com.shopme.admin.paging.PagingAndSortingHelper;
 import com.shopme.common.entity.Brand;
 
 @Service
@@ -26,15 +27,10 @@ public class BrandService {
 	}
 	
 	// pagination
-	public Page<Brand> listByPage(int pageNum, String sortField, String sortDir, String keyword) {
-		Sort sort = Sort.by(sortField);
-		sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
-
-		Pageable pageable = PageRequest.of(pageNum - 1, SystemConstant.BRANDS_PER_PAGE, sort);
-		if(keyword != null && !keyword.isEmpty()) {
-			return brandRepo.findAll(keyword, pageable);
-		}
-		return brandRepo.findAll(pageable);
+	public void listByPage(int pageNum, PagingAndSortingHelper helper) {
+		
+		helper.listEntities(pageNum, SystemConstant.BRANDS_PER_PAGE , brandRepo);
+		
 	}
 	
 	public Brand saveBrands(Brand brand) {

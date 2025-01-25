@@ -59,8 +59,8 @@ public class CustomerController {
 		String subject = emailSettings.getCustomerVerifySubject();
 		String content = emailSettings.getCustomerVerifyContent();
 		
-		MimeMessage message = mailSender.createMimeMessage();
-		MimeMessageHelper helper = new MimeMessageHelper(message);
+		MimeMessage message = mailSender.createMimeMessage(); // đại diện cho một email theo chuẩn MIME (Multipurpose Internet Mail Extensions).
+		MimeMessageHelper helper = new MimeMessageHelper(message); // Hỗ trợ cấu hình email như tiêu đề, nội dung, người gửi, người nhận
 		
 		helper.setFrom(emailSettings.getFromAddress(), emailSettings.getSenderName());
 		helper.setTo(toAddress);

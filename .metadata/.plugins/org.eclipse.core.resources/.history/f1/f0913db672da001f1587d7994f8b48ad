@@ -1,0 +1,40 @@
+package com.shopme.admin.paging;
+
+import java.util.List;
+
+import org.springframework.web.method.support.ModelAndViewContainer;
+
+import com.shopme.admin.contstant.SystemConstant;
+import com.shopme.common.entity.User;
+
+public class PagingAndSortingHelper {
+
+	private ModelAndViewContainer model;
+	public PagingAndSortingHelper(ModelAndViewContainer model) {
+		this.model
+	}
+
+	public void updateModelAttributes() {
+		List<User> listUsers = page.getContent(); // lấy ds User
+		
+		// tinh vi tri hien tai
+		long startCount= (pageNum - 1) * SystemConstant.USER_PER_PAGE + 1;
+		
+		long endCount = startCount + SystemConstant.USER_PER_PAGE - 1;
+		
+		if(endCount > page.getTotalElements()) {
+			endCount = page.getTotalElements();
+		}
+		// reserver sort firstName
+		
+		// show paging 
+		model.addAttribute("currentPage", pageNum);
+		model.addAttribute("totalPages", page.getTotalPages());
+		model.addAttribute("startCount", startCount);
+		model.addAttribute("endCount", endCount);
+		model.addAttribute("totalItems", page.getTotalElements()); // total user
+		model.addAttribute("listusers", listUsers);
+	}
+	
+	
+}

@@ -21,7 +21,7 @@
 		</div>
 		
 		<!-- Search -->
-		<div th:replace="fragments :: search_form('/brands/page/1')"></div>
+		<div th:replace="fragments :: search_form"></div>
 		
 		<!-- List item -->
 		<div class="full-details">
@@ -30,11 +30,11 @@
 					<tr>
 						<th class="hideable-column">Brand ID</th>
 						<th>Logo</th>
-					
-						<th th:replace="fragments :: column_link('/brands','name', 'Brand Name', 'none')"></th>
+						<th
+							th:replace="fragments :: column_link('name', 'Brand Name', 'none')" />
 						<th>Categories</th>
+						<th>Sub Categories</th>
 						<th>Action</th>
-						
 					</tr>
 				</thead>
 				<tbody>
@@ -85,7 +85,7 @@
 		</div>
 	
 		<!-- Showing Category list -->
-		<div th:replace="fragments :: pagination('/brands', 'Brands')"></div>
+		<div th:replace="fragments :: pagination('Brands')"></div>
 
 		<!-- Modal -->
 		<div th:replace="modal_fragments :: confirm_modal"></div>

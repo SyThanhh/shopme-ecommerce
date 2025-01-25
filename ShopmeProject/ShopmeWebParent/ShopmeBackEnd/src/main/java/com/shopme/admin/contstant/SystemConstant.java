@@ -11,4 +11,6 @@ public class SystemConstant {
 	public static final int PRODUCTS_PER_PAGE = 4;
 	
 	public static final int PRODUCTS_PER_PAGE_FE = 10;
+	
+	public static final int CUSTOMER_PER_PAGE = 10;
 }

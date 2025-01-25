@@ -13,7 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.shopme.admin.contstant.SystemConstant;
-
+import com.shopme.admin.paging.PagingAndSortingHelper;
 import com.shopme.common.entity.Product;
 import com.shopme.common.entity.ProductImage;
 import com.shopme.common.exception.CategoryNotFoundException;
@@ -30,29 +30,28 @@ public class ProductService {
 		return (List<Product>) productRepository.findAll();
 	}
 	
-	public Page<Product> listByPage(int pageNum, String sortField, String sortDir, String keyword, Integer categoryId) {
-		Sort sort = Sort.by(sortField);
-		sort = sortDir.equals("asc") ? sort.ascending() : sort.descending();
-
-		Pageable pageable = PageRequest.of(pageNum - 1, SystemConstant.PRODUCTS_PER_PAGE, sort);
-		// search in category
-		if(keyword != null && !keyword.isEmpty()) {
-			// check categoryId exist
-			if(categoryId != null && categoryId > 0) {
+	public void listByPage(int pageNum, PagingAndSortingHelper helper, Integer categoryId) {
+		Pageable pageable = helper.createPageable(SystemConstant.PRODUCTS_PER_PAGE, pageNum);
+		String keyword = helper.getKeyword();
+		Page<Product> page = null;
+		
+		if (keyword != null && !keyword.isEmpty()) {
+			if (categoryId != null && categoryId > 0) {
 				String categoryIdMatch = "-" + String.valueOf(categoryId) + "-";
-				return productRepository.searchInCategory(categoryId, categoryIdMatch,keyword, pageable);
-				
+				page = productRepository.searchInCategory(categoryId, categoryIdMatch, keyword, pageable);
+			} else {
+				page = productRepository.findAll(keyword, pageable);
 			}
-			return productRepository.findAll(keyword, pageable);
+		} else {
+			if (categoryId != null && categoryId > 0) {
+				String categoryIdMatch = "-" + String.valueOf(categoryId) + "-";
+				page = productRepository.findAllInCategory(categoryId, categoryIdMatch, pageable);
+			} else {		
+				page = productRepository.findAll(pageable);
+			}
 		}
 		
-		// check categoryId exist
-		if(categoryId != null && categoryId > 0) {
-			String categoryIdMatch = "-" + String.valueOf(categoryId) + "-";
-			return productRepository.findAllInCategory(categoryId, categoryIdMatch, pageable);
-			
-		}
-		return productRepository.findAll(pageable);
+		helper.updateModelAttributes(pageNum, page);
 	}
 	
 	

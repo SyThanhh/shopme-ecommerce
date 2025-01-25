@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" >
 <body>
 
 	<div th:fragment="menu">
-		<form th:action="@{/logout}" method="post" th:hidden="true"
-			name="logoutForm">
+		<form th:action="@{/logout}" method="post" th:hidden="true" name="logoutForm">
 			<input type="submit" />
 		</form>
 		<div class="container-fluid">
@@ -27,9 +26,9 @@
 								<li class="nav-item dropdown"><a th:href="@{/users}"
 									class="nav-link dropdown-toggle" data-toggle="dropdown">Users</a>
 									<div class="dropdown-menu">
-										<a class="dropdown-item" id="logoutLink"
+										<a class="dropdown-item"
 											th:href="@{/users/new}">Create New</a> <a
-											class="dropdown-item" id="logoutLink" th:href="@{/users}">View
+											class="dropdown-item"  th:href="@{/users}">View
 											All</a>
 									</div></li>
 							</th:block>
@@ -39,9 +38,9 @@
 								<li class="nav-item dropdown"><a th:href="@{/categories}"
 									class="nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>
 									<div class="dropdown-menu">
-										<a class="dropdown-item" id="logoutLink"
+										<a class="dropdown-item"
 											th:href="@{/categories/new}">Create New</a> <a
-											class="dropdown-item" id="logoutLink"
+											class="dropdown-item"
 											th:href="@{/categories}">View All</a>
 									</div></li>
 
