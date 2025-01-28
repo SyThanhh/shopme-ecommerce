@@ -191,3 +191,11 @@ d
 4src/main/resources/templates/settings/countries.html,1\f\1fc13e99e8fe71f2466e0f9e523345580bd93e33
 b
 2src/main/resources/static/js/countries_settings.js,0\3\030ebdf19a2ac536134f39c2d063f8c1bc8078d9
+q
+Asrc/main/java/com/shopme/admin/paging/PagingAndSortingHelper.java,0\8\081d10bb39226dfccd037f3d479dcdd8d04d18f9
+k
+;src/main/java/com/shopme/admin/paging/SearchRepository.java,8\e\8eb0518d8a158bf573b41b7851e0ea74e6114c42
+p
+@src/main/java/com/shopme/admin/paging/PagingAndSortingParam.java,f\5\f5d9c751deeca6397d39fcb969d7f406ed93972e
+{
+Ksrc/main/java/com/shopme/admin/paging/PagingAndSortingArgumentResolver.java,5\1\51438723cf282aa0bbecf86222aac3c1abb3c4d4

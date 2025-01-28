@@ -1,8 +1,6 @@
 
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-Y
-)src/main/resources/application.properties,0\6\06f65155ec73600b9fc5c4dc2883d4bb84d8e284
 [
 +src/main/resources/templates/error/403.html,0\3\03165d59884d54d9c365995d00ac3c4cb7e87c92
 W
@@ -59,3 +57,23 @@ c
 3src/main/java/com/shopme/setting/SettingFilter.java,3\6\3606b3ecb696794fec3fd7f1657ca4bec64b99f6
 g
 7src/main/java/com/shopme/setting/SettingRepository.java,8\3\83ccce1d96e967efb8190a75fe88a08e2e53f0b8
+j
+:src/main/java/com/shopme/security/CustomerUserDetails.java,c\a\cac338e70f3286013af7b933c537ce649fe71dcc
+q
+Asrc/main/java/com/shopme/security/CustomerUserDetailsService.java,4\b\4b8adf6879d2b70a511a2e318f44712dbc576d6a
+f
+6src/main/java/com/shopme/customer/CustomerService.java,f\b\fbb2b8194e6a8ff43717d11accdfce37ecc0ab8a
+i
+9src/main/java/com/shopme/customer/CustomerController.java,9\7\9798b93e274d1c9d6a873e39cfe701c27bd3d8ec
+l
+<src/main/java/com/shopme/oauth/CustomerOAuthUserService.java,d\9\d9827666d054bdc52235a8d7886163cad50061d4
+f
+6src/main/java/com/shopme/oauth/CustomerOAuth2User.java,2\6\264ab09a7daed19677ea104c72075a26e59601ba
+W
+'src/main/resources/templates/login.html,6\4\64b48127ab06e5df4a6ed58b34ac3aba28784c99
+i
+9src/main/java/com/shopme/customer/CustomerRepository.java,5\8\58277c95076934def7a82f550240e05621151a3e
+n
+>src/test/java/com/shopme/customer/CustomerRepositoryTests.java,2\9\298c9b14f44b12784c6219b3d9c8796b919f4175
+R
+"src/main/resources/application.yml,a\6\a6d8b8556fee0e03112ce2bf34b8cb27a7dc9e58

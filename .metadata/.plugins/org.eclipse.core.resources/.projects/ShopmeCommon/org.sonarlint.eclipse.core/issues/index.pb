@@ -29,3 +29,7 @@ a
 1src/main/java/com/shopme/common/entity/State.java,f\d\fdf1746cfbde810c345faf5ac5c082bbfa285db7
 c
 3src/main/java/com/shopme/common/entity/Country.java,7\4\747e1f0f923005587348f060e6e481a5334fe68d
+d
+4src/main/java/com/shopme/common/entity/Customer.java,2\b\2b790562dbb4eead0b3ad416de82402b3d4f352c
+n
+>src/main/java/com/shopme/common/entity/AuthenticationType.java,7\4\74a722ae371132be0afad49fcb54f5f273a30146

@@ -1,0 +1,43 @@
+server:
+  port: 80
+  servlet:
+    context-path: /Shopme
+
+spring:
+  application:
+    name: ShopmeFrontEnd
+  datasource:
+    url: jdbc:mysql://localhost:3306/shopmedb
+    username: root
+    password: nst271023
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: your-google-client-id
+            client-secret: your-google-client-secret
+            scope:
+              - profile
+              - email
+            redirect-uri: "{baseUrl}/login/oauth2/code/google"
+            client-name: Google
+          facebook:
+            client-id: your-facebook-client-id
+            client-secret: your-facebook-client-secret
+            scope:
+              - public_profile
+              - email
+            redirect-uri: "{baseUrl}/login/oauth2/code/facebook"
+            client-name: Facebook
+
+# Replace `your-google-client-id` and `your-google-client-secret` with actual values
+# Replace `your-facebook-client-id` and `your-facebook-client-secret` with actual values

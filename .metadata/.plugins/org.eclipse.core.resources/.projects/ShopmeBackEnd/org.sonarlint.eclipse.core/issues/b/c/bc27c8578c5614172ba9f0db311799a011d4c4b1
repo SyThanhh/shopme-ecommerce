@@ -1,19 +1,25 @@
 
-t
-java:S4684k"@Replace this persistent entity with a simple POJO or DTO object.b ee11cbb19052e40b07aac0ca060c23eeh
-
-java:S1192û"JDefine a constant instead of duplicating this literal "typeAlert" 4 times.b 7dd1c6b5cc4575dd0ee21deea35013a2h
-ƒ
-java:S4449p"èAnnotate the parameter with @javax.annotation.Nullable in method 'cleanPath' declaration, or make sure that null can not be passed as argument.b bfcaaf7e291a55efb95b519e1e9d3db1h
 v
-java:S6813'"BRemove this field injection and use constructor injection instead.b 0132ec8cee01c5dd244e1a60fe6448a1h
+java:S6813)"BRemove this field injection and use constructor injection instead.b 0132ec8cee01c5dd244e1a60fe6448a1h
+}
+java:S1192Ç"HDefine a constant instead of duplicating this literal "message" 4 times.b 9040ca9bfe0a4c38f81140904fb9db9dh
 t
-java:S2184="@Cast one of the operands of this addition operation to a "long".b 26b17225b626fb9238849fd60eabdf60h
-Ö
-java:S1192ü"PDefine a constant instead of duplicating this literal "redirect:/users" 4 times.b 089a63a89bf0d0f25cfc4322cc1885a5h
+java:S4684P"@Replace this persistent entity with a simple POJO or DTO object.b ee11cbb19052e40b07aac0ca060c23eeh
 S
-java:S3751,"Make this method non "private".b 07132c9ca5c9684b6cb8c085e5160571h
+java:S3751."Make this method non "private".b 07132c9ca5c9684b6cb8c085e5160571h
+ƒ
+java:S4449U"èAnnotate the parameter with @javax.annotation.Nullable in method 'cleanPath' declaration, or make sure that null can not be passed as argument.b bfcaaf7e291a55efb95b519e1e9d3db1h
+Ö
+java:S1192Ñ"PDefine a constant instead of duplicating this literal "redirect:/users" 4 times.b 089a63a89bf0d0f25cfc4322cc1885a5h
+
+java:S1192É"JDefine a constant instead of duplicating this literal "typeAlert" 4 times.b 7dd1c6b5cc4575dd0ee21deea35013a2h
 n
 java:S1128":Remove this unused import 'org.hibernate.service.Service'.b a3cf8929507d859ec9cc2db88d74f1ffh
-}
-java:S1192ù"HDefine a constant instead of duplicating this literal "message" 4 times.b 9040ca9bfe0a4c38f81140904fb9db9dh
+e	java:S106;"+Replace this use of System.out by a logger.8‡¬∆Á…2b bb1c3f2ea781263d3a2bb92b06a2061fh
+|
+java:S1128
+"ARemove this unused import 'org.springframework.data.domain.Page'.8‡¬∆Á…2b 1ba1b3ffa8e498449d22535d2b4352fch
+á
+java:S1128"LRemove this unused import 'org.springframework.data.repository.query.Param'.8‡¬∆Á…2b f62f9237ba4c9d994a62432e282c5ce5h
+Å
+java:S1128"FRemove this unused import 'com.shopme.admin.contstant.SystemConstant'.8‡¬∆Á…2b fa0a45d68d4a603823cfa07286b685fah

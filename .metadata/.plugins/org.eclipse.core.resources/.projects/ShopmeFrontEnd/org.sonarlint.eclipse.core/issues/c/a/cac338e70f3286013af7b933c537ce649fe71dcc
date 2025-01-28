@@ -1,0 +1,5 @@
+
+^
+java:S1948"*Make "customer" transient or serializable.b 91ec1f9324753048c0096d036a694f86h
+_
+java:S1168"+Return an empty collection instead of null.b 37a6259cc0c1dae299a7866489dff0bdh

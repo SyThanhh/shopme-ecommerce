@@ -8,6 +8,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import com.shopme.setting.EmailSettingBag;
 
+// cài đặt mail
 public class Utility {
 	public static String getSiteURL(HttpServletRequest request) {
 		String siteURL = request.getRequestURL().toString();

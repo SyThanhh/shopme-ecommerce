@@ -1,5 +1,6 @@
 package com.shopme.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -13,28 +14,67 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import com.shopme.oauth.CustomerOAuthUserService;
+import com.shopme.oauth.OAuth2LoginSuccessHandler;
+
 @Configuration
 @EnableWebSecurity //  turn on security
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+	@Autowired
+	private CustomerOAuthUserService oAuthUserService;
  
+	@Autowired
+	private OAuth2LoginSuccessHandler oauthLoginHandler;
+	
+	@Autowired
+	private DatabaseLoginSuccessHandler dataLoginsHandler;
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 	
     // Cấu hình bảo mật HTTP
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().anyRequest().permitAll();
-        	
-    
-    }
 
-    // Cấu hình WebSecurity để bỏ qua xác thực cho các tài nguyên tĩnh
     @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring()
-           .antMatchers("/images/**", "/js/**", "/webjars/**"); // Bỏ qua xác thực cho các tài nguyên tĩnh này
+	protected void configure(HttpSecurity http) throws Exception {
+		http.authorizeRequests()
+			.antMatchers("/customers").authenticated()
+			.anyRequest().permitAll()
+			.and()
+			.formLogin()
+				.loginPage("/login")
+				.usernameParameter("email")
+				.successHandler(dataLoginsHandler)
+				.permitAll()
+			.and()
+			.oauth2Login()
+				.loginPage("/login")
+				.userInfoEndpoint()
+				.userService(oAuthUserService)
+				.and()
+				.successHandler(oauthLoginHandler)
+			.and()
+			.logout().permitAll()
+			.and()
+			.rememberMe()
+				.key("1234567890_aBcDeFgHiJkLmNoPqRsTuVwXyZ")
+				.tokenValiditySeconds(14 * 24 * 60 * 60)
+			;			
+	}
+    
+    @Bean
+    public UserDetailsService userDetailsService() {
+    	return new CustomerUserDetailsService();
+    }
+    
+    // Định nghĩa một bean DaoAuthenticationProvider để quản lý quá trình xác thực người dùng
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authenProvider = new DaoAuthenticationProvider();
+        authenProvider.setUserDetailsService(userDetailsService());
+        authenProvider.setPasswordEncoder(passwordEncoder());
+        
+        return authenProvider;
     }
 }

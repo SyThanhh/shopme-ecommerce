@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.shopme.common.entity.AuthenticationType;
 import com.shopme.common.entity.Country;
 import com.shopme.common.entity.Customer;
 import com.shopme.setting.CountryRepository;
@@ -37,6 +38,7 @@ public class CustomerService {
 		encodePassword(customer);
 		customer.setEnabled(false);
 		customer.setCreatedTime(new Date());
+		customer.setAuthenticationType(AuthenticationType.DATABASE);
 		
 		//generate a random string of 64 char
 		String randomCode =  RandomString.make(64); 
@@ -52,6 +54,7 @@ public class CustomerService {
 	
 	}
 	
+	
 	public boolean verify(String verificationCode) {
 		Customer customer = customerRepo.findByVerificationCode(verificationCode);
 		
@@ -60,6 +63,50 @@ public class CustomerService {
 		} else {
 			customerRepo.enable(customer.getId());
 			return true;
+		}
+	}
+	
+	public void updateAuthentication(Customer customer, AuthenticationType type) {
+		if(!customer.getAuthenticationType().equals(type)) {
+			customerRepo.updateAuthenticationType(customer.getId(), type);
+		}
+	}
+	
+	public Customer getCusomerByEmail(String email) {
+		return customerRepo.findByEmail(email);
+	}
+
+	public void addNewCustomerUponOAuthLogin(String name, String email, String countryCode
+			, AuthenticationType authenticationType) {
+		Customer customer = new Customer();
+		customer.setEmail(email);
+		setName(name, customer);
+		
+		customer.setEnabled(true);
+		customer.setCreatedTime(new Date());
+		customer.setAuthenticationType(authenticationType);
+		customer.setPassword("");
+		customer.setAddressLine1("");
+		customer.setCity("");
+		customer.setState("");
+		customer.setPhoneNumber("");
+		customer.setPostalCode("");
+		customer.setCountry(customerRepo.findCountryByCode(countryCode));
+		
+		customerRepo.save(customer);
+	}
+	
+	private void setName(String name, Customer customer) {
+		String[] nameArray = name.split(" ");
+		if(nameArray.length < 2) {
+			customer.setFirstName(name);
+			customer.setLastName("");
+		} else {
+			String firstName = nameArray[0];
+			customer.setFirstName(firstName);
+			
+			String lastName = name.replaceFirst(firstName + " ","");
+			customer.setLastName(lastName);
 		}
 	}
 }

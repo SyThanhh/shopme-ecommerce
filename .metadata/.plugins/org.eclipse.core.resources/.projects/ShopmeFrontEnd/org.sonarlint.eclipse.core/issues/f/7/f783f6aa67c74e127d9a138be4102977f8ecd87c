@@ -1,15 +1,11 @@
 
-˜
-java:S1128"]Remove this unused import 'org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder'.8ÓïÚ–2b 99d1177ed9f94d2ac5a00afe249e4681h
-ƒ
-java:S1128"HRemove this unused import 'org.springframework.context.annotation.Bean'.8ÓïÚ–2b 4a90abf4c9aeb0d8b351b067f93c9f40h
+u
+java:S11615":Add the "@Override" annotation above this method signature8ÍÄüäÉ2b 010ac1b919b408103fdf7e3c0ac41c10h
 ¼
-java:S1128"€Remove this unused import 'org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder'.8ÓïÚ–2b 27a838b3505bdd7499a3e98466571dd4h
-¡
-java:S1128"fRemove this unused import 'org.springframework.security.authentication.dao.DaoAuthenticationProvider'.8ÓïÚ–2b 8833ee241492c0691c10923e44a07a8bh
-˜
-java:S1128"]Remove this unused import 'org.springframework.security.core.userdetails.UserDetailsService'.8ÓïÚ–2b 69e5bb9f8c391bd618fc3c0c40707dach
+java:S1128"€Remove this unused import 'org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder'.8”ûåÉ2b 27a838b3505bdd7499a3e98466571dd4h
+Ÿ
+java:S1128	"dRemove this unused import 'org.springframework.security.config.annotation.web.builders.WebSecurity'.8”ûåÉ2b 790cdcc569553c9cb5fe7c28a4c9b0e3h
 –
-java:S1128"[Remove this unused import 'org.springframework.web.servlet.config.annotation.EnableWebMvc'.8ÓïÚ–2b 63f0f12f8429fd6102728ef8f471680ah
-”
-java:S1128"YRemove this unused import 'org.springframework.security.crypto.password.PasswordEncoder'.8ÓïÚ–2b 979a92b1cb4ff77c3e517495c66e2ddeh
+java:S1128"[Remove this unused import 'org.springframework.web.servlet.config.annotation.EnableWebMvc'.8”ûåÉ2b 63f0f12f8429fd6102728ef8f471680ah
+}
+java:S6813"BRemove this field injection and use constructor injection instead.8¸ÜêÊ2b 0132ec8cee01c5dd244e1a60fe6448a1h

@@ -1,0 +1,22 @@
+# Conversion to YAML from Properties formar report
+# Warnings:
+# - The yaml file had comments which are lost in the refactoring!
+spring:
+  application:
+    name: ShopmeFrontEnd
+  datasource:
+    url: jdbc:mysql://localhost:3306/shopmedb
+    username: root
+    password: nst271023
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+server:
+  port: 80
+  servlet:
+    context-path: /Shopme

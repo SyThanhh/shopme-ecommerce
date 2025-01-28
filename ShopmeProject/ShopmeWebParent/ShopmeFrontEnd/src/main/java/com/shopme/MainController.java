@@ -26,5 +26,14 @@ public class MainController {
 		return "index";
 	}
 	
+	@GetMapping("/login")
+    public String viewLoginPage() {
+		// check Customer instanceof
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if(authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+			return "login";  // trả về tên template "login.html"
+		}
+		return "redirect:/";
+    }
 	
 }

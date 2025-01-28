@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Shopme Admin</title>
+
+    <!-- Bootstrap CSS --> <!-- /webjars nằm trong thư viện -->
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" /> 
+    <!-- FontAwesome CSS -->
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+	<!-- FontAwesome CSS -->
+	<link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.min.css}"/>
+	
+	<!-- jQuery -->
+	<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<!-- Bootstrap JS -->
+	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+    <style type="text/css">
+        .divider:after, .divider:before {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #eee;
+        }
+
+        .h-custom {
+            height: calc(100% - 73px);
+        }
+
+        @media (max-width: 450px) {
+            .h-custom {
+                height: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <form th:action="@{/login}" method="post" style="max-width: 1000px; margin: 0 auto;">
+            <p class="text-center mt-5">Access to Shopme Control Panel</p>
+            <div th:if="${param.error}">
+                <div class="alert alert-danger" role="alert">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</div>
+            </div>
+
+            <div th:if="${param.logout != null}">
+                <div class="alert alert-warning" role="alert">You have been logged out.</div>
+            </div>
+
+            <section class="vh-100">
+                <div class="container-fluid h-custom">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-md-9 col-lg-6 col-xl-5">
+                            <img th:src="@{/images/ShopmeAdminBig.png}" />
+                        </div>
+                        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                            <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+                                <p class="lead fw-normal mb-0 me-3">Sign in with</p>
+                               <button type="button" class="btn btn-primary btn-floating mx-1">
+								    <i class="fab fa-facebook-f"></i> 
+								</button>
+								<button type="button" class="btn btn-danger btn-floating mx-1">
+								    <i class="fab fa-google"></i>
+								</button>
+                            </div>
+
+                            <div class="divider d-flex align-items-center my-4">
+                                <p class="text-center fw-bold mx-3 mb-0">Or</p>
+                            </div>
+
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <input type="email" name="email" id="email" class="form-control form-control-lg" placeholder="Enter a valid email address" />
+                                <label class="form-label" for="email">Email address</label>
+                            </div>
+
+                            <div data-mdb-input-init class="form-outline mb-3">
+                                <input type="password" name="password" id="password" class="form-control form-control-lg" placeholder="Enter password" />
+                                <label class="form-label" for="password">Password</label>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="form-check mb-0">
+                                    <input class="form-check-input me-2" type="checkbox" value="" name="remember-me" id="remember-me" />
+                                    <label class="form-check-label" for="remember-me"> Remember me </label>
+                                </div>
+                                <a href="#!" class="text-body">Forgot password?</a>
+                            </div>
+
+                            <div class="text-lg-start text-center mt-4 pt-2">
+                                <input type="submit" value="Login" class="btn btn-primary btn-lg">
+                                <p class="small fw-bold mt-2 pt-1 mb-0">
+                                    Don't have an account? <a href="#!" class="link-danger">Register</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+                    <div class="text-white mb-3 mb-md-0">Copyright © 2020. All rights reserved.</div>
+                    <div>
+                        <a href="#!" class="text-white me-4"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#!" class="text-white me-4"><i class="fab fa-twitter"></i></a>
+                        <a href="#!" class="text-white me-4"><i class="fab fa-google"></i></a>
+                        <a href="#!" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </section>
+        </form>
+
+        <div class="text-center">
+            <p>Shopme Control Panel - Copyright &copy; Shopme</p>
+        </div>
+    </div>
+
+</body>
+</html>
