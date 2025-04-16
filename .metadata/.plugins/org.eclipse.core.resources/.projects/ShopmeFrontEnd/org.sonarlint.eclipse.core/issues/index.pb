@@ -77,3 +77,11 @@ n
 >src/test/java/com/shopme/customer/CustomerRepositoryTests.java,2\9\298c9b14f44b12784c6219b3d9c8796b919f4175
 R
 "src/main/resources/application.yml,a\6\a6d8b8556fee0e03112ce2bf34b8cb27a7dc9e58
+r
+Bsrc/main/java/com/shopme/security/DatabaseLoginSuccessHandler.java,3\9\39ea20484d9f4a1080405792f4ea1cc0bad4211e
+m
+=src/main/java/com/shopme/customer/CustomerRestController.java,7\9\79138fba80643fd11a8f268e8a3577c6b4b58322
+m
+=src/main/java/com/shopme/oauth/OAuth2LoginSuccessHandler.java,7\4\746f5356fe15f0011c40d5277545cd26f702e510
+k
+;src/main/java/com/shopme/security/DatabaseLoginHandler.java,8\a\8a4785181bb905f758d5e46aa215578effad729c

@@ -1,11 +1,11 @@
 
-\
-java:S5411V"(Use a primitive boolean expression here.b 723aa82a83c278d5e7e7be9b109b406ah
 v
 java:S6813"BRemove this field injection and use constructor injection instead.b 0132ec8cee01c5dd244e1a60fe6448a1h
-v
-java:S6813"BRemove this field injection and use constructor injection instead.b 0132ec8cee01c5dd244e1a60fe6448a1h
+^	java:S106P"+Replace this use of System.out by a logger.b bb1c3f2ea781263d3a2bb92b06a2061fh
+\
+java:S5411V"(Use a primitive boolean expression here.b 723aa82a83c278d5e7e7be9b109b406ah
 t
 java:S4684+"@Replace this persistent entity with a simple POJO or DTO object.b 91ec1f9324753048c0096d036a694f86h
+v
+java:S6813"BRemove this field injection and use constructor injection instead.b 0132ec8cee01c5dd244e1a60fe6448a1h
 ^	java:S106O"+Replace this use of System.out by a logger.b bb1c3f2ea781263d3a2bb92b06a2061fh
-^	java:S106P"+Replace this use of System.out by a logger.b bb1c3f2ea781263d3a2bb92b06a2061fh

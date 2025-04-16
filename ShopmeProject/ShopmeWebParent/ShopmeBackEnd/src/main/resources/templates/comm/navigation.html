@@ -22,7 +22,7 @@
 					<div class="collapse navbar-collapse" id="topNavbar">
 						<ul class="navbar-nav mr-auto">
 
-							<th:block sec:authorize="hasAuthority( 'Admin')">
+							<th:block sec:authorize="hasAuthority('Admin')">
 								<li class="nav-item dropdown"><a th:href="@{/users}"
 									class="nav-link dropdown-toggle" data-toggle="dropdown">Users</a>
 									<div class="dropdown-menu">
@@ -34,7 +34,7 @@
 							</th:block>
 
 
-							<th:block sec:authorize="hasAnyAuthority('Admin', 'Editor')">
+							<th:block sec:authorize="hasAnyAuthority('Admin','Editor')">
 								<li class="nav-item dropdown"><a th:href="@{/categories}"
 									class="nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>
 									<div class="dropdown-menu">
@@ -56,7 +56,7 @@
 							</th:block>
 
 							<th:block
-								sec:authorize="hasAnyAuthority('Admin', 'Salesperson', 'Editor', 'Shipper')">
+								sec:authorize="hasAnyAuthority('Admin','Salesperson','Editor','Shipper')">
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" data-toggle="dropdown"
 									th:href="@{/products}">Products</a>

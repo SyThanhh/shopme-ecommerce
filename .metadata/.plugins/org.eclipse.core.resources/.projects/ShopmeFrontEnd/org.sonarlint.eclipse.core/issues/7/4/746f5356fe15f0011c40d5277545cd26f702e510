@@ -1,0 +1,8 @@
+
+}
+java:S6813"BRemove this field injection and use constructor injection instead.8‘üÜÝÊ2b 0132ec8cee01c5dd244e1a60fe6448a1h
+e	java:S106 "+Replace this use of System.out by a logger.8‘üÜÝÊ2b bb1c3f2ea781263d3a2bb92b06a2061fh
+e	java:S106&"+Replace this use of System.out by a logger.8‘üÜÝÊ2b bb1c3f2ea781263d3a2bb92b06a2061fh
+e	java:S106'"+Replace this use of System.out by a logger.8‘üÜÝÊ2b bb1c3f2ea781263d3a2bb92b06a2061fh
+’
+java:S1128"WRemove this unused import 'org.springframework.security.web.savedrequest.RequestCache'.8‘üÜÝÊ2b 2e8d1b942d6b4ee82b910561087b2744h

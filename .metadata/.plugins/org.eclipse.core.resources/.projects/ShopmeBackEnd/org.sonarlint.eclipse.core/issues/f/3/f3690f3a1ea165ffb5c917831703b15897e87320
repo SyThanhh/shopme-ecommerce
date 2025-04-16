@@ -1,0 +1,19 @@
+
+~
+java:S11923"JDefine a constant instead of duplicating this literal "typeAlert" 5 times.b 7dd1c6b5cc4575dd0ee21deea35013a2h
+|
+java:S11922"HDefine a constant instead of duplicating this literal "message" 6 times.b 9040ca9bfe0a4c38f81140904fb9db9dh
+ˆ
+java:S11925"TDefine a constant instead of duplicating this literal "redirect:/customers" 5 times.b 5bef0fe444f9659420cf9b0e376f0e74h
+|
+java:S11923"HDefine a constant instead of duplicating this literal "success" 3 times.b 3f4e64e951c8c7aef7ef39e78be5d406h
+v
+java:S6813"BRemove this field injection and use constructor injection instead.b 0132ec8cee01c5dd244e1a60fe6448a1h
+t
+java:S4684Y"@Replace this persistent entity with a simple POJO or DTO object.b 91ec1f9324753048c0096d036a694f86h
+u
+java:S1128"ARemove this unused import 'org.springframework.data.domain.Page'.b 1ba1b3ffa8e498449d22535d2b4352fch
+u
+java:S1128"ARemove this unused import 'org.springframework.data.domain.Sort'.b 09cc96446af512a5bd800fe522a47d51h
+€
+java:S1128"LRemove this unused import 'org.springframework.data.repository.query.Param'.b f62f9237ba4c9d994a62432e282c5ce5h

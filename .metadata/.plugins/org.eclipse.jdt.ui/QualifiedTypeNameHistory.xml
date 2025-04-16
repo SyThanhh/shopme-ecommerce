@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
-    <fullyQualifiedTypeName name="com.shopme.admin.setting.CurrencyRepository"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="java.lang.Iterable"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
     <fullyQualifiedTypeName name="org.springframework.web.multipart.MultipartFile"/>
     <fullyQualifiedTypeName name="org.springframework.web.servlet.mvc.support.RedirectAttributes"/>
     <fullyQualifiedTypeName name="org.apache.poi.util.StringUtil"/>
@@ -15,7 +10,6 @@
     <fullyQualifiedTypeName name="org.springframework.test.annotation.Rollback"/>
     <fullyQualifiedTypeName name="com.shopme.setting.SettingRepository"/>
     <fullyQualifiedTypeName name="com.shopme.common.entity.SettingCategory"/>
-    <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
     <fullyQualifiedTypeName name="javax.servlet.ServletRequest"/>
     <fullyQualifiedTypeName name="com.shopme.setting.SettingService"/>
@@ -29,14 +23,12 @@
     <fullyQualifiedTypeName name="org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager"/>
     <fullyQualifiedTypeName name="org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest"/>
     <fullyQualifiedTypeName name="com.shopme.admin.setting.country.CountryRepository"/>
-    <fullyQualifiedTypeName name="com.shopme.common.entity.Country"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.DeleteMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
     <fullyQualifiedTypeName name="javax.persistence.criteria.CriteriaBuilder.In"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="com.shopme.customer.CustomerRepository"/>
     <fullyQualifiedTypeName name="org.springframework.security.core.userdetails.UsernameNotFoundException"/>
-    <fullyQualifiedTypeName name="com.shopme.security.CustomerUserDetails"/>
     <fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
     <fullyQualifiedTypeName name="org.springframework.security.core.userdetails.UserDetailsService"/>
     <fullyQualifiedTypeName name="com.shopme.security.CustomerUserDetailsService"/>
@@ -48,16 +40,24 @@
     <fullyQualifiedTypeName name="javax.persistence.Enumerated"/>
     <fullyQualifiedTypeName name="javax.persistence.EnumType"/>
     <fullyQualifiedTypeName name="javax.persistence.Column"/>
-    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
     <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Modifying"/>
     <fullyQualifiedTypeName name="org.junit.jupiter.api.Test"/>
     <fullyQualifiedTypeName name="java.util.Optional"/>
-    <fullyQualifiedTypeName name="com.shopme.common.entity.Customer"/>
-    <fullyQualifiedTypeName name="com.shopme.common.entity.AuthenticationType"/>
     <fullyQualifiedTypeName name="com.shopme.security.CustomerOAuth2User"/>
     <fullyQualifiedTypeName name="org.springframework.security.oauth2.core.user.OAuth2User"/>
-    <fullyQualifiedTypeName name="com.shopme.oauth.CustomerOAuth2User"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.shopme.oauth.CustomerOAuthUserService"/>
+    <fullyQualifiedTypeName name="com.shopme.oauth.OAuth2LoginSuccessHandler"/>
+    <fullyQualifiedTypeName name="com.shopme.oauth.CustomerOAuth2User"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="com.shopme.common.entity.Country"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.shopme.security.DatabaseLoginHandler"/>
+    <fullyQualifiedTypeName name="com.shopme.security.DatabaseLoginSuccessHandler"/>
+    <fullyQualifiedTypeName name="com.shopme.security.CustomerUserDetails"/>
+    <fullyQualifiedTypeName name="com.shopme.customer.CustomerService"/>
+    <fullyQualifiedTypeName name="com.shopme.common.entity.Customer"/>
+    <fullyQualifiedTypeName name="com.shopme.common.entity.AuthenticationType"/>
 </qualifiedTypeNameHistroy>

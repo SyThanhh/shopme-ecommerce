@@ -199,3 +199,9 @@ p
 @src/main/java/com/shopme/admin/paging/PagingAndSortingParam.java,f\5\f5d9c751deeca6397d39fcb969d7f406ed93972e
 {
 Ksrc/main/java/com/shopme/admin/paging/PagingAndSortingArgumentResolver.java,5\1\51438723cf282aa0bbecf86222aac3c1abb3c4d4
+i
+9src/main/resources/templates/customers/customer_form.html,a\b\abf7ac1bf601d9f57e5124245cc6acf25ad04957
+o
+?src/main/java/com/shopme/admin/customer/CustomerController.java,f\3\f3690f3a1ea165ffb5c917831703b15897e87320
+e
+5src/main/resources/templates/customers/customers.html,d\0\d02fc13b7d539bea8f746097930c2b2672fa4941
