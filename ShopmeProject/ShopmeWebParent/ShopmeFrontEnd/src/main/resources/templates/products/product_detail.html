@@ -62,9 +62,15 @@
 				<div>
 					<input type="text" size="5" value="1">
 				</div>
-				<div>
-					<input type="button" value="Thêm vào giỏ hàng" class="btn btn-primary">
+				
+				
+				<div th:if="${product.inStock}">
+					<div th:replace="cart/quantity_control :: quantity_control(1, ${product.id})"></div>
+					<div class="mt-3">
+						<input type="button" value="Thêm vào giỏ hàng" id="btnAdd2Cart" class="btn btn-primary">
+					</div>
 				</div>
+				
 			</div>
 		</div>
 		
@@ -96,12 +102,19 @@
 			</div>
 		</div>
 		
+		<!-- Modal -->
+		 <div th:replace="fragments :: modal_dialog"> </div>
 		
 		<div th:replace="products/images_carousel :: content"></div>
 		<div th:replace="navigation :: footer_menu"></div>
 		
 	</div>
 	<script type="text/javascript">
+		contextPath ="[[@{/}]]";
+		productId = "[[${product.id}]]";
+		var csrfHeaderName = "[[${_csrf.headerName}]]";
+		var csrfValue = "[[${_csrf.token}]]";
+		
 		$(document).ready(function() {
 			$(".image-thumbnail").mouseover(function() {
 				bigImage = $("#bigImage");
@@ -121,5 +134,9 @@
 			});
 		});
 	</script>
+	<script type="text/javascript" th:src="@{/js/quantity_control.js}"></script>
+	<script type="text/javascript" th:src="@{/js/common_modal.js}"></script>
+	
+	<script type="text/javascript" th:src="@{/js/add_to_cart.js}"></script>
 </body>
 </html>

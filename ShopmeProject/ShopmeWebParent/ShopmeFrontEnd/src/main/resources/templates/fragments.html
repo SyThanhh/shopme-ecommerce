@@ -3,7 +3,8 @@
 <head th:fragment="page_head(title, remove, additionalCssPath)" th:remove="${remove}">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>[[${title}]] - [[${SITE_NAME}]]</title> 
+	
+	<title>[[${title}]] - [[${SITE_NAME}]]</title>
 	
 	<!-- CSS -->
 	<link rel="stylesheet" th:href="@{/css/style.css}" />
@@ -17,6 +18,9 @@
 	
 	<!-- FontAwesome CSS -->
 	<link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.min.css}"/>
+	
+	<!--Style CSS-->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 	
 	<!-- jQuery -->
 	<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
