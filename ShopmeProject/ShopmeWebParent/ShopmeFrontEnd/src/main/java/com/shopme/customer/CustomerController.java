@@ -139,7 +139,18 @@ public class CustomerController {
 		
 		updateNameForAuthenticatedCustomer(customer,req);
 		
-		return "redirect:/account_details";
+		String redirectOption = req.getParameter("redirect");
+		String redirectURL = "redirect:/account_details";
+		
+		if ("address_book".equals(redirectOption)) {
+			redirectURL = "redirect:/address_book";
+		} else if ("cart".equals(redirectOption)) {
+			redirectURL = "redirect:/cart";
+		} else if ("checkout".equals(redirectOption)) {
+			redirectURL = "redirect:/address_book?redirect=checkout";
+		}
+		
+		return redirectURL;
 	}
 
 	private void updateNameForAuthenticatedCustomer( Customer customer, HttpServletRequest req) {

@@ -66,16 +66,19 @@
 									</div></li>
 							</th:block>
 
-							<li class="nav-item"><a class="nav-link"
-								th:href="@{/customers}">Cutomers</a></li>
+							<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson')">
+								<li class="nav-item"><a class="nav-link"
+									th:href="@{/customers}">Customers</a></li>
 
-							<li class="nav-item"><a class="nav-link"
-								th:href="@{/shipping}">Shipping</a></li>
+								<li class="nav-item"><a class="nav-link"
+									th:href="@{/shipping_rates}">Shipping Rates</a></li>
+							</th:block>
 
-
-							<li class="nav-item"><a class="nav-link"
-								th:href="@{/orders}">Orders</a></li>
-
+							<th:block sec:authorize="hasAnyAuthority('Admin', 'Salesperson', 'Shipper')">
+								<li class="nav-item"><a class="nav-link"
+									th:href="@{/orders}">Orders</a></li>
+							</th:block>
+								
 							<li class="nav-item"><a class="nav-link"
 								th:href="@{/report}">Sales Report</a></li>
 

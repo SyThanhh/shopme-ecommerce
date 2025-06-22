@@ -14,9 +14,12 @@
 				class="fas fa-file-csv fa-2x icon-dark mr-2"></a>
 		</div>
 		
-		<div th:if="${message != null}"
-			th:class="'alert alert-' + ${typeAlert} + ' text-center'"
-			role="alert">[[${message}]]</div>
+		<div
+		     th:class="'alert alert-' + ${typeAlert} + ' text-center'"
+		     role="alert">
+		    [[${message}]]
+		</div>
+
 		<!-- Search -->
 		<div th:replace="fragments :: search_form" />
 

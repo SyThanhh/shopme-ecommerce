@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import com.shopme.Utility;
 import com.shopme.common.entity.CartItem;
 import com.shopme.common.entity.Customer;
-import com.shopme.common.entity.Product;
+import com.shopme.common.entity.product.Product;
 import com.shopme.common.exception.CustomerNotFoundException;
 import com.shopme.product.ProductRepository;
 

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.shopme.Utility;
 import com.shopme.common.entity.Customer;
-import com.shopme.common.entity.SettingBag;
+import com.shopme.common.entity.setting.SettingBag;
 import com.shopme.common.exception.CustomerNotFoundException;
 import com.shopme.setting.EmailSettingBag;
 import com.shopme.setting.SettingService;

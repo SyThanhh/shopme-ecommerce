@@ -72,7 +72,8 @@ public class CustomerController {
 		try {
 			Customer customer = service.get(id);
 			List<Country> countries = service.listAllCountries();
-			
+			ra.addFlashAttribute("message", "Your account details have been updated. ");
+			ra.addFlashAttribute("typeAlert", "success");
 			model.addAttribute("listCountries", countries);			
 			model.addAttribute("customer", customer);
 			model.addAttribute("pageTitle", String.format("Edit Customer (ID: %d)", id));

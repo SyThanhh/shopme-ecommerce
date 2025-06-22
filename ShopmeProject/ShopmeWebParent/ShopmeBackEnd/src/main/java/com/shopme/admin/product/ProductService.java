@@ -14,8 +14,8 @@ import org.springframework.stereotype.Service;
 
 import com.shopme.admin.contstant.SystemConstant;
 import com.shopme.admin.paging.PagingAndSortingHelper;
-import com.shopme.common.entity.Product;
-import com.shopme.common.entity.ProductImage;
+import com.shopme.common.entity.product.Product;
+import com.shopme.common.entity.product.ProductImage;
 import com.shopme.common.exception.CategoryNotFoundException;
 import com.shopme.common.exception.ProductNotFoundException;
 
