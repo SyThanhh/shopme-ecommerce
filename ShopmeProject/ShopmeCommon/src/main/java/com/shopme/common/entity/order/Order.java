@@ -19,6 +19,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.shopme.common.entity.AbstractAddress;
+import com.shopme.common.entity.Address;
 import com.shopme.common.entity.Customer;
 import com.shopme.common.entity.IdBasedEntity;
 
@@ -183,10 +184,6 @@ public class Order extends AbstractAddress  {
 		this.paymentMethod = paymentMethod;
 	}
 
-
-	
-
-
 	public OrdertStatus getStatus() {
 		return status;
 	}
@@ -246,6 +243,43 @@ public class Order extends AbstractAddress  {
 		return destination;
 	}
 
+
+	public void copyShippingAddress(Address address) {
+		setFirstName(address.getFirstName());
+		setLastName(address.getLastName());
+		setPhoneNumber(address.getPhoneNumber());
+		setAddressLine1(address.getAddressLine1());
+		setAddressLine2(address.getAddressLine2());
+		setCity(address.getCity());
+		setCountry(address.getCountry().getName());
+		setPostalCode(address.getPostalCode());
+		setState(address.getState());		
+		
+	}
+	
+	@Transient
+	public String getShippingAddress() {
+		StringBuilder address = new StringBuilder();
+
+	    if (isNotEmpty(firstName)) address.append(firstName);
+	    if (isNotEmpty(lastName)) address.append(" ").append(lastName);
+	    if (isNotEmpty(addressLine1)) address.append(", ").append(addressLine1);
+	    if (isNotEmpty(addressLine2)) address.append(", ").append(addressLine2);
+	    if (isNotEmpty(city)) address.append(", ").append(city);
+	    if (isNotEmpty(state)) address.append(" ").append(state);
+	    if (country != null && isNotEmpty(country)) address.append(" ").append(country);
+	    if (isNotEmpty(postalCode)) address.append(". Postal Code ").append(postalCode);
+	    if (isNotEmpty(phoneNumber)) address.append(". Phone number ").append(phoneNumber);
+
+	    return address.toString().trim();
+	}
+
+	private boolean isNotEmpty(String str) {
+	    return str != null && !str.trim().isEmpty();
+	}
+	
+	
+	
 	
 	
 }

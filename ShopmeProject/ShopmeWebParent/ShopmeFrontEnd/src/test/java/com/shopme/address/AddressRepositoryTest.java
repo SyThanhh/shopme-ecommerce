@@ -98,5 +98,13 @@ public class AddressRepositoryTest {
 		assertThat(address).isNull();
 	}	
 	
+	@Test
+	public void testGetDefault() {
+		Integer customerId = 5;
+		
+		Address address = repo.findDefaultByCustomer(customerId);
+		
+		assertThat(address).isNotNull();
+	}
 	
 }

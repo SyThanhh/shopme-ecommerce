@@ -32,6 +32,8 @@ public class CartItem {
 	
 	private int quantity;
 
+	@Transient
+	private float shippingCost;
 	
 
 	public CartItem() {
@@ -59,6 +61,10 @@ public class CartItem {
 		this.customer = customer;
 	}
 
+	public void setShippingCost(float shippingCost) {
+		this.shippingCost = shippingCost;
+	}
+
 	public Product getProduct() {
 		return product;
 	}
@@ -82,8 +88,15 @@ public class CartItem {
 	}
 	
 	@Transient
+	public float getShippingCost() {
+		return shippingCost;
+	}
+	
+	@Transient
 	public float getSubtotal() {
 		return product.getDiscountPrice() * quantity;
 	}
+
+	
 	
 }

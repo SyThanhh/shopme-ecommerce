@@ -94,6 +94,13 @@ public class ShippingRate extends IdBasedEntity {
 				&& Objects.equals(id, other.id) && Float.floatToIntBits(rate) == Float.floatToIntBits(other.rate)
 				&& Objects.equals(state, other.state);
 	}
+
+
+	@Override
+	public String toString() {
+		return "ShippingRate [rate=" + rate + ", days=" + days + ", codSupported=" + codSupported + ", country="
+				+ country + ", state=" + state + "]";
+	}
 	
 	
 
