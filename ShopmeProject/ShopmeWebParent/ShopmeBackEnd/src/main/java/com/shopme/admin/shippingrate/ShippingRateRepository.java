@@ -17,8 +17,9 @@ import com.shopme.common.entity.ShippingRate;
 @Repository
 public interface ShippingRateRepository extends SearchRepository<ShippingRate, Integer> {
 
-	@Query("SELECT sr FROM ShippingRate sr WHERE sr.country = ?1 AND sr.rate = ?2")
+	@Query("SELECT sr FROM ShippingRate sr WHERE sr.country.id = ?1 AND sr.state = ?2")
 	public ShippingRate findByCountryAndState(Integer countryId, String state);
+
 	
 	
 	@Query("UPDATE ShippingRate sr SET sr.codSupported = ?2 WHERE sr.id = ?1")

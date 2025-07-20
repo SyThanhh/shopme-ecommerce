@@ -54,6 +54,16 @@ public class ProductService {
 		helper.updateModelAttributes(pageNum, page);
 	}
 	
+	// search product in order
+	
+	
+	public void searchProducts(int pageNum, PagingAndSortingHelper helper) {
+		Pageable pageable = helper.createPageable(SystemConstant.PRODUCTS_PER_PAGE, pageNum);
+		String keyword = helper.getKeyword();		
+		Page<Product> page = productRepository.searchProductsByName(keyword, pageable);		
+		helper.updateModelAttributes(pageNum, page);
+	}
+	
 	
 	@Transactional
 	public Product saveProduct(Product product) {
@@ -75,6 +85,8 @@ public class ProductService {
 
 	    return productRepository.save(product);
 	}
+	
+	
 
 	public Product saveProductPrice(Product productInForm) throws ProductNotFoundException {
 		try {

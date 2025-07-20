@@ -1,8 +1,13 @@
 package com.shopme.common.entity.order;
 
-import java.beans.Transient;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -16,12 +21,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.shopme.common.entity.AbstractAddress;
 import com.shopme.common.entity.Address;
 import com.shopme.common.entity.Customer;
 import com.shopme.common.entity.IdBasedEntity;
+import com.shopme.common.entity.OrderTrack;
 
 @Entity
 @Table(name = "orders")
@@ -55,7 +63,7 @@ public class Order extends AbstractAddress  {
 	private PaymentMethod paymentMethod;
 	
 	@Enumerated(EnumType.STRING)
-	private OrdertStatus status;
+	private OrderStatus status;
 	
 	
 	@ManyToOne
@@ -65,6 +73,10 @@ public class Order extends AbstractAddress  {
 	
 	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
 	private Set<OrderDetail> orderDetails = new HashSet<>();
+	
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+	@OrderBy(" updatedTime ASC")
+	private List<OrderTrack> orderTracks = new ArrayList<>();
 
 
 	
@@ -82,8 +94,6 @@ public class Order extends AbstractAddress  {
 	}
 
 
-
-	
 
 	public String getCountry() {
 		return country;
@@ -184,12 +194,14 @@ public class Order extends AbstractAddress  {
 		this.paymentMethod = paymentMethod;
 	}
 
-	public OrdertStatus getStatus() {
+
+
+	public OrderStatus getStatus() {
 		return status;
 	}
 
 
-	public void setStatus(OrdertStatus status) {
+	public void setStatus(OrderStatus status) {
 		this.status = status;
 	}
 
@@ -234,6 +246,16 @@ public class Order extends AbstractAddress  {
 
 	
 	
+	public List<OrderTrack> getOrderTracks() {
+		return orderTracks;
+	}
+
+
+	public void setOrderTracks(List<OrderTrack> orderTracks) {
+		this.orderTracks = orderTracks;
+	}
+
+
 	@Transient
 	public String getDestination() {
 		String destination =  city + ", ";
@@ -279,6 +301,14 @@ public class Order extends AbstractAddress  {
 	}
 	
 	
+	@Transient
+	public String getDeliverDateOnForm() {
+		return Optional.ofNullable(this.deliverDate)
+			.map(date -> new SimpleDateFormat("yyyy-MM-dd").format(date))
+			.orElse("");
+	}
+
+
 	
 	
 	

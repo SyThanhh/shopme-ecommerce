@@ -20,6 +20,8 @@ import com.shopme.admin.security.ShopmeUserDetails;
 import com.shopme.admin.setting.SettingService;
 import com.shopme.common.entity.Country;
 import com.shopme.common.entity.order.Order;
+import com.shopme.common.entity.order.OrderStatus;
+import com.shopme.common.entity.order.PaymentMethod;
 import com.shopme.common.entity.setting.Setting;
 
 @Controller
@@ -43,6 +45,8 @@ public class OrderController {
 
 		orderService.listByPage(pageNum, helper);
 		loadCurrencySetting(request);
+		
+
 		
 		if (!loggedUser.hasRole("Admin") && !loggedUser.hasRole("Salesperson") && loggedUser.hasRole("Shipper")) {
 			return "orders/orders_shipper";
@@ -69,12 +73,26 @@ public class OrderController {
 			model.addAttribute("isVisibleForAdminOrSalesperson", isVisibleForAdminOrSalesperson);
 			model.addAttribute("order", order);
 			
+			
 			return "orders/order_details_modal";
 		} catch (OrderNotFoundException ex) {
 			ra.addFlashAttribute("message", ex.getMessage());
 			return defaultRedirectURL;
 		}
 		
+	}
+	@PostMapping("/order/save")
+	public String saveOrder(Order order, HttpServletRequest request, RedirectAttributes ra) {
+		String countryName = request.getParameter("countryName");
+		order.setCountry(countryName);
+		
+		
+
+		orderService.save(order);		
+		
+		ra.addFlashAttribute("message", "The order ID " + order.getId() + " has been updated successfully");
+		
+		return defaultRedirectURL;
 	}
 	
 	@GetMapping("/orders/delete/{id}")
@@ -100,6 +118,9 @@ public class OrderController {
 			model.addAttribute("pageTitle", "Edit Order (ID: " + id + ")");
 			model.addAttribute("order", order);
 			model.addAttribute("listCountries", listCountries);
+			model.addAttribute("paymentMethods", PaymentMethod.values());
+			model.addAttribute("listOrderStatus", OrderStatus.values());
+			
 			
 			return "orders/order_form";
 			

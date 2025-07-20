@@ -31,6 +31,7 @@ public class ShippingRateService {
 	@Autowired private ShippingRateRepository shipRepo;
 	@Autowired private CountryRepository countryRepo;
 	@Autowired private ProductRepository productRepo;
+
 	
 	public void listByPage(int pageNum, PagingAndSortingHelper helper) {
 		helper.listEntities(pageNum, RATES_PER_PAGE, shipRepo);
@@ -95,4 +96,6 @@ public class ShippingRateService {
 				
 		return finalWeight * shippingRate.getRate();
 	}
+	
+
 }

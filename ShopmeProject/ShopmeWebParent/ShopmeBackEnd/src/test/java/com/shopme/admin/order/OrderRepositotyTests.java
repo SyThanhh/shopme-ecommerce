@@ -3,6 +3,7 @@ package com.shopme.admin.order;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
@@ -14,9 +15,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.Rollback;
 
 import com.shopme.common.entity.Customer;
+import com.shopme.common.entity.OrderTrack;
 import com.shopme.common.entity.order.Order;
 import com.shopme.common.entity.order.OrderDetail;
-import com.shopme.common.entity.order.OrdertStatus;
+import com.shopme.common.entity.order.OrderStatus;
 import com.shopme.common.entity.order.PaymentMethod;
 import com.shopme.common.entity.product.Product;
 
@@ -55,7 +57,7 @@ public class OrderRepositotyTests {
 		
 		
 		mainOrder.setPaymentMethod(PaymentMethod.CREDIT_CARD);
-		mainOrder.setStatus(OrdertStatus.NEW);
+		mainOrder.setStatus(OrderStatus.NEW);
 		mainOrder.setDeliverDate(new Date());
 		mainOrder.setDeliverDays(1);
 		
@@ -89,14 +91,14 @@ public class OrderRepositotyTests {
 		Integer orderId = 2;
 		
 		Order order =  repo.findById(orderId).get();
-		order.setStatus(OrdertStatus.SHIPPING);
+		order.setStatus(OrderStatus.SHIPPING);
 		order.setPaymentMethod(PaymentMethod.COD);
 		order.setOrderTime(new Date());
 		order.setDeliverDays(2);
 		
 		Order updateOrder = repo.save(order);
 		
-		assertThat(updateOrder.getStatus()).isEqualTo(OrdertStatus.SHIPPING);
+		assertThat(updateOrder.getStatus()).isEqualTo(OrderStatus.SHIPPING);
 	}
 	
 	@Test
@@ -117,6 +119,29 @@ public class OrderRepositotyTests {
 		Optional<Order> result = repo.findById(orderId);
 		
 		assertThat(result).isNotPresent();
+		
+	}
+	
+	@Test
+	public void testUpdateOrderStatus() {
+		Integer orderId = 16;
+		
+		Order order = repo.findById(orderId).get();
+
+		OrderTrack orderTrack = new OrderTrack();
+		orderTrack.setOrder(order);
+		
+		orderTrack.setUpdatedTime(new Date());
+		orderTrack.setOrderStatus(OrderStatus.PROCESSING);
+		orderTrack.setNotes(OrderStatus.PROCESSING.defaultDescription());
+		
+		List<OrderTrack> orderTracks = order.getOrderTracks();
+		orderTracks.add(orderTrack);
+		
+		Order updateOrder = repo.save(order);
+		
+		assertThat(updateOrder.getOrderTracks()).hasSizeGreaterThan(1);
+		
 		
 	}
 }

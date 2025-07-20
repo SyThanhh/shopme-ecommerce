@@ -14,7 +14,7 @@ import com.shopme.common.entity.CartItem;
 import com.shopme.common.entity.Customer;
 import com.shopme.common.entity.order.Order;
 import com.shopme.common.entity.order.OrderDetail;
-import com.shopme.common.entity.order.OrdertStatus;
+import com.shopme.common.entity.order.OrderStatus;
 import com.shopme.common.entity.order.PaymentMethod;
 import com.shopme.common.entity.product.Product;
 
@@ -31,9 +31,9 @@ public class OrderService {
 		
 		newOrder.setOrderTime(new Date());
 		if(paymentMethod.equals(PaymentMethod.PAYPAL)) {
-			newOrder.setStatus(OrdertStatus.PAID);
+			newOrder.setStatus(OrderStatus.PAID);
 		} else {
-			newOrder.setStatus(OrdertStatus.NEW);
+			newOrder.setStatus(OrderStatus.NEW);
 		}
 		
 		newOrder.setCustomer(customer);
