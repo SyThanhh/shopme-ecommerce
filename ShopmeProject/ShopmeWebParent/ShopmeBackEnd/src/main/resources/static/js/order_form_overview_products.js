@@ -1,44 +1,39 @@
-var productCost;
-var subtotal;
-var shippingCost;
-var tax;
-var total;
+var fieldProductCost;
+var fieldSubtotal;
+var fieldShippingCost;
+var fieldTax;
+var fieldTotal;
 
 $(document).ready(function() {
-	productCost = $("#productCost");
-	subtotal = $("#subtotal");
-	shippingCost = $("#shippingCost");
-	tax = $("#tax");
-	total = $("#total");
 
+	fieldProductCost = $("#productCost");
+	fieldSubtotal = $("#subtotal");
+	fieldShippingCost = $("#shippingCost");
+	fieldTax = $("#tax");
+	fieldTotal = $("#total");
 
 	formatOrderAmounts();
 	formatProductAmounts();
-	
-	$("#productList").on('change', '.quantity-input', function(e) {
-		e.preventDefault();
-		updateSubtotalQuantityChanged($(this)); // calculate subtoal when quantity change
+
+	$("#productList").on("change", ".quantity-input", function(e) {
+		updateSubtotalWhenQuantityChanged($(this));
 		updateOrderAmounts();
 	});
-	
+
 	$("#productList").on("change", ".price-input", function(e) {
-			updateSubtotalPriceChanged($(this));
-			updateOrderAmounts();
+		updateSubtotalWhenPriceChanged($(this));
+		updateOrderAmounts();
 	});
-	
+
 	$("#productList").on("change", ".cost-input", function(e) {
-			updateOrderAmounts();
+		updateOrderAmounts();
 	});
-	
+
 	$("#productList").on("change", ".ship-input", function(e) {
-			updateOrderAmounts();
+		updateOrderAmounts();
 	});
 });
-function getNumberValueRemovedThousandSeparator(fieldRef) {
-	fieldValue = fieldRef.val().replace(",", "");
-	return parseFloat(fieldValue);
-}
-// UPDATE TAB OVERVIEW
+
 function updateOrderAmounts() {
 	totalCost = 0.0;
 
@@ -72,8 +67,8 @@ function updateOrderAmounts() {
 
 	setAndFormatNumberForField("shippingCost", shippingCost);
 
-	taxFiled = getNumberValueRemovedThousandSeparator(tax);
-	orderTotal = orderSubtotal + taxFiled + shippingCost;
+	tax = getNumberValueRemovedThousandSeparator(fieldTax);
+	orderTotal = orderSubtotal + tax + shippingCost;
 	setAndFormatNumberForField("total", orderTotal);
 }
 
@@ -81,32 +76,30 @@ function setAndFormatNumberForField(fieldId, fieldValue) {
 	formattedValue = $.number(fieldValue, 2);
 	$("#" + fieldId).val(formattedValue);
 }
-function updateSubtotalPriceChanged(input) {
-	const priceValue = parseInt(input.val());
-	const rowNumber = input.attr("rowNumber");
-	const quantityValue = parseFloat($("#quantity" + rowNumber).val());
 
-	const newSubtotal = priceValue * quantityValue;
-
-	
-	setAndFormatNumberForField("subtotal" + rowNumber, newSubtotal);
+function getNumberValueRemovedThousandSeparator(fieldRef) {
+	fieldValue = fieldRef.val().replace(",", "");
+	return parseFloat(fieldValue);
 }
-function updateSubtotalQuantityChanged(input) {
-	const quantityValue = parseInt(input.val());
-	const rowNumber = input.attr("rowNumber");
-	const priceValue = parseFloat($("#price" + rowNumber).val());
 
-	const newSubtotal = priceValue * quantityValue;
+function updateSubtotalWhenPriceChanged(input) {
+	priceValue = getNumberValueRemovedThousandSeparator(input);
+	rowNumber = input.attr("rowNumber");
+
+	quantityField = $("#quantity" + rowNumber);
+	quantityValue = quantityField.val();
+	newSubtotal = parseFloat(quantityValue) * priceValue;
 
 	setAndFormatNumberForField("subtotal" + rowNumber, newSubtotal);
 }
 
-function formatOrderAmounts() {
-	formatNumberForField(productCost);
-	formatNumberForField(subtotal);
-	formatNumberForField(shippingCost);
-	formatNumberForField(tax);
-	formatNumberForField(total);
+function updateSubtotalWhenQuantityChanged(input) {
+	quantityValue = input.val();
+	rowNumber = input.attr("rowNumber");
+	priceValue = getNumberValueRemovedThousandSeparator($("#price" + rowNumber));
+	newSubtotal = parseFloat(quantityValue) * priceValue;
+
+	setAndFormatNumberForField("subtotal" + rowNumber, newSubtotal);
 }
 
 function formatProductAmounts() {
@@ -126,6 +119,53 @@ function formatProductAmounts() {
 		formatNumberForField($(this));
 	});
 }
+
+function formatOrderAmounts() {
+	formatNumberForField(fieldProductCost);
+	formatNumberForField(fieldSubtotal);
+	formatNumberForField(fieldShippingCost);
+	formatNumberForField(fieldTax);
+	formatNumberForField(fieldTotal);
+}
+
 function formatNumberForField(fieldRef) {
 	fieldRef.val($.number(fieldRef.val(), 2));
+}
+
+function processFormBeforeSubmit() {
+	setCountryName();
+
+	removeThousandSeparatorForField(fieldProductCost);
+	removeThousandSeparatorForField(fieldSubtotal);
+	removeThousandSeparatorForField(fieldShippingCost);
+	removeThousandSeparatorForField(fieldTax);
+	removeThousandSeparatorForField(fieldTotal);
+
+	$(".cost-input").each(function(e) {
+		removeThousandSeparatorForField($(this));
+	});
+
+	$(".price-input").each(function(e) {
+		removeThousandSeparatorForField($(this));
+	});
+
+	$(".subtotal-output").each(function(e) {
+		removeThousandSeparatorForField($(this));
+	});
+
+	$(".ship-input").each(function(e) {
+		removeThousandSeparatorForField($(this));
+	});
+
+	return true;
+}
+
+function removeThousandSeparatorForField(fieldRef) {
+	fieldRef.val(fieldRef.val().replace(",", ""));
+}
+
+function setCountryName() {
+	selectedCountry = $("#country option:selected");
+	countryName = selectedCountry.text();
+	$("#countryName").val(countryName);
 }

@@ -2,6 +2,7 @@ package com.shopme.common.entity.order;
 
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,11 +26,12 @@ import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+
 import com.shopme.common.entity.AbstractAddress;
 import com.shopme.common.entity.Address;
 import com.shopme.common.entity.Customer;
 import com.shopme.common.entity.IdBasedEntity;
-import com.shopme.common.entity.OrderTrack;
+
 
 @Entity
 @Table(name = "orders")
@@ -71,10 +73,10 @@ public class Order extends AbstractAddress  {
 	private Customer customer;
 	
 	
-	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Set<OrderDetail> orderDetails = new HashSet<>();
 	
-	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
 	@OrderBy(" updatedTime ASC")
 	private List<OrderTrack> orderTracks = new ArrayList<>();
 
@@ -306,6 +308,16 @@ public class Order extends AbstractAddress  {
 		return Optional.ofNullable(this.deliverDate)
 			.map(date -> new SimpleDateFormat("yyyy-MM-dd").format(date))
 			.orElse("");
+	}
+	
+	public void setDeliverDateOnForm(String dateString) {
+		DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+ 		
+		try {
+			this.deliverDate = dateFormatter.parse(dateString);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		} 		
 	}
 
 

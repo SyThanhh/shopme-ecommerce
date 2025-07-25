@@ -12,7 +12,9 @@
 		</div>
 
 		<div th:replace="fragments :: search_form_and_message" />
-
+		<div th:if="${message != null}" th:class="'alert alert-' + ${typeAlert} + ' text-center'" role="alert">
+					[[${message}]]
+		</div>
 		<div class="full-details">
 			<table
 				class="table table-bordered table-striped table-hover table-responsive-xl">

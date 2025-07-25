@@ -15,7 +15,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.Rollback;
 
 import com.shopme.common.entity.Customer;
-import com.shopme.common.entity.OrderTrack;
+import com.shopme.common.entity.order.OrderTrack;
 import com.shopme.common.entity.order.Order;
 import com.shopme.common.entity.order.OrderDetail;
 import com.shopme.common.entity.order.OrderStatus;
@@ -132,7 +132,7 @@ public class OrderRepositotyTests {
 		orderTrack.setOrder(order);
 		
 		orderTrack.setUpdatedTime(new Date());
-		orderTrack.setOrderStatus(OrderStatus.PROCESSING);
+		orderTrack.setStatus(OrderStatus.PROCESSING);
 		orderTrack.setNotes(OrderStatus.PROCESSING.defaultDescription());
 		
 		List<OrderTrack> orderTracks = order.getOrderTracks();

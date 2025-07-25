@@ -10,6 +10,8 @@
 		<div>
 			<h2>Manage Orders | [[${pageTitle}]]</h2>
 		</div>
+		
+		
 
 		<form th:action="@{/order/save}" th:object="${order}" method="post"
 			onsubmit="return processFormBeforeSubmit();">
@@ -77,6 +79,7 @@
 	<script th:src="@{/js/order_form_overview_products.js}"></script>
 	<script th:src="@{/js/order_form_add_products.js}"></script>
 	<script th:src="@{/js/order_form_remove_product.js}"></script>
+	<script th:src="@{/js/order_form_tracks.js}"></script>
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-
+var productDetailCount;
 
 $(document).ready(function() {
 	productDetailCount = $(".hiddenProductId").length;
@@ -14,29 +14,24 @@ $(document).ready(function() {
 
 		$("#addProductModal").modal();
 	})
-	
 });
 
 function addProduct(productId, productName) {
-		$("#addProductModal").modal("hide");
-		
-		getShippingCost(productId);
-		
-		
-		
+	getShippingCost(productId);
 }
 
 function getShippingCost(productId) {
-	const selectedCountry = $("#country option:selected");
-	const countryId = selectedCountry.val();
-	const state = $("#state").val();
-	if(state.length == 0) {
+	selectedCountry = $("#country option:selected");
+	countryId = selectedCountry.val();
+
+	state = $("#state").val();
+	if (state.length == 0) {
 		state = $("#city").val();
 	}
-	
-	let requestUrl = contextPath + "get_shipping_cost";
-	console.log(requestUrl);
-	const params = { productId: productId, countryId: countryId, state: state };
+
+	requestUrl = contextPath + "get_shipping_cost";
+	params = { productId: productId, countryId: countryId, state: state };
+
 	$.ajax({
 		type: 'POST',
 		url: requestUrl,
@@ -44,8 +39,7 @@ function getShippingCost(productId) {
 			xhr.setRequestHeader(csrfHeaderName, csrfValue);
 		},
 		data: params
-	})
-	.done(function(shippingCost) {
+	}).done(function(shippingCost) {
 		getProductInfo(productId, shippingCost);
 	}).fail(function(err) {
 		showWarningModal(err.responseJSON.message);
@@ -55,15 +49,13 @@ function getShippingCost(productId) {
 		$("#addProductModal").modal("hide");
 	});
 }
+
 function getProductInfo(productId, shippingCost) {
 	requestURL = contextPath + "products/get/" + productId;
 	$.get(requestURL, function(productJson) {
 		console.log(productJson);
 		productName = productJson.name;
-		console.log("mainPath : ", productJson.imagePath);
 		mainImagePath = contextPath.substring(0, contextPath.length - 1) + productJson.imagePath;
-		console.log("mainImagePath : ", mainImagePath);
-		console.log("contextPath.substring(0, contextPath.length - 1) : ", contextPath.substring(0, contextPath.length - 1) );
 		productCost = $.number(productJson.cost, 2);
 		productPrice = $.number(productJson.price, 2);
 
@@ -77,9 +69,8 @@ function getProductInfo(productId, shippingCost) {
 	});
 }
 
-
 function generateProductCode(productId, productName, mainImagePath, productCost, productPrice, shippingCost) {
-	let nextCount = productDetailCount;
+	let nextCount = productDetailCount + 1;
 	productDetailCount++;
 	let rowId = "row" + nextCount;
 	let quantityId = "quantity" + nextCount;
@@ -163,16 +154,17 @@ function generateProductCode(productId, productName, mainImagePath, productCost,
 	return htmlCode;
 }
 
-
 function isProductAlreadyAdded(productId) {
-	let productExists= false;
-	$(".hiddenProductId").each(function() {
-		let aProduct = $(this).val();
-		if(aProduct == productId) {
+	productExists = false;
+
+	$(".hiddenProductId").each(function(e) {
+		aProductId = $(this).val();
+
+		if (aProductId == productId) {
 			productExists = true;
-			return ;
+			return;
 		}
 	});
-	
+
 	return productExists;
 }

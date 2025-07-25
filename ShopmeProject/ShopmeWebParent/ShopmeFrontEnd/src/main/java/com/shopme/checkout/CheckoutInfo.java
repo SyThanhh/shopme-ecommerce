@@ -77,7 +77,7 @@ public class CheckoutInfo {
 	
 	@Transient
 	public String getPaymentTotalForPaypal() {
-		DecimalFormat decimalFormat = new DecimalFormat("###,###.##");
+		DecimalFormat decimalFormat = new DecimalFormat("##.##");
 		
 		return decimalFormat.format(paymentTotal);
 	}
