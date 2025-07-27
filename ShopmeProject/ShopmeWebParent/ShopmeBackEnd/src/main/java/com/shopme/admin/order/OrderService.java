@@ -1,5 +1,6 @@
 package com.shopme.admin.order;
 
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -18,6 +19,7 @@ import com.shopme.admin.setting.country.CountryRepository;
 import com.shopme.common.entity.Country;
 import com.shopme.common.entity.order.Order;
 import com.shopme.common.entity.order.OrderStatus;
+import com.shopme.common.entity.order.OrderTrack;
 
 @Service
 @Transactional
@@ -83,7 +85,30 @@ public class OrderService {
 		orderRepo.save(orderInForm);
 	}	
 	
-	
+	public void updateStatus(Integer orderId, String status) {
+		Order orderInDB = orderRepo.findById(orderId).get();
+		
+		OrderStatus statOrderStatus = OrderStatus.valueOf(status);
+		
+		if(!orderInDB.hasStatus(statOrderStatus)) {
+			List<OrderTrack> orderTracks = orderInDB.getOrderTracks();
+			
+			OrderTrack track = new OrderTrack();
+			track.setOrder(orderInDB);
+			track.setUpdatedTime(new Date());
+			track.setStatus(statOrderStatus);
+			track.setUpdatedTime(new Date());
+			track.setNotes(statOrderStatus.defaultDescription());
+			
+			
+			orderTracks.add(track);
+			
+			orderInDB.setStatus(statOrderStatus);
+			
+			orderRepo.save(orderInDB);
+			
+		}
+	}
 		
 	
 }

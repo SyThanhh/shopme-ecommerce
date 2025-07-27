@@ -71,6 +71,8 @@ public class OrderController {
 			Order order = orderService.get(id);
 			loadCurrencySetting(request);			
 			
+			
+			// check display for user view detail order mobile
 			boolean isVisibleForAdminOrSalesperson = false;
 			
 			if (loggedUser.hasRole("Admin") || loggedUser.hasRole("Salesperson")) {
@@ -86,6 +88,7 @@ public class OrderController {
 			ra.addFlashAttribute("message", ex.getMessage());
 			return defaultRedirectURL;
 		}
+		
 		
 	}
 	@PostMapping("/order/save")

@@ -320,6 +320,76 @@ public class Order extends AbstractAddress  {
 		} 		
 	}
 
+	
+	@Transient
+	public String getRecipientName() {
+		StringBuilder name = new StringBuilder();
+
+	    if (isNotEmpty(firstName)) name.append(firstName);
+	    if (isNotEmpty(lastName)) name.append(" ").append(lastName);
+	    return name.toString().trim();
+	}
+	
+	@Transient
+	public String getRecipientAddress() {
+		StringBuilder address = new StringBuilder(this.addressLine1);
+		
+
+	    if (isNotEmpty(firstName)) address.append(firstName);
+	    if (isNotEmpty(lastName)) address.append(" ").append(lastName);
+	    if (isNotEmpty(addressLine2)) address.append(", ").append(addressLine2);
+	    if (isNotEmpty(city)) address.append(", ").append(city);
+	    if (isNotEmpty(state)) address.append(" ").append(state);
+	    if (country != null && isNotEmpty(country)) address.append(" ").append(country);
+	    if (isNotEmpty(postalCode)) address.append(". Postal Code ").append(postalCode);
+	    if (isNotEmpty(phoneNumber)) address.append(". Phone number ").append(phoneNumber);
+
+	    return address.toString().trim();
+	}
+	
+	@Transient
+	public boolean isCOD() {
+	    return PaymentMethod.COD.equals(paymentMethod);
+	}
+	
+	@Transient
+	public boolean isProcessing() {
+		return hasStatus(OrderStatus.PROCESSING);
+	}
+	
+	@Transient
+	public boolean isPicked() {
+		return hasStatus(OrderStatus.PICKED);
+	}
+	
+	@Transient
+	public boolean isShipping() {
+		return hasStatus(OrderStatus.SHIPPING);
+	}
+	
+	@Transient
+	public boolean isDelivered() {
+		return hasStatus(OrderStatus.DELIVERED);
+	}
+
+	@Transient
+	public boolean isReturnRequested() {
+		return hasStatus(OrderStatus.RETURN_REQUESTED);
+	}	
+	
+	@Transient
+	public boolean isReturned() {
+		return hasStatus(OrderStatus.RETURNED);
+	}	
+
+	public boolean hasStatus(OrderStatus status) {
+		for(OrderTrack aTrack : this.orderTracks) {
+			if(aTrack.getStatus().equals(status)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	
 	
